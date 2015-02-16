@@ -16,9 +16,13 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
 
 		if (target != null) {
-			transform.position = new Vector3 (transform.position.x, 0.05f, transform.position.z);
-				Vector3 targetposition = new Vector3 (target.transform.position.x, 0.05f, target.transform.position.z);
-				transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.05f);
+			transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+			Vector3 targetposition = new Vector3 (target.transform.position.x, transform.position.y, target.transform.position.z);
+			transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.05f);
+
+			if(transform.position == targetposition){
+				target = null;
+			}
 		}
 	}	
 
@@ -29,6 +33,11 @@ public class PlayerScript : MonoBehaviour {
 			Application.LoadLevel(Application.loadedLevel);
 		}
 
+		if (collision.gameObject.name == "Push(Clone)") {
+			target = null;
+			rigidbody.AddForce(0,0,-250,ForceMode.Force);
+		}
+
 		if (collision.gameObject.name == "Goal(Clone)") {
 			won.gameObject.SetActive(true);
 
@@ -37,7 +46,7 @@ public class PlayerScript : MonoBehaviour {
 			collision.gameObject.animation.Play("RemoveTrapAnimation");
 			collision.gameObject.SetActive(false);
 			//Destroy(this.gameObject);
-			StartCoroutine("RemoveMap");
+			//StartCoroutine("RemoveMap");
 		}
 	
 	}

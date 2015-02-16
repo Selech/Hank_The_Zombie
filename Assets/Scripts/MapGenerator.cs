@@ -7,11 +7,16 @@ public class MapGenerator : MonoBehaviour {
 	public GameObject roadTile;
 	public GameObject trapTile;
 	public GameObject goalTile;
+	public GameObject obstacleTile;
+	public GameObject pushTile;
 	
 	public int width;
 	public int height;
 	public Vector2 goal;
 	public List<Vector2> traps;
+	public List<Vector2> obstacles;
+	public List<Vector2> push;
+
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +26,35 @@ public class MapGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	bool CheckObject(int x, int y){
+		if (traps.Contains (new Vector2 (x, y))) {
+			return true;
+		}
+		if (obstacles.Contains (new Vector2 (x, y))) {
+			return true;
+		}
+		if (push.Contains (new Vector2 (x, y))) {
+			return true;
+		} 
+		else {
+			return false;
+		}
+	}
+
+	GameObject getObject(int x, int y){
+		if (traps.Contains (new Vector2 (x, y))) {
+			return trapTile;
+		}
+		if (obstacles.Contains (new Vector2 (x, y))) {
+			return obstacleTile;
+		}
+		if (push.Contains (new Vector2 (x, y))) {
+			return pushTile;
+		} else {
+			return new GameObject();
+		}
 	}
 
 	IEnumerator DrawMap() {
@@ -33,8 +67,8 @@ public class MapGenerator : MonoBehaviour {
 					tile = (GameObject) Instantiate(goalTile,placement,new Quaternion());
 				}
 
-				else if (traps.Contains(new Vector2(i,l))){
-					tile = (GameObject) Instantiate(trapTile,placement,new Quaternion());
+				if(CheckObject(i,l)){
+					tile = (GameObject) Instantiate(getObject(i,l),placement,new Quaternion());
 				}
 
 				else{
@@ -42,7 +76,7 @@ public class MapGenerator : MonoBehaviour {
 				}
 				tile.transform.SetParent(this.transform);
 
-				yield return new WaitForSeconds(0f);;
+				yield return new WaitForSeconds(0f);
 				//yield return new WaitForSeconds(0.1f / width);
 			}
 		}

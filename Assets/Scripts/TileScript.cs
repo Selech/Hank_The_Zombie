@@ -7,11 +7,7 @@ public class TileScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if(gameObject.name == "Road(Clone)")
-							animation.Play("DrawAnimation");
-			
-						if(gameObject.name == "Goal(Clone)" || gameObject.name == "Trap(Clone)")
-							animation.Play("DrawTrapAnimation");
+
 	}
 	
 	// Update is called once per frame
