@@ -7,7 +7,7 @@ public class MouseControls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player.GetComponent<PlayerScript>().target = null;
+		//player.GetComponent<PlayerScript>().setTarget = null;
 	}
 	
 	// Update is called once per frame
@@ -16,7 +16,7 @@ public class MouseControls : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)){
-				player.GetComponent<PlayerScript>().target = hit.collider.gameObject;
+				player.GetComponent<PlayerScript>().setTarget(hit.collider.gameObject);
 			}
 		}
 

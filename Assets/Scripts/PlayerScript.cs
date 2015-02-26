@@ -4,27 +4,45 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour {
 
-	public GameObject target;
+	private GameObject target;
 	public Canvas won;
+
+	public Animator animator;
+
 
 	// Use this for initialization
 	void Start () {
 		Statics.LevelWon = false;
+		animator.SetTrigger ("TriggerIdle");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (target != null) {
+		if (target != null){
+			
 			transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 			Vector3 targetposition = new Vector3 (target.transform.position.x, transform.position.y, target.transform.position.z);
-			transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.05f);
+			transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.008f);
+			transform.LookAt (targetposition);
 
-			if(transform.position == targetposition){
+			if (transform.position == targetposition) {
+				animator.SetTrigger ("TriggerIdle");
+				animator.ResetTrigger ("TriggerWalk");
+
 				target = null;
 			}
+		} else {
+
+			animator.SetTrigger ("TriggerIdle");
 		}
 	}	
+	
+	public void setTarget(GameObject gameobj){
+		target = gameobj;
+		animator.ResetTrigger ("TriggerIdle");
+		animator.SetTrigger ("TriggerWalk");
+	} 
 
 
 	void OnCollisionEnter(Collision collision) {
@@ -35,7 +53,7 @@ public class PlayerScript : MonoBehaviour {
 
 		if (collision.gameObject.name == "Push(Clone)") {
 			target = null;
-			rigidbody.AddForce(0,0,-250,ForceMode.Force);
+			rigidbody.AddForce(250,500,00,ForceMode.Force);
 		}
 
 		if (collision.gameObject.name == "Goal(Clone)") {

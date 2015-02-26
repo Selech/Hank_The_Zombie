@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: 26f68a91f61e64e2ea5a16aad6c08a1e
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Arm_Left
+    100002: Arm_Right
+    100004: Armature
+    100006: Bone_003
+    100008: Bone_006
+    100010: Bone_009
+    100012: Bone_010
+    100014: Cube_003
+    100016: Foot_Left
+    100018: Foot_Right
+    100020: Head
+    100022: Hip
+    100024: Leg_Lower_Left
+    100026: Leg_Lower_Right
+    100028: Leg_Upper_Left
+    100030: Leg_Upper_Right
+    100032: Spine
+    100034: //RootNode
+    400000: Arm_Left
+    400002: Arm_Right
+    400004: Armature
+    400006: Bone_003
+    400008: Bone_006
+    400010: Bone_009
+    400012: Bone_010
+    400014: Cube_003
+    400016: Foot_Left
+    400018: Foot_Right
+    400020: Head
+    400022: Hip
+    400024: Leg_Lower_Left
+    400026: Leg_Lower_Right
+    400028: Leg_Upper_Left
+    400030: Leg_Upper_Right
+    400032: Spine
+    400034: //RootNode
+    4300000: Cube_003
+    7400000: Walk
+    7400002: Idle
+    9500000: //RootNode
+    13700000: Cube_003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: ArmatureAction
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip
+        weight: 1
+      - path: Armature/Hip/Bone_003
+        weight: 1
+      - path: Armature/Hip/Bone_003/Leg_Upper_Left
+        weight: 1
+      - path: Armature/Hip/Bone_003/Leg_Upper_Left/Leg_Lower_Left
+        weight: 1
+      - path: Armature/Hip/Bone_003/Leg_Upper_Left/Leg_Lower_Left/Foot_Left
+        weight: 1
+      - path: Armature/Hip/Bone_006
+        weight: 1
+      - path: Armature/Hip/Bone_006/Leg_Upper_Right
+        weight: 1
+      - path: Armature/Hip/Bone_006/Leg_Upper_Right/Leg_Lower_Right
+        weight: 1
+      - path: Armature/Hip/Bone_006/Leg_Upper_Right/Leg_Lower_Right/Foot_Right
+        weight: 1
+      - path: Armature/Hip/Spine
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_009
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_009/Arm_Left
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_010
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_010/Arm_Right
+        weight: 1
+      - path: Armature/Hip/Spine/Head
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Default Take
+      firstFrame: 40
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Hip
+        weight: 1
+      - path: Armature/Hip/Bone_003
+        weight: 1
+      - path: Armature/Hip/Bone_003/Leg_Upper_Left
+        weight: 1
+      - path: Armature/Hip/Bone_003/Leg_Upper_Left/Leg_Lower_Left
+        weight: 1
+      - path: Armature/Hip/Bone_003/Leg_Upper_Left/Leg_Lower_Left/Foot_Left
+        weight: 1
+      - path: Armature/Hip/Bone_006
+        weight: 1
+      - path: Armature/Hip/Bone_006/Leg_Upper_Right
+        weight: 1
+      - path: Armature/Hip/Bone_006/Leg_Upper_Right/Leg_Lower_Right
+        weight: 1
+      - path: Armature/Hip/Bone_006/Leg_Upper_Right/Leg_Lower_Right/Foot_Right
+        weight: 1
+      - path: Armature/Hip/Spine
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_009
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_009/Arm_Left
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_010
+        weight: 1
+      - path: Armature/Hip/Spine/Bone_010/Arm_Right
+        weight: 1
+      - path: Armature/Hip/Spine/Head
+        weight: 1
+      - path: Cube_003
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .200000003
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
