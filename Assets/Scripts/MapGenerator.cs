@@ -14,13 +14,20 @@ public class MapGenerator : MonoBehaviour {
 	public int height;
 	public Vector2 goal;
 	public List<Vector2> traps;
+	public List<Tile> tiles;
 	public List<Vector2> obstacles;
 	public List<Vector2> push;
 
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine ("DrawMap");
+		XMLReader.Save ();
+
+		TileContainer tc = XMLReader.Load ();
+
+		tiles = tc.Tiles;
+		DrawTiles ();
+		//StartCoroutine ("DrawMap");
 	}
 	
 	// Update is called once per frame
@@ -57,28 +64,42 @@ public class MapGenerator : MonoBehaviour {
 		}
 	}
 
-	IEnumerator DrawMap() {
-		for (int i = 0; i <= width; i++) {
-			for (int l = 0; l <= height; l++) {
-				Vector3 placement = new Vector3(i,-0.5f,l);
-				GameObject tile;
+	void DrawTiles(){
+		for (int i = 0; i < tiles.Count; i++) {
+			Vector3 placement = new Vector3(tiles[i].X,-0.5f,tiles[i].Y);
+			GameObject tile;
 
-				if(i == goal.x && l == goal.y ){
-					tile = (GameObject) Instantiate(goalTile,placement,new Quaternion());
-				}
+			tile = (GameObject)Instantiate (roadTile, placement, new Quaternion ());
 
-				if(CheckObject(i,l)){
-					tile = (GameObject) Instantiate(getObject(i,l),placement,new Quaternion());
-				}
-
-				else{
-					tile = (GameObject) Instantiate(roadTile,placement,new Quaternion());
-				}
-				tile.transform.SetParent(this.transform);
-
-				yield return new WaitForSeconds(0f);
-				//yield return new WaitForSeconds(0.1f / width);
-			}
+			tile.transform.SetParent(this.transform);
 		}
+	}
+
+	IEnumerator DrawMap() {
+
+
+//
+//		for (int i = 0; i <= width; i++) {
+//			for (int l = 0; l <= height; l++) {
+//				Vector3 placement = new Vector3(i,-0.5f,l);
+//				GameObject tile;
+//
+//				if(i == goal.x && l == goal.y ){
+//					tile = (GameObject) Instantiate(goalTile,placement,new Quaternion());
+//				}
+//
+//				if(CheckObject(i,l)){
+//					tile = (GameObject) Instantiate(getObject(i,l),placement,new Quaternion());
+//				}
+//
+//				else{
+//					tile = (GameObject) Instantiate(roadTile,placement,new Quaternion());
+//				}
+//				tile.transform.SetParent(this.transform);
+//
+				yield return new WaitForSeconds(0f);
+//				//yield return new WaitForSeconds(0.1f / width);
+//			}
+//		}
 	}
 }
