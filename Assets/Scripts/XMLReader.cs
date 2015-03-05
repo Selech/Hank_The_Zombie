@@ -48,31 +48,55 @@ public class XMLReader : MonoBehaviour {
 		Tile tile = new Tile ();
 		tile.X = 1;
 		tile.Y = 2;
-		tile.ObjectOnTile = "Hello";
+		tile.ObjectOnTile = "Wall";
 		tileContainer.Tiles.Add (tile);
 
 		tile = new Tile ();
 		tile.X = 1;
 		tile.Y = 0;
-		tile.ObjectOnTile = "Hello";
+		tile.ObjectOnTile = "";
 		tileContainer.Tiles.Add (tile);
 
 		tile = new Tile ();
 		tile.X = 1;
 		tile.Y = 1;
-		tile.ObjectOnTile = "Hello";
+		tile.ObjectOnTile = "";
 		tileContainer.Tiles.Add (tile);
 
 		tile = new Tile ();
 		tile.X = 0;
 		tile.Y = 0;
-		tile.ObjectOnTile = "Hello";
+		tile.ObjectOnTile = "";
 		tileContainer.Tiles.Add (tile);
 
 		tile = new Tile ();
 		tile.X = 0;
 		tile.Y = 2;
-		tile.ObjectOnTile = "Hello";
+		tile.ObjectOnTile = "Wall";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = 0;
+		tile.Y = 1;
+		tile.ObjectOnTile = "Wall";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = 3;
+		tile.Y = 0;
+		tile.ObjectOnTile = "Traps/BearTrap";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = 2;
+		tile.Y = 0;
+		tile.ObjectOnTile = "Traps/LaserWall";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = -1;
+		tile.Y = 0;
+		tile.ObjectOnTile = "Wall";
 		tileContainer.Tiles.Add (tile);
 
 		tileContainer.Save(Path.Combine (Application.persistentDataPath, "monsters.xml"));

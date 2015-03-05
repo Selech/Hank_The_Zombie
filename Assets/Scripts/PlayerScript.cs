@@ -21,7 +21,8 @@ public class PlayerScript : MonoBehaviour {
 
 		if (target != null){
 			
-			transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+			//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+
 			Vector3 targetposition = new Vector3 (target.transform.position.x, transform.position.y, target.transform.position.z);
 			transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.015f);
 			transform.LookAt (targetposition);
@@ -55,7 +56,7 @@ public class PlayerScript : MonoBehaviour {
 
 		if (collision.gameObject.name == "Push(Clone)") {
 			target = null;
-			rigidbody.AddForce(250,500,00,ForceMode.Force);
+			GetComponent<Rigidbody>().AddForce(250,500,00,ForceMode.Force);
 		}
 
 		if (collision.gameObject.name == "Goal(Clone)") {
@@ -63,7 +64,7 @@ public class PlayerScript : MonoBehaviour {
 
 			Statics.LevelWon = true;
 
-			collision.gameObject.animation.Play("RemoveTrapAnimation");
+			collision.gameObject.GetComponent<Animation>().Play("RemoveTrapAnimation");
 			collision.gameObject.SetActive(false);
 			//Destroy(this.gameObject);
 			//StartCoroutine("RemoveMap");
@@ -79,15 +80,15 @@ public class PlayerScript : MonoBehaviour {
 			TileScript ts = tiles[i].GetComponent<TileScript>();
 
 			if (tiles[i].gameObject.name == "Road(Clone)" && ts.spawned) {
-				tiles[i].animation.Play("RemoveAnimation");
+				tiles[i].GetComponent<Animation>().Play("RemoveAnimation");
 			}
 
 			else if (tiles[i].gameObject.name == "Trap(Clone)" && ts.spawned) {
-				tiles[i].animation.Play("RemoveTrapAnimation");
+				tiles[i].GetComponent<Animation>().Play("RemoveTrapAnimation");
 			}
 
 			else if (tiles[i].gameObject.name == "Goal(Clone)" && ts.spawned) {
-				tiles[i].animation.Play("RemoveTrapAnimation");
+				tiles[i].GetComponent<Animation>().Play("RemoveTrapAnimation");
 			}
 				
 			//yield return new WaitForSeconds(0.001f);

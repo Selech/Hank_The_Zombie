@@ -68,11 +68,24 @@ public class MapGenerator : MonoBehaviour {
 		for (int i = 0; i < tiles.Count; i++) {
 			Vector3 placement = new Vector3(tiles[i].X,-0.5f,tiles[i].Y);
 			GameObject tile;
+			GameObject objectOnTile;
 
 			tile = (GameObject)Instantiate (roadTile, placement, new Quaternion ());
 
 			tile.transform.SetParent(this.transform);
+
+			if(tiles[i].ObjectOnTile != ""){
+				objectOnTile = (GameObject) LoadAssetFromString(tiles[i].ObjectOnTile);
+				objectOnTile.transform.position = placement;
+				tile.transform.SetParent(tile.transform);
+			}
 		}
+	}
+
+	GameObject LoadAssetFromString(string assetName){
+		GameObject instance = Instantiate(Resources.Load(assetName, typeof(GameObject))) as GameObject;
+
+		return instance;
 	}
 
 	IEnumerator DrawMap() {
