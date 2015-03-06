@@ -16,7 +16,9 @@ public class MouseControls : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)){
-				player.GetComponent<PlayerScript>().setTarget(hit.collider.gameObject);
+				if(hit.collider.gameObject.tag == "Clickable"){
+					player.GetComponent<PlayerScript>().SetTarget(hit.collider.gameObject);
+				}
 			}
 		}
 

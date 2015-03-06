@@ -48,6 +48,8 @@
   <ItemGroup>
      <Compile Include="Assets\BearTrapScript.cs" />
      <Compile Include="Assets\ButtonScript.cs" />
+     <Compile Include="Assets\ChairScript.cs" />
+     <Compile Include="Assets\CollectableScript.cs" />
      <Compile Include="Assets\Ingame_UIButtons.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\MapGenerator.cs" />

@@ -60,7 +60,7 @@ public class XMLReader : MonoBehaviour {
 		tile = new Tile ();
 		tile.X = 1;
 		tile.Y = 1;
-		tile.ObjectOnTile = "";
+		tile.ObjectOnTile = "Objects/Chair";
 		tileContainer.Tiles.Add (tile);
 
 		tile = new Tile ();
@@ -97,6 +97,30 @@ public class XMLReader : MonoBehaviour {
 		tile.X = -1;
 		tile.Y = 0;
 		tile.ObjectOnTile = "Wall";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = 2;
+		tile.Y = -1;
+		tile.ObjectOnTile = "";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = 2;
+		tile.Y = -2;
+		tile.ObjectOnTile = "Wall";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = 3;
+		tile.Y = -1;
+		tile.ObjectOnTile = "";
+		tileContainer.Tiles.Add (tile);
+
+		tile = new Tile ();
+		tile.X = 1;
+		tile.Y = -1;
+		tile.ObjectOnTile = "";
 		tileContainer.Tiles.Add (tile);
 
 		tileContainer.Save(Path.Combine (Application.persistentDataPath, "monsters.xml"));
