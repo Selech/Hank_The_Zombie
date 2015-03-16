@@ -3,5 +3,5 @@ using System.Collections;
 
 public class Statics : MonoBehaviour {
 
-	public static bool LevelWon;
+	public static int BottlesLeft;
 }

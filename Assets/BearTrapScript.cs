@@ -17,8 +17,9 @@ public class BearTrapScript : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			gameObject.GetComponent<Animator> ().SetBool ("Hit",true);
-			other.gameObject.GetComponent<PlayerScript>().SetTarget(other.gameObject);
+			//other.gameObject.GetComponent<PlayerScript>().SetTarget(other.gameObject);
 			other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0,4,0),ForceMode.VelocityChange);
+
 
 		}
 	}

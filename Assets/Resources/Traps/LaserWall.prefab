@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460056}
-  - 65: {fileID: 6521272}
   m_Layer: 0
   m_Name: LaserWall
   m_TagString: Untagged
@@ -42,6 +41,8 @@ GameObject:
   - 4: {fileID: 468208}
   - 33: {fileID: 3346528}
   - 23: {fileID: 2319302}
+  - 108: {fileID: 10808918}
+  - 65: {fileID: 6584792}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -124,8 +125,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180226}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 33e83de1ab4784fdcb646791040f7f0c, type: 2}
   m_SubsetIndices: 
@@ -180,18 +181,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181718}
   m_Mesh: {fileID: 4300002, guid: 9c2e80282231e441c9fb13c5161769c7, type: 3}
---- !u!65 &6521272
+--- !u!65 &6584792
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135014}
+  m_GameObject: {fileID: 180226}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .0700000003, y: 1, z: 1}
-  m_Center: {x: 0, y: .545000017, z: 0}
+  m_Size: {x: 75.9732056, y: .991999865, z: 75.0387497}
+  m_Center: {x: -37.4906082, y: 1.0589073e-12, z: 37.0233765}
 --- !u!95 &9536812
 Animator:
   serializedVersion: 3
@@ -209,6 +210,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &10808918
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180226}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 2
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Intensity: .200000003
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_NormalBias: .400000006
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 8
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

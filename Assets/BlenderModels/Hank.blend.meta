@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 209385999cb824c4781ac85e67c2aa5b
+timeCreated: 1426162647
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Cube_001
+    100004: Face
+    100006: Foot_Left
+    100008: Foot_Right
+    100010: //RootNode
+    100012: Head
+    100014: Hip_Left
+    100016: Hip_Right
+    100018: Hips_Don_t_Lie
+    100020: IK_Left
+    100022: IK_Right
+    100024: Mball
+    100026: Rib_Left_Bottom
+    100028: Rib_Left_Middle
+    100030: Rib_Left_top
+    100032: Rib_Right_Bottom
+    100034: Rib_Right_Middle
+    100036: Rib_Right_Top
+    100038: Shin_Left
+    100040: Shin_Right
+    100042: Shoulder_01_001
+    100044: Shoulder_01_002
+    100046: Shoulder_01_003
+    100048: Shoulder_01_004
+    100050: Shoulder_Left
+    100052: Shoulder_Right
+    100054: Spine_01
+    100056: Spine_02
+    100058: Spine_03
+    100060: Spine_04
+    100062: Spine_04_002
+    100064: Spine_04_003
+    100066: Spine_04_004
+    100068: Spine_04_005
+    100070: Thigh_Left
+    100072: Thigh_Right
+    400000: Armature
+    400002: Cube_001
+    400004: Face
+    400006: Foot_Left
+    400008: Foot_Right
+    400010: //RootNode
+    400012: Head
+    400014: Hip_Left
+    400016: Hip_Right
+    400018: Hips_Don_t_Lie
+    400020: IK_Left
+    400022: IK_Right
+    400024: Mball
+    400026: Rib_Left_Bottom
+    400028: Rib_Left_Middle
+    400030: Rib_Left_top
+    400032: Rib_Right_Bottom
+    400034: Rib_Right_Middle
+    400036: Rib_Right_Top
+    400038: Shin_Left
+    400040: Shin_Right
+    400042: Shoulder_01_001
+    400044: Shoulder_01_002
+    400046: Shoulder_01_003
+    400048: Shoulder_01_004
+    400050: Shoulder_Left
+    400052: Shoulder_Right
+    400054: Spine_01
+    400056: Spine_02
+    400058: Spine_03
+    400060: Spine_04
+    400062: Spine_04_002
+    400064: Spine_04_003
+    400066: Spine_04_004
+    400068: Spine_04_005
+    400070: Thigh_Left
+    400072: Thigh_Right
+    2300000: Hips_Don_t_Lie
+    2300002: Mball
+    3300000: Hips_Don_t_Lie
+    3300002: Mball
+    4300000: Hips_Don_t_Lie
+    4300002: Cube_001
+    4300004: Mball
+    6400000: Hips_Don_t_Lie
+    6400002: Mball
+    7400000: Default Take
+    7400002: ArmatureAction_000
+    7400004: ArmatureAction_002
+    7400006: PoseLib
+    9500000: //RootNode
+    13700000: Cube_001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .0599999987
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

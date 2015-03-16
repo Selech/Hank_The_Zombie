@@ -4,59 +4,83 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour {
 
-	private GameObject target;
+	private Vector3 target;
+	private Vector3 targetVector;
 	public Canvas won;
 
 	public Animator animator;
 	public RectTransform ActionUI;
 	private GameObject selectedObject;
 
+	private bool Sliding;
+
 	// Use this for initialization
 	void Start () {
-		Statics.LevelWon = false;
 		animator.SetTrigger ("TriggerIdle");
-
-		
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-
-		if (target != null){
+		if (Sliding) {
+			targetVector -= (transform.position - targetVector)/100;
+			transform.position = Vector3.MoveTowards (transform.position, targetVector, 0.015f);
+			transform.LookAt (targetVector);
 			
-			//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 
-			Vector3 targetposition = new Vector3 (target.transform.position.x, transform.position.y, target.transform.position.z);
-			transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.015f);
-			transform.LookAt (targetposition);
-
-			if (transform.position == targetposition) {
-				animator.SetTrigger ("TriggerIdle");
-				animator.ResetTrigger ("TriggerWalk");
-
-				target = null;
-			}
 		} else {
-
-			animator.SetTrigger ("TriggerIdle");
+			if (target != new Vector3(-1,-1,-1)){
+				
+				//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+				
+				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
+				transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.015f);
+				transform.LookAt (targetposition);
+				
+				if (transform.position == targetposition) {
+					animator.SetTrigger ("TriggerIdle");
+					animator.ResetTrigger ("TriggerWalk");
+					
+					target = new Vector3(-1,-1,-1);
+				}
+			} else {
+				
+				animator.SetTrigger ("TriggerIdle");
+			}
 		}
-	}	
-	
-	public void SetTarget(GameObject gameobj){
-		target = gameobj;
-		animator.ResetTrigger ("TriggerIdle");
-		animator.SetTrigger ("TriggerWalk");
+	}
+
+	public void SetTarget(Vector3 gameobj){
+		if (!Sliding) {
+			target = gameobj;
+			animator.ResetTrigger ("TriggerIdle");
+			animator.SetTrigger ("TriggerWalk");
+		}
 	}
 
 	public void SelectedObject(GameObject selectObject)
 	{
 		selectedObject = selectObject;
-		target = null;
+		target = new Vector3(-1,-1,-1);
 		ActionUI.gameObject.SetActive (true);
 	}
 
 	public void PickUpObject()
 	{
 		selectedObject.transform.SetParent (this.transform);
+	}
+
+	public void EnableSliding(){
+		Sliding = true;
+		targetVector = new Vector3 (target.x, transform.position.y, target.z);
+	}
+
+	void OnCollisionEnter(Collision other){
+		if (other.gameObject.tag != "Clickable" && Sliding) {
+			Sliding = false;
+			animator.SetTrigger ("TriggerIdle");
+			animator.ResetTrigger ("TriggerWalk");
+			
+			target = new Vector3(-1,-1,-1);
+		}
 	}
 }	
