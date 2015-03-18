@@ -487,8 +487,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 98, y: -120.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 73.5500031, y: -84.5}
+  m_SizeDelta: {x: 120, y: 20}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &277354853
 MonoBehaviour:
@@ -971,8 +971,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 98, y: -31.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 73.5500031, y: -19.2999992}
+  m_SizeDelta: {x: 120, y: 20}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &375715980
 MonoBehaviour:
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1328,8 +1328,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 98, y: -76.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 73.5500031, y: -53.2000046}
+  m_SizeDelta: {x: 120, y: 20}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &479893089
 MonoBehaviour:
@@ -2372,10 +2372,10 @@ RectTransform:
   - {fileID: 277354852}
   m_Father: {fileID: 393938016}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -472, y: 167}
-  m_SizeDelta: {x: -996, y: -369}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 99.6999969, y: -70.6999969}
+  m_SizeDelta: {x: 147.100006, y: 106.400002}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &711123088
 MonoBehaviour:
@@ -2791,7 +2791,7 @@ Transform:
   - {fileID: 1438324631}
   - {fileID: 767319047}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &809166174
 Prefab:
   m_ObjectHideFlags: 0
@@ -3178,7 +3178,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -4477,7 +4477,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -5196,7 +5196,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
