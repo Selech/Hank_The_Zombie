@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MouseControls : MonoBehaviour {
@@ -12,13 +13,20 @@ public class MouseControls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
+		//if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
 
 			if (Input.GetMouseButtonDown (0)) { // if left button pressed...
+
+				
+
+
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
+
 				if (Physics.Raycast (ray, out hit)) {
 					print (hit.collider.gameObject.tag);
+
+					GameObject.Find ("TestText").GetComponent<Text> ().text = hit.collider.gameObject.tag + " Tag";
 
 					if (hit.collider.gameObject.tag == "Clickable") {
 						player.GetComponent<PlayerScript> ().SetTarget (hit.collider.gameObject.transform.position);
@@ -34,7 +42,7 @@ public class MouseControls : MonoBehaviour {
 				}
 			}
 
-		}
+
 
 	}
 }

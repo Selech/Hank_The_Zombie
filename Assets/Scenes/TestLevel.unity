@@ -3665,6 +3665,10 @@ Prefab:
       propertyPath: m_TagString
       value: Attackable
       objectReference: {fileID: 0}
+    - target: {fileID: 11446874, guid: 1671a556eb3f14e42a489ae8717d9ebb, type: 2}
+      propertyPath: m_Value
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1671a556eb3f14e42a489ae8717d9ebb, type: 2}
   m_IsPrefabParent: 0
@@ -3942,6 +3946,10 @@ Prefab:
     - target: {fileID: 419892, guid: 5a36f2661cd1b4978b45045a1282a4ab, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 118092, guid: 5a36f2661cd1b4978b45045a1282a4ab, type: 2}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a36f2661cd1b4978b45045a1282a4ab, type: 2}
@@ -5196,7 +5204,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 11
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
