@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour {
 				//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 				
 				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
-				transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.015f);
+				transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.05f); //speed 0.015
 				transform.LookAt (targetposition);
 				
 				if (transform.position == targetposition) {

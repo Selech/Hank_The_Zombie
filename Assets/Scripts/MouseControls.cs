@@ -2,32 +2,27 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class MouseControls : MonoBehaviour {
+public class MouseControls : MonoBehaviour
+{
 
 	public GameObject player;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		//player.GetComponent<PlayerScript>().setTarget = null;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		//if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
+	void Update ()
+	{
+		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
 
 			if (Input.GetMouseButtonDown (0)) { // if left button pressed...
-
-				
-
-
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
 
 				if (Physics.Raycast (ray, out hit)) {
-					print (hit.collider.gameObject.tag);
-
-					GameObject.Find ("TestText").GetComponent<Text> ().text = hit.collider.gameObject.tag + " Tag";
-
 					if (hit.collider.gameObject.tag == "Clickable") {
 						player.GetComponent<PlayerScript> ().SetTarget (hit.collider.gameObject.transform.position);
 					}
@@ -36,12 +31,12 @@ public class MouseControls : MonoBehaviour {
 						if (Vector3.Distance (GameObject.FindGameObjectWithTag ("Player").transform.position, hit.collider.gameObject.transform.position) > 1) {
 							GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerScript> ().SetTarget (hit.collider.gameObject.transform.position);
 						} else {
-							hit.collider.gameObject.GetComponent<LabTableWithLaptop>().Clicked();
+							hit.collider.gameObject.GetComponent<LabTableWithLaptop> ().Clicked ();
 						}
 					}
 				}
 			}
-
+		}
 
 
 	}

@@ -12,8 +12,7 @@ public class MouseControlsV2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
-
+		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
 			if (Input.GetMouseButton (0)) { // if left button pressed...
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
