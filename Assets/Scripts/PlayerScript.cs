@@ -19,6 +19,11 @@ public class PlayerScript : MonoBehaviour {
 		animator.SetTrigger ("TriggerIdle");
 	}
 
+	public void Attack(){
+
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 		if (Sliding) {
@@ -27,9 +32,9 @@ public class PlayerScript : MonoBehaviour {
 			transform.LookAt (targetVector);
 			
 
-		} else {
-			if (target != new Vector3(-1,-1,-1)){
-				
+			} else {
+				if (target != new Vector3(-1,-1,-1)){
+
 				//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 				
 				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
@@ -42,45 +47,45 @@ public class PlayerScript : MonoBehaviour {
 					
 					target = new Vector3(-1,-1,-1);
 				}
-			} else {
-				
-				animator.SetTrigger ("TriggerIdle");
+				} else {
+
+					animator.SetTrigger ("TriggerIdle");
+				}
 			}
 		}
-	}
 
-	public void SetTarget(Vector3 gameobj){
-		if (!Sliding) {
-			target = gameobj;
-			animator.ResetTrigger ("TriggerIdle");
-			animator.SetTrigger ("TriggerWalk");
+		public void SetTarget(Vector3 gameobj){
+			if (!Sliding) {
+				target = gameobj;
+				animator.ResetTrigger ("TriggerIdle");
+				animator.SetTrigger ("TriggerWalk");
+			}
 		}
-	}
 
-	public void SelectedObject(GameObject selectObject)
-	{
-		selectedObject = selectObject;
-		target = new Vector3(-1,-1,-1);
-		ActionUI.gameObject.SetActive (true);
-	}
-
-	public void PickUpObject()
-	{
-		selectedObject.transform.SetParent (this.transform);
-	}
-
-	public void EnableSliding(){
-		Sliding = true;
-		targetVector = new Vector3 (target.x, transform.position.y, target.z);
-	}
-
-	void OnCollisionEnter(Collision other){
-		if (other.gameObject.tag != "Clickable" && Sliding) {
-			Sliding = false;
-			animator.SetTrigger ("TriggerIdle");
-			animator.ResetTrigger ("TriggerWalk");
-			
+		public void SelectedObject(GameObject selectObject)
+		{
+			selectedObject = selectObject;
 			target = new Vector3(-1,-1,-1);
+			ActionUI.gameObject.SetActive (true);
 		}
-	}
-}	
+
+		public void PickUpObject()
+		{
+			selectedObject.transform.SetParent (this.transform);
+		}
+
+		public void EnableSliding(){
+			Sliding = true;
+			targetVector = new Vector3 (target.x, transform.position.y, target.z);
+		}
+
+		void OnCollisionEnter(Collision other){
+			if (other.gameObject.tag != "Clickable" && Sliding) {
+				Sliding = false;
+				animator.SetTrigger ("TriggerIdle");
+				animator.ResetTrigger ("TriggerWalk");
+
+				target = new Vector3(-1,-1,-1);
+			}
+		}
+	}	
