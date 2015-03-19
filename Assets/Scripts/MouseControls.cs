@@ -31,7 +31,7 @@ public class MouseControls : MonoBehaviour
 						if (Vector3.Distance (GameObject.FindGameObjectWithTag ("Player").transform.position, hit.collider.gameObject.transform.position) > 1) {
 							GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerScript> ().SetTarget (hit.collider.gameObject.transform.position);
 						} else {
-							hit.collider.gameObject.GetComponent<LabTableWithLaptop> ().Clicked ();
+							hit.collider.gameObject.GetComponent<IAttackable>().Attack();
 						}
 					}
 				}

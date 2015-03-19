@@ -19,9 +19,6 @@ public class PlayerScript : MonoBehaviour {
 		animator.SetTrigger ("TriggerIdle");
 	}
 
-	public void Attack(){
-
-	}
 
 
 	// Update is called once per frame
