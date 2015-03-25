@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -36,8 +36,6 @@ public class MapGenerator : MonoBehaviour {
 				objectOnTile.transform.position = placement;
 				objectOnTile.transform.SetParent(tile.transform);
 			}
-
-
 		}
 	}
 
