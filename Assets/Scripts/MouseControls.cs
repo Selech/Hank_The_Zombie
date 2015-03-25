@@ -4,8 +4,8 @@ using System.Collections;
 
 public class MouseControls : MonoBehaviour
 {
-
 	public GameObject player;
+	public GameObject InventoryUI;
 
 	// Use this for initialization
 	void Start ()
@@ -33,6 +33,10 @@ public class MouseControls : MonoBehaviour
 						} else {
 							hit.collider.gameObject.GetComponent<IAttackable>().Attack();
 						}
+					}
+
+					if(hit.collider.gameObject.tag == "Player"){
+						InventoryUI.SetActive(true);
 					}
 				}
 			}

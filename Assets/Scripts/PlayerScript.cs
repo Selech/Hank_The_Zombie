@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour {
 	public RectTransform ActionUI;
 	private GameObject selectedObject;
 
+	public GameObject EquippedThrowable;
+
 	private bool Sliding;
 
 	// Use this for initialization
@@ -19,7 +21,9 @@ public class PlayerScript : MonoBehaviour {
 		animator.SetTrigger ("TriggerIdle");
 	}
 
-
+	public void EquipThrowable(GameObject throwable){
+		EquippedThrowable = (GameObject) Instantiate (throwable, transform.position, new Quaternion());
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -52,10 +56,15 @@ public class PlayerScript : MonoBehaviour {
 		}
 
 		public void SetTarget(Vector3 gameobj){
-			if (!Sliding) {
-				target = gameobj;
-				animator.ResetTrigger ("TriggerIdle");
-				animator.SetTrigger ("TriggerWalk");
+			if (EquippedThrowable != null) {
+				EquippedThrowable.GetComponent<IThrowable> ().SetTarget (gameobj);
+				EquippedThrowable = null;
+			} else {
+				if (!Sliding) {
+					target = gameobj;
+					animator.ResetTrigger ("TriggerIdle");
+					animator.SetTrigger ("TriggerWalk");
+				}
 			}
 		}
 
