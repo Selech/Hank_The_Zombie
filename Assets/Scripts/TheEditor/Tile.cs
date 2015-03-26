@@ -17,7 +17,10 @@ public class Tile {
 	[XmlAttribute("blank")]
 	public bool blank;
 
-	private Tile(){}
+	public Tile()
+	{
+
+	}
 	public Tile(int x, int y, string objectOnTile)
 	{
 		this.ObjectOnTile = objectOnTile;
