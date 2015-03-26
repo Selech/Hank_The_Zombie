@@ -1,24 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using System.Xml;
-using System.Xml.Serialization;
 using System.IO;
 
-public class XMLTester : MonoBehaviour{
-
-	void start()
-	{
-		Debug.Log("Crazy Horse Power Poo");
-		createTestLevelXML();
-	}
+public class XMLTester : MonoBehaviour {
 
 	// Use this for initialization
-	void createTestLevelXML () 
-	{
+	void Start () {
+		Debug.Log("XMLTester: Creating XML...");
 		createLevel1();
 		createLevel2();
-		Debug.Log("Crazy Horse Power Poo");
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
 	}
 
 	void createLevel1()
@@ -56,11 +51,11 @@ public class XMLTester : MonoBehaviour{
 		lvl.Tiles.Add(new Tile(2,-2, "Wall"));
 		lvl.Tiles.Add(new Tile(3,-1, ""));
 		lvl.Tiles.Add(new Tile(1,-1, ""));
-
+		
 		// Save XML to file
-		lvl.Save(Path.Combine (Application.persistentDataPath, lvl.name+".xml"));
+		lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
 	}
-
+	
 	void createLevel2()
 	{
 		Level lvl = new Level();
@@ -96,8 +91,8 @@ public class XMLTester : MonoBehaviour{
 		lvl.Tiles.Add(new Tile(-1,0, "Wall"));
 		lvl.Tiles.Add(new Tile(2,-1, ""));
 		lvl.Tiles.Add(new Tile(2,-2, "Wall"));
-
+		
 		// Save XML to file
-		lvl.Save(Path.Combine (Application.persistentDataPath, lvl.name+".xml"));
+		lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
 	}
 }

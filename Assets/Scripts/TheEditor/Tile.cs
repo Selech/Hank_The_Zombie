@@ -14,11 +14,15 @@ public class Tile {
 	[XmlAttribute("y")]
 	public int Y;
 
+	[XmlAttribute("blank")]
+	public bool blank;
+
 	private Tile(){}
 	public Tile(int x, int y, string objectOnTile)
 	{
 		this.ObjectOnTile = objectOnTile;
 		this.X = x;
 		this.Y = y;
+		
 	}
 }

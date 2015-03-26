@@ -38,7 +38,7 @@ public class RecursiveFileProcessor
 		// Process the list of files found in the directory. 
 		string [] fileEntries = Directory.GetFiles(targetDirectory);
 		foreach(string fileName in fileEntries)
-			list.Add(fileName.);
+			list.Add(fileName);
 		
 		// Recurse into subdirectories of this directory. 
 		string [] subdirectoryEntries = Directory.GetDirectories(targetDirectory);
