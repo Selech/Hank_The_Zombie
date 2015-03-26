@@ -4,14 +4,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-public class Tile {
-
-	public int X;
-	public int Y;
-	
-	public string ObjectOnTile;
-}
-
 [XmlRoot("TilesCollection")]
 public class TileContainer
 {
@@ -35,7 +27,6 @@ public class TileContainer
 			return serializer.Deserialize(stream) as TileContainer;
 		}
 	}
-
 }
 
 public class XMLReader : MonoBehaviour {
@@ -45,91 +36,26 @@ public class XMLReader : MonoBehaviour {
 	public static void Save(){
 		TileContainer tileContainer = new TileContainer ();
 
-		Tile tile = new Tile ();
-		tile.X = 1;
-		tile.Y = 2;
-		tile.ObjectOnTile = "Wall";
-		tileContainer.Tiles.Add (tile);
+		tileContainer.Tiles.Add(new Tile(1,2, "Wall"));
+		tileContainer.Tiles.Add(new Tile(2,2, "Objects/BearTrap"));
+		tileContainer.Tiles.Add(new Tile(1,1, "Objects/Chair"));
+		tileContainer.Tiles.Add(new Tile(1,0, ""));
+		tileContainer.Tiles.Add(new Tile(2,0, "Traps/LaserWall"));
+		tileContainer.Tiles.Add(new Tile(3,0, "Traps/BearTrap"));
+		tileContainer.Tiles.Add(new Tile(4,0, ""));
+		tileContainer.Tiles.Add(new Tile(5,0, "Wall"));
+		tileContainer.Tiles.Add(new Tile(5,1, "Wall"));
+		tileContainer.Tiles.Add(new Tile(5,-1, "Wall"));
+		tileContainer.Tiles.Add(new Tile(-1,0, "Wall"));
+		tileContainer.Tiles.Add(new Tile(2,-1, ""));
+		tileContainer.Tiles.Add(new Tile(2,-2, "Wall"));
 
-		tile = new Tile ();
-		tile.X = 1;
-		tile.Y = 0;
-		tile.ObjectOnTile = "";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 1;
-		tile.Y = 1;
-		tile.ObjectOnTile = "Objects/Chair";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 0;
-		tile.Y = 0;
-		tile.ObjectOnTile = "";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 0;
-		tile.Y = 2;
-		tile.ObjectOnTile = "Wall";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 0;
-		tile.Y = 1;
-		tile.ObjectOnTile = "Wall";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 3;
-		tile.Y = 0;
-		tile.ObjectOnTile = "Traps/BearTrap";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 2;
-		tile.Y = 0;
-		tile.ObjectOnTile = "Traps/LaserWall";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = -1;
-		tile.Y = 0;
-		tile.ObjectOnTile = "Wall";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 2;
-		tile.Y = -1;
-		tile.ObjectOnTile = "";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 2;
-		tile.Y = -2;
-		tile.ObjectOnTile = "Wall";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 3;
-		tile.Y = -1;
-		tile.ObjectOnTile = "";
-		tileContainer.Tiles.Add (tile);
-
-		tile = new Tile ();
-		tile.X = 1;
-		tile.Y = -1;
-		tile.ObjectOnTile = "";
-		tileContainer.Tiles.Add (tile);
-
-		tileContainer.Save(Path.Combine (Application.persistentDataPath, "monsters.xml"));
+		tileContainer.Save(Path.Combine (Application.persistentDataPath, "john.xml"));
 		print (Application.persistentDataPath);
 	}
 
 	public static TileContainer Load(){
-		tileCollection = TileContainer.Load(Path.Combine(Application.persistentDataPath, "monsters.xml"));
+		tileCollection = TileContainer.Load(Path.Combine(Application.persistentDataPath, "john.xml"));
 		return tileCollection;
 	}
-
 }
