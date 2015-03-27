@@ -1,29 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EditorMouse : MonoBehaviour {
+public class EditorMouse : MonoBehaviour 
+{
 	
 	public string mode = "";
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 
 	}
 
-	public void SwitchMode(string mode){
+	public void SwitchMode(string mode)
+	{
 		this.mode = mode;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
+	void Update () 
+	{
+		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) 
+		{
 			
-			if (Input.GetMouseButton (0)) { // if left button pressed...
+			if (Input.GetMouseButton (0)) 
+			{ 
+				// if left button pressed...
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
 				
-				if (Physics.Raycast (ray, out hit)) {
-					if (hit.collider.gameObject.tag == "Clickable") {
+				if (Physics.Raycast (ray, out hit)) 
+				{
+					if (hit.collider.gameObject.tag == "Clickable") 
+					{
 
 						switch(mode)
 						{
