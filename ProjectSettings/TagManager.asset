@@ -7,6 +7,7 @@ TagManager:
   - Clickable
   - Attackable
   - Trap
+  - New Tag
   layers:
   - Default
   - TransparentFX
