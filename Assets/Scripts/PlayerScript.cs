@@ -55,18 +55,20 @@ public class PlayerScript : MonoBehaviour {
 			}
 		}
 
-		public void SetTarget(Vector3 gameobj){
-			if (EquippedThrowable != null) {
-				EquippedThrowable.GetComponent<IThrowable> ().SetTarget (gameobj);
-				EquippedThrowable = null;
-			} else {
-				if (!Sliding) {
-					target = gameobj;
-					animator.ResetTrigger ("TriggerIdle");
-					animator.SetTrigger ("TriggerWalk");
-				}
+	public void SetTarget(Vector3 gameobj){
+		if (EquippedThrowable != null) {
+			EquippedThrowable.GetComponent<IThrowable> ().SetTarget (gameobj);
+			EquippedThrowable = null;
+		}
+		else 
+		{
+			if (!Sliding) {
+				target = gameobj;
+				animator.ResetTrigger ("TriggerIdle");
+				animator.SetTrigger ("TriggerWalk");
 			}
 		}
+	}
 
 		public void SelectedObject(GameObject selectObject)
 		{

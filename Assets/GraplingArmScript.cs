@@ -21,6 +21,7 @@ public class GraplingArmScript : MonoBehaviour, IThrowable {
 				transform.LookAt(target);
 			}
 			else{
+				GetComponent<Rigidbody> ().isKinematic = false;
 				GetComponent<Rigidbody>().useGravity = true;
 			}
 		}
@@ -30,12 +31,18 @@ public class GraplingArmScript : MonoBehaviour, IThrowable {
 
 	}
 
-//	void OnCollisionEnter(){
-//		hit = true;
-//	}
+	void OnCollisionEnter(Collision other){
+		if (other.gameObject.tag != "Player") {
+			hit = true;
+		}
+
+		if (other.gameObject.tag == "Player" && hit) {
+			Destroy(this.gameObject);
+		}
+	}
 
 	public void SetTarget(Vector3 target){
-		GetComponent<Rigidbody> ().isKinematic = false;
+//		GetComponent<Rigidbody> ().isKinematic = false;
 		this.target = target;
 		
 	} 

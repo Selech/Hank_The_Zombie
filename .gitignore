@@ -38,3 +38,5 @@ Thumbs.db
 *.sln
 
 Library/assetDatabase3
+
+*.meta

@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11485786}
   m_Layer: 0
   m_Name: WallButtonModel
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchObject: {fileID: 0}
   activeZ: -.353406698
+  isSet: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
