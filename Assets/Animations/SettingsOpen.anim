@@ -39,13 +39,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: -975
-        outSlope: -975
+        inSlope: -1200
+        outSlope: -1200
         tangentMode: 10
       - time: .333333343
-        value: -325
-        inSlope: -975
-        outSlope: -975
+        value: -400
+        inSlope: -1200
+        outSlope: -1200
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -57,19 +57,19 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -75
-        inSlope: -1050
-        outSlope: -1050
+        value: 0
+        inSlope: -675
+        outSlope: -675
         tangentMode: 10
       - time: .333333343
-        value: -425
-        inSlope: -1050
-        outSlope: -1050
+        value: -225
+        inSlope: -675
+        outSlope: -675
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Button Test Level
+    path: Button Upload Level
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -88,7 +88,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Button Upload Level
+    path: Button Load Level
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -96,18 +96,18 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: -750
-        outSlope: -750
+        inSlope: -975
+        outSlope: -975
         tangentMode: 10
       - time: .333333343
-        value: -250
-        inSlope: -750
-        outSlope: -750
+        value: -325
+        inSlope: -975
+        outSlope: -975
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Button Exit Level
+    path: Button Exit Editor
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -161,13 +161,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: -975
-        outSlope: -975
+        inSlope: -1200
+        outSlope: -1200
         tangentMode: 10
       - time: .333333343
-        value: -325
-        inSlope: -975
-        outSlope: -975
+        value: -400
+        inSlope: -1200
+        outSlope: -1200
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -179,19 +179,19 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -75
-        inSlope: -1050
-        outSlope: -1050
+        value: 0
+        inSlope: -675
+        outSlope: -675
         tangentMode: 10
       - time: .333333343
-        value: -425
-        inSlope: -1050
-        outSlope: -1050
+        value: -225
+        inSlope: -675
+        outSlope: -675
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Button Test Level
+    path: Button Upload Level
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -210,7 +210,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Button Upload Level
+    path: Button Load Level
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -218,18 +218,18 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: -750
-        outSlope: -750
+        inSlope: -975
+        outSlope: -975
         tangentMode: 10
       - time: .333333343
-        value: -250
-        inSlope: -750
-        outSlope: -750
+        value: -325
+        inSlope: -975
+        outSlope: -975
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
-    path: Button Exit Level
+    path: Button Exit Editor
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []
