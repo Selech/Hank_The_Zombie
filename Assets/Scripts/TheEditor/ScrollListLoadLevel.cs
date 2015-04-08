@@ -17,16 +17,28 @@ public class Item {
 	public Button.ButtonClickedEvent thingToDo;
 }
 
-public class CreateScrollList : MonoBehaviour {
+public class ScrollListLoadLevel : MonoBehaviour {
 	
 	public GameObject sampleButton;
+	public GameObject loadButton;
+	public String nameOfSelected;
 
 	void Start () 
 	{
-		loadLevels();
+		showLevels();
+		addOnLoadClick();
 	}
 
-	void loadLevels()
+	void addOnLoadClick()
+	{
+		loadButton.GetComponentInChildren<Button>().onClick.AddListener(() => 
+		{ 
+			LevelDesigner.LastLoaded = nameOfSelected;
+			Application.LoadLevel ("EditorDesigning");
+		});
+	}
+
+	void showLevels()
 	{
 		// WinConditionEnum john = WinConditionEnum.Equipment;
 		// Debug.Log(john.ToName());
@@ -35,12 +47,21 @@ public class CreateScrollList : MonoBehaviour {
 
 		foreach (var name in fileNames) 
 		{
-			Debug.Log("En hest skabes!");
-			Debug.Log("item name: "+name);
+			//Debug.Log("En hest skabes!");
+			//Debug.Log("item name: "+name);
 
 			GameObject instance = Instantiate(sampleButton);
-			instance.GetComponentInChildren<Text>().text = Path.GetFileNameWithoutExtension(name);
+			String fileName = Path.GetFileNameWithoutExtension(name);
+			instance.GetComponentInChildren<Text>().text = fileName;
 			instance.transform.SetParent(this.transform);
+
+			instance.GetComponentInChildren<Button>().onClick.AddListener(() => { onSelected(fileName); });
 		}
+	}
+
+	public void onSelected(String fileName)
+	{
+		this.nameOfSelected = fileName;
+		loadButton.GetComponent<Button>().interactable = true;
 	}
 }

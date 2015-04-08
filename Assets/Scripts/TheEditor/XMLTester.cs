@@ -6,19 +6,14 @@ public class XMLTester : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log("XMLTester: Creating XML...");
+		//Debug.Log("XMLTester: Creating XML...");
 		createLevel1();
 		createLevel2();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	void createLevel1()
 	{
-		Level lvl = new Level();
+		Level lvl 		= new Level();
 		lvl.name 		= "The grand Escape";
 		lvl.description = "Only the most cunning players will be able to avoid being caught in this level!";
 		lvl.author 		= "flotfyr007";

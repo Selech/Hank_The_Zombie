@@ -7,28 +7,6 @@ using System.Collections.Generic;
 
 public class RecursiveFileProcessor 
 {
-//	public static void Main(string[] args) 
-//	{
-//		foreach(string path in args) 
-//		{
-//			if(File.Exists(path)) 
-//			{
-//				// This path is a file
-//				ProcessFile(path); 
-//			}               
-//			else if(Directory.Exists(path)) 
-//			{
-//				// This path is a directory
-//				ProcessDirectory(path);
-//			}
-//			else 
-//			{
-//				Console.WriteLine("{0} is not a valid file or directory.", path);
-//			}        
-//		}        
-//	}
-	
-	
 	// Process all files in the directory passed in, recurse on any directories  
 	// that are found, and process the files they contain. 
 	public static List<string> ProcessDirectory(string targetDirectory) 
@@ -46,5 +24,10 @@ public class RecursiveFileProcessor
 			ProcessDirectory(subdirectory);
 
 		return list;
+	}
+
+	public static int countFilesInDirectory(string dir)
+	{
+		return Directory.GetFiles(dir).Length;
 	}
 }

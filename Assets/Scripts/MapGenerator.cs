@@ -7,18 +7,13 @@ public class MapGenerator : MonoBehaviour {
 	public List<Tile> tiles;
 
 	// Use this for initialization
-	void Start () {
-		XMLReader.Save ();
-
-		TileContainer tc = XMLReader.Load ();
-
-		tiles = tc.Tiles;
-		DrawTiles ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public void LoadLevel (string path) {
+//		XMLReader.Save ();
+//
+//		TileContainer tc = XMLReader.Load ();
+//
+//		tiles = tc.Tiles;
+//		DrawTiles ();
 	}
 
 	void DrawTiles(){
@@ -44,5 +39,4 @@ public class MapGenerator : MonoBehaviour {
 
 		return instance;
 	}
-
 }

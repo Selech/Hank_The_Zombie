@@ -92,5 +92,4 @@ public class Level {
 			return serializer.Deserialize(stream) as Level;
 		}
 	}
-
 }
