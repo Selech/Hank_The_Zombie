@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
@@ -7,15 +8,16 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Statics.BottlesLeft == 0) {
-			winScreen.SetActive(true);		
 		}
+	}
 
-
+	public void GameEnd() {
+		winScreen.SetActive(true);		
 	}
 }
