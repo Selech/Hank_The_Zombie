@@ -37,11 +37,14 @@ public class MouseRts : MonoBehaviour
 			pan = Mathf.Clamp(pan, PanAngleMin, PanAngleMax);
 			if (zoomDelta < 0 || GetComponent<Camera>().transform.position.y < (ZoomMax / 2))
 			{
-				GetComponent<Camera>().transform.eulerAngles = new Vector3(pan, 0, 0);
+				GetComponent<Camera>().transform.eulerAngles = new Vector3(pan, 45, 0);
 			}
 			
 			// Move camera with arrow keys
-			translation += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			Debug.Log("-----");
+			Debug.Log("hor: "+Input.GetAxis("Horizontal"));
+			Debug.Log("ver: "+Input.GetAxis("Vertical"));
+			translation += new Vector3(Input.GetAxis("Vertical")-Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")+Input.GetAxis("Vertical"));
 			
 			// Move camera with mouse
 			if (Input.GetMouseButton(0)) // MMB
