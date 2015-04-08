@@ -16,7 +16,8 @@ public class MouseRts : MonoBehaviour
 	private const int PanSpeed = 7;
 	private const int PanAngleMin = 50;
 	private const int PanAngleMax = 80;
-	
+
+
 	// Update is called once per frame
 	void Update()
 	{
@@ -37,23 +38,23 @@ public class MouseRts : MonoBehaviour
 			pan = Mathf.Clamp(pan, PanAngleMin, PanAngleMax);
 			if (zoomDelta < 0 || GetComponent<Camera>().transform.position.y < (ZoomMax / 2))
 			{
-				GetComponent<Camera>().transform.eulerAngles = new Vector3(pan, 45, 0);
+				GetComponent<Camera>().transform.eulerAngles = new Vector3(pan, 0, 0);
 			}
 			
 			// Move camera with arrow keys
 			Debug.Log("-----");
 			Debug.Log("hor: "+Input.GetAxis("Horizontal"));
 			Debug.Log("ver: "+Input.GetAxis("Vertical"));
-			translation += new Vector3(Input.GetAxis("Vertical")-Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")+Input.GetAxis("Vertical"));
+			translation += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 			
 			// Move camera with mouse
-			if (Input.GetMouseButton(0)) // MMB
+			if (Input.GetMouseButton(1)) // MMB
 			{
 				// Hold button and drag camera around
 				translation -= new Vector3(Input.GetAxis("Mouse X") * DragSpeed * Time.deltaTime, 0,
 				                           Input.GetAxis("Mouse Y") * DragSpeed * Time.deltaTime);
 			}
-			else
+			/*else
 			{
 				// Move camera if mouse pointer reaches screen borders
 				if (Input.mousePosition.x < ScrollArea)
@@ -75,7 +76,7 @@ public class MouseRts : MonoBehaviour
 				{
 					translation += Vector3.forward * ScrollSpeed * Time.deltaTime;
 				}
-			}
+			}*/
 			
 			// Keep camera within level and zoom area
 			var desiredPosition = GetComponent<Camera>().transform.position + translation;
