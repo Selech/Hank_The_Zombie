@@ -3,7 +3,10 @@ using System.Collections;
 
 public class EndGame : MonoBehaviour {
 
-	void OnCollisionEnter(){
+	void OnCollisionEnter(Collision other){
+		Destroy (other.gameObject);
 		GameObject.Find ("Controller").GetComponent<GameController> ().GameEnd ();
+		GameObject.Find ("Controller").GetComponent<Controller> ().started = false;
+
 	}
 }

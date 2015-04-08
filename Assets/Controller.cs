@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour {
 	public float time;
 	public Text timeField;
 
-	private bool started = false;
+	public bool started = false;
 	private float startTime;
 
 	// Use this for initialization
