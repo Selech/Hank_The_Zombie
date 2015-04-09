@@ -10,13 +10,6 @@ using System.ComponentModel;
 using System.Reflection;
 using System.IO;
 
-[System.Serializable]
-public class Item {
-	public string name;
-	public Sprite icon;
-	public Button.ButtonClickedEvent thingToDo;
-}
-
 public class ScrollListLoadLevel : MonoBehaviour {
 	
 	public GameObject sampleButton;

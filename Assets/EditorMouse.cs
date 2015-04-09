@@ -43,13 +43,11 @@ public class EditorMouse : MonoBehaviour
 							tile.transform.position = position;
 							break;
 
-
 						case "DeleteTile" :
 							Vector3 positionDel = hit.collider.gameObject.transform.position;
 							Destroy (hit.collider.gameObject);
 							GameObject tileDel = (GameObject) LoadAssetFromString("EmptyTile");
 							tileDel.transform.position = positionDel;
-
 							break;
 						}
 					}
