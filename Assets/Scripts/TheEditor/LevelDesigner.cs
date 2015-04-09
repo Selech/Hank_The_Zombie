@@ -120,7 +120,7 @@ public class LevelDesigner : MonoBehaviour
 	void LoadLevel(string levelName)
 	{
 		string filePath = LevelsDirectory + levelName + ".xml";
-		Level lvl = Level.Load(filePath);
+		Level lvl = currentLevel = Level.Load(filePath);
 		create (lvl);
 	}
 
