@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Controller : MonoBehaviour {
+public class TimeController : MonoBehaviour {
 
 	public float time;
 	public Text timeField;

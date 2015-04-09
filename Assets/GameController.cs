@@ -5,6 +5,8 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public GameObject winScreen;
+	public Camera overview;
+	public Camera gameplay;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +17,13 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		if (Statics.BottlesLeft == 0) {
 		}
+	}
+
+	public void GameStart() {
+		this.GetComponent<TimeController> ().enabled = true;
+
+		overview.enabled = !overview.enabled;
+		gameplay.enabled = !gameplay.enabled;
 	}
 
 	public void GameEnd() {
