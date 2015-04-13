@@ -42,19 +42,22 @@ public class MouseControls : MonoBehaviour
 			}
 		} else if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
 			if (Input.GetMouseButton (0)) { // if left button pressed...
-				Vector3 target = Input.mousePosition - (new Vector3 (150, 80, 0));
+				Vector3 mousePos = Input.mousePosition;
+				if(mousePos.x < Screen.width/4 && mousePos.y < Screen.height/4){
+					Vector3 target = Input.mousePosition - (new Vector3 (150, 80, 0));
 
-				print (target);
+					print (target);
 
-				target = Quaternion.Euler(0, 0, -45) * target;
+					target = Quaternion.Euler(0, 0, -45) * target;
 
-				print (target);
+					print (target);
 
-				Vector3 calculatedTarget = new Vector3(player.transform.position.x + target.x, 0 , player.transform.position.z + target.y);
+					Vector3 calculatedTarget = new Vector3(player.transform.position.x + target.x, 0 , player.transform.position.z + target.y);
 
-				//print (calculatedTarget);
+					//print (calculatedTarget);
 
-				player.GetComponent<PlayerScript> ().SetTarget (calculatedTarget);
+					player.GetComponent<PlayerScript> ().SetTarget (calculatedTarget);
+				}
 			}
 			else {
 				player.GetComponent<PlayerScript> ().SetTarget(new Vector3(-1,-1,-1));
