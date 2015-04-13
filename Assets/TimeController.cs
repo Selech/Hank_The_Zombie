@@ -23,7 +23,7 @@ public class TimeController : MonoBehaviour {
 			float timeelapsed = Time.time - startTime; 
 			
 			if ((time - timeelapsed) < 0) {
-				print ("Lost");
+				//print ("Lost");
 			}
 			
 			timeField.text = "Time left: " + (int)(time - timeelapsed) + "s";

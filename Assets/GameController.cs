@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Statics.BottlesLeft == 0) {
+			//winScreen.SetActive(true);
 		}
 	}
 
