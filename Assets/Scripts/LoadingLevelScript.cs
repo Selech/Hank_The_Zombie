@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonScript : MonoBehaviour {
+public class LoadingLevelScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
