@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+	public int cooldownAmount;
+	private int cooldown;
 	public GameObject direction;
 	public GameObject gun;
 	public GameObject bulletPrefab;
@@ -14,10 +16,12 @@ public class PlayerScript : MonoBehaviour
 	private GameObject selectedObject;
 	public GameObject EquippedThrowable;
 	private bool Sliding;
+	public bool shoot;
 
 	// Use this for initialization
 	void Start ()
 	{
+		cooldown = cooldownAmount;
 	}
 
 	public void EquipThrowable (GameObject throwable)
@@ -28,6 +32,8 @@ public class PlayerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		cooldown--;
+
 		if (Sliding) {
 			targetVector -= (transform.position - targetVector) / 100;
 			transform.position = Vector3.MoveTowards (transform.position, targetVector, 0.015f);
@@ -35,10 +41,11 @@ public class PlayerScript : MonoBehaviour
 			
 
 		} else {
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if ((Input.GetKey (KeyCode.Space) || shoot) && cooldown <= 0) {
 				GameObject bullet = (GameObject) Instantiate(bulletPrefab);
 				bullet.transform.position = direction.transform.position;
 				bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
+				cooldown = cooldownAmount;
 			}
 
 			if (target != new Vector3 (-1, -1, -1)) {
@@ -47,7 +54,7 @@ public class PlayerScript : MonoBehaviour
 				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
 				transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.02f); //speed 0.015
 
-				if (!Input.GetKey (KeyCode.Space)) {
+				if (!Input.GetKey (KeyCode.Space) || shoot) {
 					transform.LookAt (targetposition);
 				}
 				

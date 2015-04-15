@@ -6,6 +6,8 @@ public class MouseControls : MonoBehaviour
 {
 	public GameObject player;
 	public GameObject InventoryUI;
+	public Button touchArea;
+	public Button shootArea;
 
 	// Use this for initialization
 	void Start ()
@@ -43,8 +45,8 @@ public class MouseControls : MonoBehaviour
 		} else if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
 			if (Input.GetMouseButton (0)) { // if left button pressed...
 				Vector3 mousePos = Input.mousePosition;
-				if(mousePos.x < Screen.width/4 && mousePos.y < Screen.height/4){
-					Vector3 target = Input.mousePosition - (new Vector3 (150, 80, 0));
+				if (isInsideTouch (mousePos, touchArea)) {
+					Vector3 target = Input.mousePosition - touchArea.transform.position;
 
 					print (target);
 
@@ -52,17 +54,37 @@ public class MouseControls : MonoBehaviour
 
 					print (target);
 
-					Vector3 calculatedTarget = new Vector3(player.transform.position.x + target.x, 0 , player.transform.position.z + target.y);
+					Vector3 calculatedTarget = new Vector3 (player.transform.position.x + target.x, 0, player.transform.position.z + target.y);
 
 					//print (calculatedTarget);
 
 					player.GetComponent<PlayerScript> ().SetTarget (calculatedTarget);
 				}
+
+				if (isInsideTouch (mousePos, shootArea)) {
+					player.GetComponent<PlayerScript> ().shoot = true;
+				} else {
+					player.GetComponent<PlayerScript> ().shoot = false;
+				}
+			} else {
+				player.GetComponent<PlayerScript> ().shoot = false;
+				player.GetComponent<PlayerScript> ().SetTarget (new Vector3 (-1, -1, -1));
 			}
-			else {
-				player.GetComponent<PlayerScript> ().SetTarget(new Vector3(-1,-1,-1));
-			}
-		} 
+		} else {
+			player.GetComponent<PlayerScript> ().shoot = false;
+			player.GetComponent<PlayerScript> ().SetTarget (new Vector3 (-1, -1, -1));
+		}
 	}
 
+	private bool isInsideTouch(Vector3 pos, Button but){
+		if(pos.x - but.transform.position.x < but.GetComponent<RectTransform>().rect.width/2 &&
+		   but.transform.position.x - pos.x < but.GetComponent<RectTransform>().rect.width/2 &&
+		   pos.y - but.transform.position.y < but.GetComponent<RectTransform>().rect.height/2 &&
+		   but.transform.position.y - pos.y < but.GetComponent<RectTransform>().rect.height/2){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

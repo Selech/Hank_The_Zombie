@@ -48,7 +48,7 @@ GameObject:
   - 54: {fileID: 5491522}
   m_Layer: 0
   m_Name: CubeHank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,12 +203,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c7a28789265411ab5ca0b894c37cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownAmount: 0
   direction: {fileID: 138640}
   gun: {fileID: 136000}
   bulletPrefab: {fileID: 192888, guid: e8616950fe37b401fadfd704391fe1c1, type: 2}
   won: {fileID: 0}
   ActionUI: {fileID: 0}
   EquippedThrowable: {fileID: 0}
+  shoot: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
