@@ -35,6 +35,11 @@ public class PlayerScript : MonoBehaviour
 			
 
 		} else {
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				GameObject bullet = (GameObject) Instantiate(bulletPrefab);
+				bullet.transform.position = direction.transform.position;
+				bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
+			}
 
 			if (target != new Vector3 (-1, -1, -1)) {
 				//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
@@ -42,14 +47,8 @@ public class PlayerScript : MonoBehaviour
 				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
 				transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.02f); //speed 0.015
 
-				if (Input.GetKeyDown (KeyCode.Space)) {
-					GameObject bullet = (GameObject) Instantiate(bulletPrefab);
-					bullet.transform.position = (direction.transform.position + gun.transform.position)	.normalized/3;
-					bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
-				}
-				else{
+				if (!Input.GetKey (KeyCode.Space)) {
 					transform.LookAt (targetposition);
-
 				}
 				
 				if (transform.position == targetposition) {
