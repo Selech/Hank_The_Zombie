@@ -61,15 +61,15 @@ public class Level {
 	public enum WinConditionEnum {
 		[Description("Destroy Lab Equipment")] Equipment, 
 		[Description("Infect Everything")] Infect, 
-		[Description("Escape Without Getting Caught")] Escape,
+		[Description("Escape uncaught")] Escape,
 		[Description("Solve the Puzzle")] Puzzle}
 
 	[XmlArrayItem("loseCondition")]
 	private string loseCondition;
 	public void SetLoseCondition(LoseConditionEnum enumse){loseCondition = enumse.ToName();}
 	public enum LoseConditionEnum {
-		[Description("Caught")] Caught, 
-		[Description("Killed")] Killed}
+		[Description("Killed")] Killed, 
+		[Description("Caught")] Caught}
 
 	[XmlArray("Tiles")]
 	[XmlArrayItem("Tile")]

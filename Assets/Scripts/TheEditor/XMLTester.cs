@@ -33,20 +33,20 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetWinCondition(Level.WinConditionEnum.Escape);
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Caught);
 		
-		lvl.Tiles.Add(new Tile(1,2, "Wall"));
-		lvl.Tiles.Add(new Tile(1,0, ""));
-		lvl.Tiles.Add(new Tile(1,1, "Objects/Chair"));
-		lvl.Tiles.Add(new Tile(0,0, ""));
-		lvl.Tiles.Add(new Tile(0,2, "Wall"));
-		lvl.Tiles.Add(new Tile(0,1, "Wall"));
-		lvl.Tiles.Add(new Tile(3,0, "Traps/BearTrap"));
-		lvl.Tiles.Add(new Tile(2,0, "Traps/LaserWall"));
-		lvl.Tiles.Add(new Tile(-1,0, "Wall"));
-		lvl.Tiles.Add(new Tile(2,-1, ""));
-		lvl.Tiles.Add(new Tile(2,-2, "Wall"));
-		lvl.Tiles.Add(new Tile(3,-1, ""));
-		lvl.Tiles.Add(new Tile(1,-1, ""));
-		
+		lvl.Tiles.Add(new Tile(1, 2, "Wall"));
+		lvl.Tiles.Add(new Tile(1, 0, ""));
+		lvl.Tiles.Add(new Tile(1, 1, "Objects/Chair"));
+		lvl.Tiles.Add(new Tile(0, 0, ""));
+		lvl.Tiles.Add(new Tile(0, 2, "Wall"));
+		lvl.Tiles.Add(new Tile(0, 1, "Wall"));
+		lvl.Tiles.Add(new Tile(3, 0, "Traps/BearTrap"));
+		lvl.Tiles.Add(new Tile(2, 0, "Traps/LaserWall"));
+		lvl.Tiles.Add(new Tile(4, 0, "Wall"));
+		lvl.Tiles.Add(new Tile(2, 1, ""));
+		lvl.Tiles.Add(new Tile(2, 2, "Wall"));
+		lvl.Tiles.Add(new Tile(3, 1, ""));
+		lvl.Tiles.Add(new Tile(1, 3, ""));
+
 		// Save XML to file
 		lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
 	}
@@ -82,10 +82,10 @@ public class XMLTester : MonoBehaviour {
 		lvl.Tiles.Add(new Tile(4,0, ""));
 		lvl.Tiles.Add(new Tile(5,0, "Wall"));
 		lvl.Tiles.Add(new Tile(5,1, "Wall"));
-		lvl.Tiles.Add(new Tile(5,-1, "Wall"));
-		lvl.Tiles.Add(new Tile(-1,0, "Wall"));
-		lvl.Tiles.Add(new Tile(2,-1, ""));
-		lvl.Tiles.Add(new Tile(2,-2, "Wall"));
+		lvl.Tiles.Add(new Tile(5,2, "Wall"));
+		lvl.Tiles.Add(new Tile(4,3, "Wall"));
+		lvl.Tiles.Add(new Tile(2,1, ""));
+		lvl.Tiles.Add(new Tile(2,3, "Wall"));
 		
 		// Save XML to file
 		lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));

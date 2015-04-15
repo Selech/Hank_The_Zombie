@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6523084}
   - 23: {fileID: 2323084}
   - 111: {fileID: 11192354}
+  - 114: {fileID: 11443638}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Clickable
@@ -90,6 +91,18 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11443638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e346d6e22394388a4a9f5cbca436a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
