@@ -20,9 +20,11 @@ public class LevelDesigner : MonoBehaviour
 	}
 
 	public static Level currentLevel;
-	int horizontalTilesPerMapTile = 5; // Pænest hvis ulige :)
-	int verticalTilesPerMapTile = 5; 
-	string[,] tileGrid;
+	private static int horizontalTilesPerMapTile = 11; // Pænest hvis ulige :)
+	private static int verticalTilesPerMapTile = 11; 
+	public static int xToMid;
+	public static int zToMid;
+	private static string[,] tileGrid;
 
 	// Use this for initialization
 	void Start () 
@@ -48,9 +50,9 @@ public class LevelDesigner : MonoBehaviour
 		// Initialize default Level
 		currentLevel = new Level();
 		currentLevel.name 		= "<< Name of level >>";
-		currentLevel.author 		= "<< Name of author >>";
+		currentLevel.author 	= "<< Name of author >>";
 		currentLevel.description = "<< Description of level >>";
-		currentLevel.id 			= 0;
+		currentLevel.id 		= 0;
 		currentLevel.rating		= 0;
 		currentLevel.numRatings	= 0;
 		currentLevel.numDownloads = 0;
@@ -63,9 +65,6 @@ public class LevelDesigner : MonoBehaviour
 		currentLevel.mapTilesHorizontally = 1;
 		currentLevel.mapTilesVertically = 1;
 		
-		currentLevel.SetWinCondition(Level.WinConditionEnum.Infect);
-		currentLevel.SetLoseCondition(Level.LoseConditionEnum.Killed);
-
 		// Place Tile in middle
 		currentLevel.Tiles.Add(new Tile(0, 0, ""));
 	}
@@ -77,28 +76,36 @@ public class LevelDesigner : MonoBehaviour
 
 		for (int i = 0; i < numTiles; i++) 
 		{
-			Vector3 placement = new Vector3(lvl.Tiles[i].X, -0.5f, lvl.Tiles[i].Y);
+			// Ved of object and for registering in TileGrid
+			Vector3 vec = new Vector3(lvl.Tiles[i].X, -0.5f, lvl.Tiles[i].Y);
 
 			// Place Tile no matter what (lvl only entails info of those placed)
 			GameObject tile = (GameObject) LoadAssetFromString("Tile");
-			tile.transform.position = placement;
+			tile.transform.position = vec;
 			tile.transform.SetParent(this.transform);
+
+			// Asset path to Ressource-folder
+			string assetPath = lvl.Tiles[i].ObjectOnTile;
 
 			// Place object if specified
 			if (lvl.Tiles[i].ObjectOnTile != "")
 			{
-				GameObject obj = (GameObject) LoadAssetFromString(lvl.Tiles[i].ObjectOnTile);
+				GameObject obj = (GameObject) LoadAssetFromString(assetPath);
 				if(obj != null)
 				{
-					obj.transform.position = placement;
+					obj.transform.position = vec;
 					obj.transform.SetParent(this.transform);
 				}
 			}
+
+			// Register in TileGrid
+//			Debug.Log ("tileGrid registrering x: "+((int)vec.x)+"y; "+((int)vec.z));
+			tileGrid[((int)vec.x+xToMid), ((int)vec.z+zToMid)] = assetPath;
 		}
 
 		// Place Empty Tiles where nothing is placed according to 2D Grid
-		int xToMid = (int) Mathf.Ceil(horizontalTilesPerMapTile/2);
-		int yToMid = (int) Mathf.Ceil(verticalTilesPerMapTile/2);
+		xToMid = (int) Mathf.Ceil(horizontalTilesPerMapTile/2);
+		zToMid = (int) Mathf.Ceil(verticalTilesPerMapTile/2);
 		for (int x = 0; x < horizontalTilesPerMapTile; x++) 
 		{
 			for (int y = 0; y < verticalTilesPerMapTile; y++)
@@ -108,7 +115,9 @@ public class LevelDesigner : MonoBehaviour
 				if (tileGrid[x, y] != "")
 				{
 					tileGrid[x, y] = "EmptyTile";
-					Vector3 placement2 = new Vector3(x - xToMid, -0.5f, y - yToMid);
+					Vector3 placement2 = new Vector3(x - xToMid, -0.5f, y - zToMid);
+					
+//					Debug.Log ("placement2    x: "+(placement2.x)+"y; "+(placement2.z));
 					GameObject obj2 = (GameObject) LoadAssetFromString("EmptyTile");
 					obj2.transform.position = placement2;
 					obj2.transform.SetParent(this.transform);
@@ -116,11 +125,35 @@ public class LevelDesigner : MonoBehaviour
 			}
 		}
 	}
+
+	public static void RegisterObject(Vector3 vec, string assetResourcePath)
+	{
+		SetValueOfTileGridIndex(vec, assetResourcePath);
+	}
+
+	public static void RegisterTile(Vector3 vec)
+	{
+		SetValueOfTileGridIndex(vec, "");
+	}
+
+	public static void UnRegisterTile(Vector3 vec)
+	{
+		SetValueOfTileGridIndex(vec, "EmptyTile");
+	}
+
+	/**
+	 *	Changes the registered value of the index specified by the provided vector (x & z is used)
+	 **/
+	private static void SetValueOfTileGridIndex(Vector3 vec, string newResourcePath)
+	{
+		tileGrid[((int)vec.x +xToMid), (int)(vec.z + zToMid)] = newResourcePath;
+	}
 	
 	void LoadLevel(string levelName)
 	{
 		string filePath = LevelsDirectory + levelName + ".xml";
 		Level lvl = currentLevel = Level.Load(filePath);
+		currentLevel = lvl;
 		create (lvl);
 	}
 
@@ -138,5 +171,38 @@ public class LevelDesigner : MonoBehaviour
 		}
 		
 		return instance;
+	}
+
+	public static void SaveLevel()
+	{
+		PrepareForXMLSave();
+//		print ("yolo: "+(Directory.Exists(LevelsDirectory + currentLevel.name + ".xml")));
+		string filePath = LevelsDirectory + currentLevel.name + ".xml";
+		currentLevel.Save(filePath);
+	}
+
+	public static bool checkForOverWrite(string levelName)
+	{
+		print (LevelsDirectory + levelName + ".xml");
+		return Directory.Exists(LevelsDirectory + levelName + ".xml");
+	}
+
+	private static void PrepareForXMLSave()
+	{
+		List<Tile> tiles = new List<Tile>();
+
+		for (int x = 0; x < horizontalTilesPerMapTile; x++) 
+		{
+			for (int y = 0; y < verticalTilesPerMapTile; y++)
+			{
+//				print("["+x+","+y+"] " + tileGrid[x,y]);
+				if(tileGrid[x,y] != "EmptyTile")
+				{
+					tiles.Add(new Tile(x - xToMid, y - zToMid, tileGrid[x, y]));
+				}
+			}
+		}
+
+		currentLevel.Tiles = tiles;
 	}
 }

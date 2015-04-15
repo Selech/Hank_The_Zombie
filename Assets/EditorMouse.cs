@@ -33,22 +33,26 @@ public class EditorMouse : MonoBehaviour
 				{
 					if (hit.collider.gameObject.tag == "Clickable") 
 					{
-
 						switch(mode)
 						{
-						case "InsertTile" :
-							Vector3 position = hit.collider.gameObject.transform.position;
-							Destroy (hit.collider.gameObject);
-							GameObject tile = (GameObject) LoadAssetFromString("Tile");
-							tile.transform.position = position;
-							break;
+							case "InsertTile" :
+								if(hit.collider.gameObject.name == "EmptyTile(Clone)")
+								{
+									Vector3 position = hit.collider.gameObject.transform.position;
+									LevelDesigner.RegisterTile(position);
+									Destroy (hit.collider.gameObject);
+									GameObject tile = (GameObject) LoadAssetFromString("Tile");
+									tile.transform.position = position;
+								}
+								break;
 
-						case "DeleteTile" :
-							Vector3 positionDel = hit.collider.gameObject.transform.position;
-							Destroy (hit.collider.gameObject);
-							GameObject tileDel = (GameObject) LoadAssetFromString("EmptyTile");
-							tileDel.transform.position = positionDel;
-							break;
+							case "DeleteTile" :
+								Vector3 positionDel = hit.collider.gameObject.transform.position;
+								LevelDesigner.UnRegisterTile(positionDel);
+								Destroy (hit.collider.gameObject);
+								GameObject tileDel = (GameObject) LoadAssetFromString("EmptyTile");
+								tileDel.transform.position = positionDel;
+								break;
 						}
 					}
 				}

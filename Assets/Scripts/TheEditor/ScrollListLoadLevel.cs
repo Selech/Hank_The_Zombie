@@ -40,15 +40,15 @@ public class ScrollListLoadLevel : MonoBehaviour {
 
 		foreach (var name in fileNames) 
 		{
-			//Debug.Log("En hest skabes!");
-			//Debug.Log("item name: "+name);
+			if(name != ".DS_Store")
+			{
+				GameObject instance = Instantiate(sampleButton);
+				String fileName = Path.GetFileNameWithoutExtension(name);
+				instance.GetComponentInChildren<Text>().text = fileName;
+				instance.transform.SetParent(this.transform);
 
-			GameObject instance = Instantiate(sampleButton);
-			String fileName = Path.GetFileNameWithoutExtension(name);
-			instance.GetComponentInChildren<Text>().text = fileName;
-			instance.transform.SetParent(this.transform);
-
-			instance.GetComponentInChildren<Button>().onClick.AddListener(() => { onSelected(fileName); });
+				instance.GetComponentInChildren<Button>().onClick.AddListener(() => { onSelected(fileName); });
+			}
 		}
 	}
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Xml;
 using System.Xml.Serialization;
 
-public class Tile {
+public class Tile{
 	
 	[XmlAttribute("objectOnTile")]
 	public string ObjectOnTile;

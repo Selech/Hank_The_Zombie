@@ -42,10 +42,8 @@ public class MouseRts : MonoBehaviour
 			}
 			
 			// Move camera with arrow keys
-			Debug.Log("-----");
-			Debug.Log("hor: "+Input.GetAxis("Horizontal"));
-			Debug.Log("ver: "+Input.GetAxis("Vertical"));
 			translation += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+//			translation += new Vector3(Input.GetAxis("Vertical")-Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")+Input.GetAxis("Vertical"));
 			
 			// Move camera with mouse
 			if (Input.GetMouseButton(1)) // MMB

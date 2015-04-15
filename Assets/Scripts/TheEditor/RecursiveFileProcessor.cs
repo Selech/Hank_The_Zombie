@@ -2,6 +2,7 @@
 // For File.Exists, Directory.Exists 
 using System;
 using System.IO;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -24,6 +25,24 @@ public class RecursiveFileProcessor
 			ProcessDirectory(subdirectory);
 
 		return list;
+	}
+
+	/**
+	 * Checks wether a file exists within the target directory and its sub-directories.
+	 **/
+	public static bool IsFileExisting(string fileNameWithExtension, string targetDirectory)
+	{
+		List<string> list = ProcessDirectory(targetDirectory);
+		int length = list.Count;
+		for(int i=0; i<length; i++)
+		{
+			if(list[i] == targetDirectory+fileNameWithExtension)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public static int countFilesInDirectory(string dir)
