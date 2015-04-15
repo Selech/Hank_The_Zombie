@@ -9,6 +9,7 @@ using System;
 using System.ComponentModel;
 using System.Reflection;
 using System.IO;
+using UnityEditor;
 
 public class ScrollListInsertObjects : MonoBehaviour 
 {
@@ -36,18 +37,15 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 	void ShowObjects()
 	{
-		InsertableObjects = Resources.LoadAll<GameObject>("Prefabs/" + FilePath);
+		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
 	
 		foreach (var name in InsertableObjects) 
 		{
 			GameObject Instance = Instantiate(SampleButton);
-			Sprite ImageName = name.gameObject.GetComponent<Image>().sprite;
+			Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
+			Sprite ImageName = Sprite.Create(tex, new Rect(0,0,tex.width,tex.height), new Vector2(0.5f, 0.5f));
 
 			Instance.GetComponentInChildren<Image>().sprite = ImageName;
-
-			//string ImageName = name.name;
-			//Instance.GetComponentInChildren<Text>().text = ImageName;
-
 			Instance.transform.SetParent(this.transform);
 
 			//Instance.GetComponentInChildren<Button>().onClick.AddListener(() => { onSelected(ImageName); });

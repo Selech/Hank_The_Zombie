@@ -33,17 +33,17 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetWinCondition(Level.WinConditionEnum.Escape);
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Caught);
 		
-		lvl.Tiles.Add(new Tile(1, 2, "Wall"));
+		lvl.Tiles.Add(new Tile(1, 2, "Terrain/Wall"));
 		lvl.Tiles.Add(new Tile(1, 0, ""));
-		lvl.Tiles.Add(new Tile(1, 1, "Objects/Chair"));
+		lvl.Tiles.Add(new Tile(1, 1, "Terrain/Chair"));
 		lvl.Tiles.Add(new Tile(0, 0, ""));
-		lvl.Tiles.Add(new Tile(0, 2, "Wall"));
-		lvl.Tiles.Add(new Tile(0, 1, "Wall"));
+		lvl.Tiles.Add(new Tile(0, 2, "Terrain/Wall"));
+		lvl.Tiles.Add(new Tile(0, 1, "Terrain/Wall"));
 		lvl.Tiles.Add(new Tile(3, 0, "Traps/BearTrap"));
 		lvl.Tiles.Add(new Tile(2, 0, "Traps/LaserWall"));
-		lvl.Tiles.Add(new Tile(4, 0, "Wall"));
+		lvl.Tiles.Add(new Tile(4, 0, "Terrain/Wall"));
 		lvl.Tiles.Add(new Tile(2, 1, ""));
-		lvl.Tiles.Add(new Tile(2, 2, "Wall"));
+		lvl.Tiles.Add(new Tile(2, 2, "Terrain/Wall"));
 		lvl.Tiles.Add(new Tile(3, 1, ""));
 		lvl.Tiles.Add(new Tile(1, 3, ""));
 
@@ -73,19 +73,19 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetWinCondition(Level.WinConditionEnum.Infect);
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Killed);
 		
-		lvl.Tiles.Add(new Tile(1,2, "Wall"));
-		lvl.Tiles.Add(new Tile(2,2, "Objects/BearTrap"));
-		lvl.Tiles.Add(new Tile(1,1, "Objects/Chair"));
+		lvl.Tiles.Add(new Tile(1,2, "Terrain/Wall"));
+		lvl.Tiles.Add(new Tile(2,2, "Terrain/BearTrap"));
+		lvl.Tiles.Add(new Tile(1,1, "Terrain/Chair"));
 		lvl.Tiles.Add(new Tile(1,0, ""));
 		lvl.Tiles.Add(new Tile(2,0, "Traps/LaserWall"));
 		lvl.Tiles.Add(new Tile(3,0, "Traps/BearTrap"));
 		lvl.Tiles.Add(new Tile(4,0, ""));
-		lvl.Tiles.Add(new Tile(5,0, "Wall"));
-		lvl.Tiles.Add(new Tile(5,1, "Wall"));
-		lvl.Tiles.Add(new Tile(5,2, "Wall"));
-		lvl.Tiles.Add(new Tile(4,3, "Wall"));
+		lvl.Tiles.Add(new Tile(5,0, "Terrain/Wall"));
+		lvl.Tiles.Add(new Tile(5,1, "Terrain/Wall"));
+		lvl.Tiles.Add(new Tile(5,2, "Terrain/Wall"));
+		lvl.Tiles.Add(new Tile(4,3, "Terrain/Wall"));
 		lvl.Tiles.Add(new Tile(2,1, ""));
-		lvl.Tiles.Add(new Tile(2,3, "Wall"));
+		lvl.Tiles.Add(new Tile(2,3, "Terrain/Wall"));
 		
 		// Save XML to file
 		lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
