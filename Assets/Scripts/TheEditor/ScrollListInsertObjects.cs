@@ -58,8 +58,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 	{
 		OKButton.GetComponentInChildren<Button>().onClick.AddListener(() => 
 		{ 
-			LevelDesigner.LastLoaded = SameOfSelected;
-			Application.LoadLevel ("EditorDesigning");
+
 		});
 	}
 
@@ -74,13 +73,13 @@ public class ScrollListInsertObjects : MonoBehaviour
 			Instance.GetComponentInChildren<Image>().sprite = ImageName;
 			Instance.transform.SetParent(this.transform);
 
-			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(name.gameObject.name); });
+			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(name.gameObject); });
 		}
 	}
 
-	public void onSelected(String fileName)
+	public void onSelected(GameObject gameobject)
 	{
-		this.SameOfSelected = fileName;
+		LevelDesigner.ObjectToBeInserted = gameobject;
 		OKButton.GetComponent<Button>().interactable = true;
 	}
 }

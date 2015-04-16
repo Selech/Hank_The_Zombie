@@ -49,6 +49,12 @@ public class EditorMouse : MonoBehaviour
 							GameObject tileDel = (GameObject) LoadAssetFromString("EmptyTile");
 							tileDel.transform.position = positionDel;
 							break;
+
+						case "InsertObject" :
+							Vector3 PositionInsertObject = hit.collider.gameObject.transform.position;
+							GameObject ObjectInsert = LevelDesigner.ObjectToBeInserted;
+							ObjectInsert.transform.position = PositionInsertObject;
+							break;
 						}
 					}
 				}

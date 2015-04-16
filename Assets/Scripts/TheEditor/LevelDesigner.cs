@@ -27,6 +27,7 @@ public class LevelDesigner : MonoBehaviour
 	public static int zToMid;
 	private static string[,] tileGrid;
 	public GameObject displayedNameOfLevel;
+	public static GameObject ObjectToBeInserted;
 
 	// Use this for initialization
 	void Start () 
