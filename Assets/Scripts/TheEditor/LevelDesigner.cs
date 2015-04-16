@@ -21,8 +21,8 @@ public class LevelDesigner : MonoBehaviour
 	}
 
 	public static Level currentLevel;
-	private static int horizontalTilesPerMapTile = 11; // Pænest hvis ulige :)
-	private static int verticalTilesPerMapTile = 11; 
+	private static int horizontalTilesPerMapTile = 5; // Pænest hvis ulige :)
+	private static int verticalTilesPerMapTile = 5; 
 	public static int xToMid;
 	public static int zToMid;
 	private static string[,] tileGrid;
@@ -101,7 +101,7 @@ public class LevelDesigner : MonoBehaviour
 			}
 
 			// Register in TileGrid
-//			Debug.Log ("tileGrid registrering x: "+((int)vec.x)+"y; "+((int)vec.z));
+			Debug.Log ("tileGrid registrering x: "+((int)vec.x)+"y; "+((int)vec.z));
 			tileGrid[((int)vec.x+xToMid), ((int)vec.z+zToMid)] = assetPath;
 		}
 
@@ -112,9 +112,7 @@ public class LevelDesigner : MonoBehaviour
 		{
 			for (int y = 0; y < verticalTilesPerMapTile; y++)
 			{
-				//Debug.Log("["+x+", "+y+"] " + tileGrid[x, y]);
-				
-				print ("GridTile: "+tileGrid[x, y]);
+				Debug.Log("["+x+", "+y+"] name: "+tileGrid[x, y]);
 				if (tileGrid[x, y] != "")
 				{
 					tileGrid[x, y] = "EmptyTile";
