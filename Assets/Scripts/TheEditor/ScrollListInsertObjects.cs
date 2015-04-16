@@ -19,11 +19,37 @@ public class ScrollListInsertObjects : MonoBehaviour
 	public string SameOfSelected;
 	public string FilePath;
 	public static GameObject[] InsertableObjects;
+	private int CooldownBeforeDrawingIcons = 100;
 
 	void Start () 
 	{
-		ShowObjects();
+		preLoadIcons();
 		AddOnOKClick();
+	}
+
+	void Update ()
+	{
+		checkForIconDrawing();
+	}
+
+	void preLoadIcons()
+	{
+		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
+		
+		foreach (var name in InsertableObjects) 
+		{
+			GameObject Instance = Instantiate(SampleButton);
+			Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
+		}
+	}
+
+	void checkForIconDrawing()
+	{
+		if (CooldownBeforeDrawingIcons>-1){
+			CooldownBeforeDrawingIcons--;
+			print (CooldownBeforeDrawingIcons);}
+		else if(CooldownBeforeDrawingIcons==0)
+			ShowObjects();
 	}
 
 	void AddOnOKClick()
@@ -37,8 +63,6 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 	void ShowObjects()
 	{
-		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
-	
 		foreach (var name in InsertableObjects) 
 		{
 			GameObject Instance = Instantiate(SampleButton);
