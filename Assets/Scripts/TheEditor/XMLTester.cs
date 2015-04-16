@@ -74,7 +74,7 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Killed);
 		
 		lvl.Tiles.Add(new Tile(1,2, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(2,2, "Terrain/BearTrap"));
+		lvl.Tiles.Add(new Tile(2,2, "Traps/BearTrap"));
 		lvl.Tiles.Add(new Tile(1,1, "Terrain/Chair"));
 		lvl.Tiles.Add(new Tile(1,0, ""));
 		lvl.Tiles.Add(new Tile(2,0, "Traps/LaserWall"));
