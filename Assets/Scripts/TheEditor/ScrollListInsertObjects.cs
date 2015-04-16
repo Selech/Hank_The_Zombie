@@ -19,7 +19,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 	public string SameOfSelected;
 	public string FilePath;
 	public static GameObject[] InsertableObjects;
-	private int CooldownBeforeDrawingIcons = 100;
+	private int CooldownBeforeDrawingIcons = 1;
 
 	void Start () 
 	{
@@ -38,7 +38,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 		
 		foreach (var name in InsertableObjects) 
 		{
-			GameObject Instance = Instantiate(SampleButton);
+			//GameObject Instance = Instantiate(SampleButton);
 			Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
 		}
 	}
@@ -47,9 +47,11 @@ public class ScrollListInsertObjects : MonoBehaviour
 	{
 		if (CooldownBeforeDrawingIcons==0)
 			ShowObjects();
-		else if (CooldownBeforeDrawingIcons>1){
+		if (CooldownBeforeDrawingIcons>=0)
+		{
 			CooldownBeforeDrawingIcons--;
-			print (CooldownBeforeDrawingIcons);}
+			print (CooldownBeforeDrawingIcons);
+		}
 	}
 
 	void AddOnOKClick()
@@ -72,7 +74,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 			Instance.GetComponentInChildren<Image>().sprite = ImageName;
 			Instance.transform.SetParent(this.transform);
 
-			//Instance.GetComponentInChildren<Button>().onClick.AddListener(() => { onSelected(ImageName); });
+			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(name.gameObject.name); });
 		}
 	}
 
