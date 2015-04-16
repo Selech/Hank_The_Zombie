@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using UnityEngine.UI;
 
 public class LevelDesigner : MonoBehaviour 
 {
@@ -25,6 +26,7 @@ public class LevelDesigner : MonoBehaviour
 	public static int xToMid;
 	public static int zToMid;
 	private static string[,] tileGrid;
+	public GameObject displayedNameOfLevel;
 
 	// Use this for initialization
 	void Start () 
@@ -86,7 +88,7 @@ public class LevelDesigner : MonoBehaviour
 
 			// Asset path to Ressource-folder
 			string assetPath = lvl.Tiles[i].ObjectOnTile;
-
+			print ("ObjektTile: "+lvl.Tiles[i].ObjectOnTile);
 			// Place object if specified
 			if (lvl.Tiles[i].ObjectOnTile != "")
 			{
@@ -111,7 +113,8 @@ public class LevelDesigner : MonoBehaviour
 			for (int y = 0; y < verticalTilesPerMapTile; y++)
 			{
 				//Debug.Log("["+x+", "+y+"] " + tileGrid[x, y]);
-
+				
+				print ("GridTile: "+tileGrid[x, y]);
 				if (tileGrid[x, y] != "")
 				{
 					tileGrid[x, y] = "EmptyTile";
@@ -154,6 +157,7 @@ public class LevelDesigner : MonoBehaviour
 		string filePath = LevelsDirectory + levelName + ".xml";
 		Level lvl = currentLevel = Level.Load(filePath);
 		currentLevel = lvl;
+		displayedNameOfLevel.GetComponent<Text>().text = lvl.name;
 		create (lvl);
 	}
 
@@ -173,10 +177,18 @@ public class LevelDesigner : MonoBehaviour
 		return instance;
 	}
 
+	/**
+	 * This method ONLY exist because "SaveLevel()" cannot be access when static from a dragged into component called function in the GUI of Unity.
+	 **/
+	public void comeOnSave()
+	{
+		SaveLevel();
+	}
+
 	public static void SaveLevel()
 	{
 		PrepareForXMLSave();
-//		print ("yolo: "+(Directory.Exists(LevelsDirectory + currentLevel.name + ".xml")));
+		print ("Saving into: "+(Directory.Exists(LevelsDirectory + currentLevel.name + ".xml")));
 		string filePath = LevelsDirectory + currentLevel.name + ".xml";
 		currentLevel.Save(filePath);
 	}
