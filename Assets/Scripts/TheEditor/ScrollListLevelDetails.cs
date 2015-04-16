@@ -47,9 +47,9 @@ public class ScrollListLevelDetails : MonoBehaviour {
 	{
 		// Setup Buttons for Win & Lose conditions
 		setupWinLoseConditions();
+		showExistingValues();
 		btnSave.GetComponentInChildren<Button>().onClick.AddListener(() => { saveLevel(); });
 	}
-
 
 	void setupWinLoseConditions()
 	{
@@ -67,6 +67,15 @@ public class ScrollListLevelDetails : MonoBehaviour {
 		
 		createCheckboxGroup(allWinConditions, 1); 
 		createCheckboxGroup(allLoseConditions, 2);
+	}
+
+	void showExistingValues()
+	{
+		inputName.text				= LevelDesigner.currentLevel.name;
+		inputAuthor.text			= LevelDesigner.currentLevel.author;
+		inputDescription.text		= LevelDesigner.currentLevel.description;
+		Debug.Log("LevelDesigner.currentLevel.winCondition: "+LevelDesigner.currentLevel.winCondition);
+		Debug.Log("LevelDesigner.currentLevel.loseConditio: "+LevelDesigner.currentLevel.loseCondition);
 	}
 
 	void createCheckboxGroup(Button[] btns, int winOrLoseCondition)

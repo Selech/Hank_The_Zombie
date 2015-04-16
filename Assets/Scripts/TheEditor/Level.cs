@@ -56,7 +56,7 @@ public class Level {
 	public int mapTilesVertically = 1;
 
 	[XmlArrayItem("winCondition")]
-	private string winCondition;
+	public string winCondition;
 	public void SetWinCondition(WinConditionEnum enumse){winCondition = enumse.ToName();}
 	public enum WinConditionEnum {
 		[Description("Destroy Lab Equipment")] Equipment, 
@@ -65,7 +65,7 @@ public class Level {
 		[Description("Solve the Puzzle")] Puzzle}
 
 	[XmlArrayItem("loseCondition")]
-	private string loseCondition;
+	public string loseCondition;
 	public void SetLoseCondition(LoseConditionEnum enumse){loseCondition = enumse.ToName();}
 	public enum LoseConditionEnum {
 		[Description("Killed")] Killed, 
