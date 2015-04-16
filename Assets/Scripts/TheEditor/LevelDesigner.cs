@@ -21,8 +21,8 @@ public class LevelDesigner : MonoBehaviour
 	}
 
 	public static Level currentLevel;
-	private static int horizontalTilesPerMapTile = 5; // Pænest hvis ulige :)
-	private static int verticalTilesPerMapTile = 5; 
+	private static int horizontalTilesPerMapTile = 11; // Pænest hvis ulige :)
+	private static int verticalTilesPerMapTile = 11; 
 	public static int xToMid;
 	public static int zToMid;
 	private static string[,] tileGrid;
@@ -37,7 +37,7 @@ public class LevelDesigner : MonoBehaviour
 		// Setup and create new level
 		if (LastLoaded == "")
 		{
-			setup();
+			Setup();
 			create(currentLevel);
 		}
 		// Otherwise load the last loaded level
@@ -45,9 +45,12 @@ public class LevelDesigner : MonoBehaviour
 		{
 			LoadLevel(LastLoaded);
 		}
+		
+		// Move Camera to Midtile
+		Camera.main.transform.position = new Vector3 (0,	Camera.main.transform.position.y, -zToMid);
 	}
 
-	void setup()
+	void Setup()
 	{
 		// Initialize default Level
 		currentLevel = new Level();
@@ -88,7 +91,7 @@ public class LevelDesigner : MonoBehaviour
 
 			// Asset path to Ressource-folder
 			string assetPath = lvl.Tiles[i].ObjectOnTile;
-			print ("ObjektTile: "+lvl.Tiles[i].ObjectOnTile);
+//			print ("ObjektTile: "+lvl.Tiles[i].ObjectOnTile);
 			// Place object if specified
 			if (lvl.Tiles[i].ObjectOnTile != "")
 			{
@@ -101,7 +104,7 @@ public class LevelDesigner : MonoBehaviour
 			}
 
 			// Register in TileGrid
-			Debug.Log ("tileGrid registrering x: "+((int)vec.x)+"y; "+((int)vec.z));
+//			Debug.Log ("tileGrid registrering x: "+((int)vec.x)+"y; "+((int)vec.z));
 			tileGrid[((int)vec.x+xToMid), ((int)vec.z+zToMid)] = assetPath;
 		}
 
@@ -112,7 +115,7 @@ public class LevelDesigner : MonoBehaviour
 		{
 			for (int y = 0; y < verticalTilesPerMapTile; y++)
 			{
-				Debug.Log("["+x+", "+y+"] name: "+tileGrid[x, y]);
+//				Debug.Log("["+x+", "+y+"] name: "+tileGrid[x, y]);
 				if (tileGrid[x, y] != "")
 				{
 					tileGrid[x, y] = "EmptyTile";
@@ -155,8 +158,10 @@ public class LevelDesigner : MonoBehaviour
 		string filePath = LevelsDirectory + levelName + ".xml";
 		Level lvl = currentLevel = Level.Load(filePath);
 		currentLevel = lvl;
-		displayedNameOfLevel.GetComponent<Text>().text = lvl.name;
 		create (lvl);
+		try{
+			displayedNameOfLevel.GetComponent<Text>().text = lvl.name;
+		} catch(System.Exception e){};
 	}
 
 	GameObject LoadAssetFromString(string assetName)
@@ -186,14 +191,14 @@ public class LevelDesigner : MonoBehaviour
 	public static void SaveLevel()
 	{
 		PrepareForXMLSave();
-		print ("Saving into: "+(Directory.Exists(LevelsDirectory + currentLevel.name + ".xml")));
+//		print ("Saving into: "+(Directory.Exists(LevelsDirectory + currentLevel.name + ".xml")));
 		string filePath = LevelsDirectory + currentLevel.name + ".xml";
 		currentLevel.Save(filePath);
 	}
 
 	public static bool checkForOverWrite(string levelName)
 	{
-		print (LevelsDirectory + levelName + ".xml");
+//		print (LevelsDirectory + levelName + ".xml");
 		return Directory.Exists(LevelsDirectory + levelName + ".xml");
 	}
 
@@ -208,6 +213,7 @@ public class LevelDesigner : MonoBehaviour
 //				print("["+x+","+y+"] " + tileGrid[x,y]);
 				if(tileGrid[x,y] != "EmptyTile")
 				{
+					print ("x - xToMid, y - zToMid: "+(x - xToMid) +", "+(  y - zToMid));
 					tiles.Add(new Tile(x - xToMid, y - zToMid, tileGrid[x, y]));
 				}
 			}
