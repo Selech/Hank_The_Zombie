@@ -45,11 +45,11 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 	void checkForIconDrawing()
 	{
-		if (CooldownBeforeDrawingIcons>-1){
+		if (CooldownBeforeDrawingIcons==0)
+			ShowObjects();
+		else if (CooldownBeforeDrawingIcons>1){
 			CooldownBeforeDrawingIcons--;
 			print (CooldownBeforeDrawingIcons);}
-		else if(CooldownBeforeDrawingIcons==0)
-			ShowObjects();
 	}
 
 	void AddOnOKClick()
