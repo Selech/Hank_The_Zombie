@@ -16,7 +16,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 	
 	public GameObject SampleButton;
 	public GameObject OKButton;
-	public string SameOfSelected;
+	public GameObject Menu;
 	public string FilePath;
 	public static GameObject[] InsertableObjects;
 	private int CooldownBeforeDrawingIcons = 1;
@@ -58,7 +58,8 @@ public class ScrollListInsertObjects : MonoBehaviour
 	{
 		OKButton.GetComponentInChildren<Button>().onClick.AddListener(() => 
 		{ 
-
+			EditorMouse.mode = "InsertObject";
+			Menu.SetActive(false);
 		});
 	}
 
@@ -72,8 +73,9 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 			Instance.GetComponentInChildren<Image>().sprite = ImageName;
 			Instance.transform.SetParent(this.transform);
+			GameObject obj = name.gameObject;
 
-			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(name.gameObject); });
+			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(obj); });
 		}
 	}
 

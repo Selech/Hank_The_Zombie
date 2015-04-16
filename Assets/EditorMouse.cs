@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine;
+
 
 public class EditorMouse : MonoBehaviour 
 {
-	
-	public string mode = "";
+	public static string mode = "";
 
 	// Use this for initialization
 	void Start () 
@@ -14,7 +15,7 @@ public class EditorMouse : MonoBehaviour
 
 	public void SwitchMode(string mode)
 	{
-		this.mode = mode;
+		EditorMouse.mode = mode;
 	}
 	
 	// Update is called once per frame
@@ -52,7 +53,7 @@ public class EditorMouse : MonoBehaviour
 
 						case "InsertObject" :
 							Vector3 PositionInsertObject = hit.collider.gameObject.transform.position;
-							GameObject ObjectInsert = LevelDesigner.ObjectToBeInserted;
+							GameObject ObjectInsert = Instantiate(LevelDesigner.ObjectToBeInserted);
 							ObjectInsert.transform.position = PositionInsertObject;
 							break;
 						}

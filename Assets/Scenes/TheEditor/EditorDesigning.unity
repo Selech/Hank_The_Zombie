@@ -1224,6 +1224,38 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11443820, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: MouseEditor
+      value: 
+      objectReference: {fileID: 499373182}
+    - target: {fileID: 11447854, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: MouseEditor
+      value: 
+      objectReference: {fileID: 499373182}
+    - target: {fileID: 11485222, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: MouseEditor
+      value: 
+      objectReference: {fileID: 499373182}
+    - target: {fileID: 11465154, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: MouseEditor
+      value: 
+      objectReference: {fileID: 499373182}
+    - target: {fileID: 11443820, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: Menu
+      value: 
+      objectReference: {fileID: 72750231}
+    - target: {fileID: 11447854, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: Menu
+      value: 
+      objectReference: {fileID: 72750231}
+    - target: {fileID: 11485222, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: Menu
+      value: 
+      objectReference: {fileID: 72750231}
+    - target: {fileID: 11465154, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
+      propertyPath: Menu
+      value: 
+      objectReference: {fileID: 72750231}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ac65b36633fa4bae85a42d6a34e92d9, type: 2}
   m_IsPrefabParent: 0
@@ -3333,7 +3365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cef872e93fbe224a8a894549335abae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 
 --- !u!224 &519579323 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22414864, guid: 5f77cca36c0b66549a9e7e0338039f48,
