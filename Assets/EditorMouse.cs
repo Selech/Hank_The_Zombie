@@ -64,6 +64,11 @@ public class EditorMouse : MonoBehaviour
 												// Register Placed Tile
 												LevelDesigner.RegisterOnTile(vec, "EmptyTile");
 											}
+											else
+											{
+												// If not a "Tile" only allow 1 object deletion at the time
+												allowClick = false;
+											}
 										
 											// Remove Tile + Place Empty Tile
 											Destroy (hitObj);
@@ -78,6 +83,9 @@ public class EditorMouse : MonoBehaviour
 							case "InsertObject" :
 								if (allowClick)
 								{
+									// Allow insertion of only 1 object at the time
+									allowClick = false;
+
 									string clickedObjectName = hit.collider.gameObject.name.Replace("(Clone)", "");
 									Vector3 PositionInsertObject = hit.collider.gameObject.transform.position;
 									
@@ -98,9 +106,6 @@ public class EditorMouse : MonoBehaviour
 								
 								break;
 						}
-						
-						// Keep track of Left Mouse down
-						allowClick = false;
 					}
 				}
 			}
