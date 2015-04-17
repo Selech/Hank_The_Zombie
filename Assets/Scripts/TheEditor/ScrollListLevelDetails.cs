@@ -47,8 +47,13 @@ public class ScrollListLevelDetails : MonoBehaviour {
 	{
 		// Setup Buttons for Win & Lose conditions
 		setupWinLoseConditions();
-		showExistingValues();
 		btnSave.GetComponentInChildren<Button>().onClick.AddListener(() => { saveLevel(); });
+	}
+
+	void OnEnable()
+	{
+		print("script was enabled");
+		showExistingValues();
 	}
 
 	void setupWinLoseConditions()
@@ -71,6 +76,10 @@ public class ScrollListLevelDetails : MonoBehaviour {
 
 	void showExistingValues()
 	{
+		Debug.Log("inputName: "+inputName.text);
+		Debug.Log("inputAuthor: "+inputAuthor.text);
+		Debug.Log("inputDescription: "+inputDescription.text);
+		
 		inputName.text				= LevelDesigner.currentLevel.name;
 		inputAuthor.text			= LevelDesigner.currentLevel.author;
 		inputDescription.text		= LevelDesigner.currentLevel.description;

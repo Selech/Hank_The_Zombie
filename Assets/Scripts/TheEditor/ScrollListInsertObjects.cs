@@ -18,6 +18,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 	public GameObject OKButton;
 	public GameObject Menu;
 	public string FilePath;
+	public static string CurrentFilePath;
 	public static GameObject[] InsertableObjects;
 	private int CooldownBeforeDrawingIcons = 1;
 
@@ -32,10 +33,14 @@ public class ScrollListInsertObjects : MonoBehaviour
 		checkForIconDrawing();
 	}
 
+	void OnEnable()
+	{
+		CurrentFilePath = FilePath;
+	}
+
 	void preLoadIcons()
 	{
 		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
-		
 		foreach (var name in InsertableObjects) 
 		{
 			//GameObject Instance = Instantiate(SampleButton);

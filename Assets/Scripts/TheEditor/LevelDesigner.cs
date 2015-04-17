@@ -72,11 +72,24 @@ public class LevelDesigner : MonoBehaviour
 		currentLevel.mapTilesVertically = 1;
 		
 		// Place Tile in middle
-		currentLevel.Tiles.Add(new Tile(0, 0, ""));
+		currentLevel.Tiles.Add(new Tile(0, 0, "Tile"));
+
+		// Initialize indexes in 2D array
+		for (int x = 0; x < horizontalTilesPerMapTile; x++) 
+		{
+			for (int y = 0; y < verticalTilesPerMapTile; y++)
+			{
+				tileGrid[x, y] = "";
+			}
+		}
 	}
 
 	void create(Level lvl)
 	{
+		// Place Empty Tiles where nothing is placed according to 2D Grid
+		xToMid = (int) Mathf.Ceil(horizontalTilesPerMapTile/2);
+		zToMid = (int) Mathf.Ceil(verticalTilesPerMapTile/2);
+
 		// Place Tiles Specified in Level (And register them in 2D grid)
 		int numTiles = lvl.Tiles.Count;
 
@@ -85,14 +98,9 @@ public class LevelDesigner : MonoBehaviour
 			// Ved of object and for registering in TileGrid
 			Vector3 vec = new Vector3(lvl.Tiles[i].X, -0.5f, lvl.Tiles[i].Y);
 
-			// Place Tile no matter what (lvl only entails info of those placed)
-			GameObject tile = (GameObject) LoadAssetFromString("Tile");
-			tile.transform.position = vec;
-			tile.transform.SetParent(this.transform);
-
 			// Asset path to Ressource-folder
 			string assetPath = lvl.Tiles[i].ObjectOnTile;
-//			print ("ObjektTile: "+lvl.Tiles[i].ObjectOnTile);
+
 			// Place object if specified
 			if (lvl.Tiles[i].ObjectOnTile != "")
 			{
@@ -105,24 +113,18 @@ public class LevelDesigner : MonoBehaviour
 			}
 
 			// Register in TileGrid
-//			Debug.Log ("tileGrid registrering x: "+((int)vec.x)+"y; "+((int)vec.z));
-			tileGrid[((int)vec.x+xToMid), ((int)vec.z+zToMid)] = assetPath;
+			RegisterOnTile(vec, assetPath);
 		}
 
-		// Place Empty Tiles where nothing is placed according to 2D Grid
-		xToMid = (int) Mathf.Ceil(horizontalTilesPerMapTile/2);
-		zToMid = (int) Mathf.Ceil(verticalTilesPerMapTile/2);
 		for (int x = 0; x < horizontalTilesPerMapTile; x++) 
 		{
 			for (int y = 0; y < verticalTilesPerMapTile; y++)
 			{
-//				Debug.Log("["+x+", "+y+"] name: "+tileGrid[x, y]);
-				if (tileGrid[x, y] != "")
+				if (tileGrid[x, y] == "")
 				{
 					tileGrid[x, y] = "EmptyTile";
 					Vector3 placement2 = new Vector3(x - xToMid, -0.5f, y - zToMid);
 					
-//					Debug.Log ("placement2    x: "+(placement2.x)+"y; "+(placement2.z));
 					GameObject obj2 = (GameObject) LoadAssetFromString("EmptyTile");
 					obj2.transform.position = placement2;
 					obj2.transform.SetParent(this.transform);
@@ -131,17 +133,12 @@ public class LevelDesigner : MonoBehaviour
 		}
 	}
 
-	public static void RegisterObject(Vector3 vec, string assetResourcePath)
+	public static void RegisterOnTile(Vector3 vec, string assetResourcePath)
 	{
 		SetValueOfTileGridIndex(vec, assetResourcePath);
 	}
 
-	public static void RegisterTile(Vector3 vec)
-	{
-		SetValueOfTileGridIndex(vec, "");
-	}
-
-	public static void UnRegisterTile(Vector3 vec)
+	public static void UnRegisterOnTile(Vector3 vec)
 	{
 		SetValueOfTileGridIndex(vec, "EmptyTile");
 	}
@@ -151,9 +148,26 @@ public class LevelDesigner : MonoBehaviour
 	 **/
 	private static void SetValueOfTileGridIndex(Vector3 vec, string newResourcePath)
 	{
-		tileGrid[((int)vec.x +xToMid), (int)(vec.z + zToMid)] = newResourcePath;
+		tileGrid[((int)vec.x + xToMid), (int)(vec.z + zToMid)] = newResourcePath;
 	}
 	
+	/**
+	 *	Get the Prefab path of the GameObjects position. Returned string could be "Traps\Beartrap" i.e.
+	 **/
+	public static string GetValueOfTileGridIndex(Vector3 vec)
+	{
+		return tileGrid[((int)vec.x + xToMid), (int)(vec.z + zToMid)];
+	}
+
+	/**
+	 *	Get the Prefab path of the GameObjects position. Returned string could be "Traps\Beartrap" i.e.
+	 **/
+	public static bool IsTileClear(Vector3 vec)
+	{
+		print ("Whats on tile: "+GetValueOfTileGridIndex(vec));
+		return (GetValueOfTileGridIndex(vec) == "Tile");
+	}
+
 	void LoadLevel(string levelName)
 	{
 		string filePath = LevelsDirectory + levelName + ".xml";
@@ -214,7 +228,7 @@ public class LevelDesigner : MonoBehaviour
 //				print("["+x+","+y+"] " + tileGrid[x,y]);
 				if(tileGrid[x,y] != "EmptyTile")
 				{
-					print ("x - xToMid, y - zToMid: "+(x - xToMid) +", "+(  y - zToMid));
+					//print ("x - xToMid, y - zToMid: "+(x - xToMid) +", "+(  y - zToMid));
 					tiles.Add(new Tile(x - xToMid, y - zToMid, tileGrid[x, y]));
 				}
 			}
