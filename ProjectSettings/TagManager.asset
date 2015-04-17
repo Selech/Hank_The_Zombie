@@ -7,6 +7,8 @@ TagManager:
   - Clickable
   - Attackable
   - Trap
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

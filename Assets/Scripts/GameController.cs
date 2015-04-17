@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 	public GameObject winScreen;
 	public Camera overview;
 	public Camera gameplay;
+	public GameObject door;
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +16,9 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Statics.BottlesLeft == 0) {
+		if (Statics.BatteriesLeft == 0) {
 			//winScreen.SetActive(true);
+			door.SetActive(false);
 		}
 	}
 

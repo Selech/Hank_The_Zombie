@@ -15,7 +15,7 @@ GameObject:
   - 54: {fileID: 5483788}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,8 +70,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192888}
   serializedVersion: 2
-  m_Mass: .5
-  m_Drag: 1
+  m_Mass: .800000012
+  m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -96,7 +96,7 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192888}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2a5d2c3d552c146adab3039aee931e48, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

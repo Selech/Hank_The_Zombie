@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+	private int boosters;
+	private int boostersMax = 2;
 	public int cooldownAmount;
 	private int cooldown;
+	private float movespeed = 0.02f;
 	public GameObject direction;
 	public GameObject gun;
 	public GameObject bulletPrefab;
@@ -18,10 +21,13 @@ public class PlayerScript : MonoBehaviour
 	private bool Sliding;
 	public bool shoot;
 
+	public bool powerActive = false;
+
 	// Use this for initialization
 	void Start ()
 	{
 		cooldown = cooldownAmount;
+		target = this.transform.position;
 	}
 
 	public void EquipThrowable (GameObject throwable)
@@ -36,7 +42,7 @@ public class PlayerScript : MonoBehaviour
 
 		if (Sliding) {
 			targetVector -= (transform.position - targetVector) / 100;
-			transform.position = Vector3.MoveTowards (transform.position, targetVector, 0.015f);
+			transform.position = Vector3.MoveTowards (transform.position, targetVector, movespeed);
 			transform.LookAt (targetVector);
 			
 
@@ -52,7 +58,7 @@ public class PlayerScript : MonoBehaviour
 				//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 				
 				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
-				transform.position = Vector3.MoveTowards (transform.position, targetposition, 0.02f); //speed 0.015
+				transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed); //speed 0.015
 
 				if (!Input.GetKey (KeyCode.Space) || shoot) {
 					transform.LookAt (targetposition);
@@ -79,6 +85,19 @@ public class PlayerScript : MonoBehaviour
 		}
 	}
 
+	public void BoostStamina(){
+		boosters++;
+
+		if (boosters == boostersMax) {
+			movespeed = 0.04f;
+			powerActive = true;
+		}
+	}
+
+	public void GiveAmmo(){
+	
+	}
+
 	public void SelectedObject (GameObject selectObject)
 	{
 		selectedObject = selectObject;
@@ -99,6 +118,7 @@ public class PlayerScript : MonoBehaviour
 
 	void OnCollisionEnter (Collision other)
 	{
+
 		if (other.gameObject.tag != "Clickable" && Sliding) {
 			Sliding = false;
 

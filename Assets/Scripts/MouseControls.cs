@@ -48,11 +48,11 @@ public class MouseControls : MonoBehaviour
 				if (isInsideTouch (mousePos, touchArea)) {
 					Vector3 target = Input.mousePosition - touchArea.transform.position;
 
-					print (target);
-
-					//target = Quaternion.Euler(0, 0, -45) * target;
-
-					print (target);
+//					print (target);
+//
+//					//target = Quaternion.Euler(0, 0, -45) * target;
+//
+//					print (target);
 
 					Vector3 calculatedTarget = new Vector3 (player.transform.position.x + target.x, 0, player.transform.position.z + target.y);
 
