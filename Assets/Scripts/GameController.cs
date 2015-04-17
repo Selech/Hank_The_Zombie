@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		gameplay.enabled = true;
 	}
 	
 	// Update is called once per frame
@@ -25,8 +25,8 @@ public class GameController : MonoBehaviour {
 	public void GameStart() {
 		this.GetComponent<TimeController> ().enabled = true;
 
-		overview.enabled = !overview.enabled;
-		gameplay.enabled = !gameplay.enabled;
+//		overview.enabled = !overview.enabled;
+//		gameplay.enabled = !gameplay.enabled;
 	}
 
 	public void GameEnd() {

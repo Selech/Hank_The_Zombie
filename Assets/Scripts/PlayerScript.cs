@@ -38,6 +38,8 @@ public class PlayerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		//transform.position = new Vector3 (this.transform.position.x, 1f, this.transform.position.z);
+
 		cooldown--;
 
 		if (Sliding) {
@@ -70,6 +72,15 @@ public class PlayerScript : MonoBehaviour
 			} else {
 
 			}
+		}
+	}
+
+	public void Shoot(){
+	if(cooldown <= 0){
+		GameObject bullet = (GameObject) Instantiate(bulletPrefab);
+		bullet.transform.position = direction.transform.position;
+		bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
+		cooldown = cooldownAmount;
 		}
 	}
 
