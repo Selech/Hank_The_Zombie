@@ -21,6 +21,11 @@ public class MouseRts : MonoBehaviour
 	public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
 	public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
 
+	// Set Orientation
+	void Start()
+	{
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
+	}
 
 	// Update is called once per frame
 	void Update()
