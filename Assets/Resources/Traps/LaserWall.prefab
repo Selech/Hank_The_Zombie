@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 460056}
   m_Layer: 0
   m_Name: LaserWall
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ GameObject:
   - 95: {fileID: 9536812}
   m_Layer: 0
   m_Name: LaserWall
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

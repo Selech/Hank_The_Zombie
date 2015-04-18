@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//using UnityEditor;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ using System;
 using System.ComponentModel;
 using System.Reflection;
 using System.IO;
-using UnityEditor;
 
 public class ScrollListInsertObjects : MonoBehaviour 
 {
@@ -44,7 +44,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 		foreach (var name in InsertableObjects) 
 		{
 			//GameObject Instance = Instantiate(SampleButton);
-			Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
+			//Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
 		}
 	}
 
@@ -70,18 +70,18 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 	void ShowObjects()
 	{
-		foreach (var name in InsertableObjects) 
-		{
-			GameObject Instance = Instantiate(SampleButton);
-			Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
-			Sprite ImageName = Sprite.Create(tex, new Rect(0,0,tex.width,tex.height), new Vector2(0.5f, 0.5f));
-
-			Instance.GetComponentInChildren<Image>().sprite = ImageName;
-			Instance.transform.SetParent(this.transform);
-			GameObject obj = name.gameObject;
-
-			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(obj); });
-		}
+//		foreach (var name in InsertableObjects) 
+//		{
+//			GameObject Instance = Instantiate(SampleButton);
+//			Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
+//			Sprite ImageName = Sprite.Create(tex, new Rect(0,0,tex.width,tex.height), new Vector2(0.5f, 0.5f));
+//
+//			Instance.GetComponentInChildren<Image>().sprite = ImageName;
+//			Instance.transform.SetParent(this.transform);
+//			GameObject obj = name.gameObject;
+//
+//			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(obj); });
+//		}
 	}
 
 	public void onSelected(GameObject gameobject)

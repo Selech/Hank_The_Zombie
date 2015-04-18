@@ -176,7 +176,10 @@ public class LevelDesigner : MonoBehaviour
 		create (lvl);
 		try{
 			displayedNameOfLevel.GetComponent<Text>().text = lvl.name;
-		} catch(System.Exception e){};
+		} catch(System.Exception e)
+		{
+			print (e.StackTrace);
+		};
 	}
 
 	GameObject LoadAssetFromString(string assetName)
