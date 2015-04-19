@@ -62,7 +62,7 @@ public class PlayerScript : MonoBehaviour
 				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
 				transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed); //speed 0.015
 
-				if (!Input.GetKey (KeyCode.Space) || shoot) {
+				if (!Input.GetKey (KeyCode.Space) && !shoot) {
 					transform.LookAt (targetposition);
 				}
 				
@@ -76,12 +76,17 @@ public class PlayerScript : MonoBehaviour
 	}
 
 	public void Shoot(){
-	if(cooldown <= 0){
-		GameObject bullet = (GameObject) Instantiate(bulletPrefab);
-		bullet.transform.position = direction.transform.position;
-		bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
-		cooldown = cooldownAmount;
+		shoot = true;
+		if(cooldown <= 0){
+			GameObject bullet = (GameObject) Instantiate(bulletPrefab);
+			bullet.transform.position = direction.transform.position;
+			bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
+			cooldown = cooldownAmount;
 		}
+	}
+
+	public void NotShoot(){
+		shoot = false;
 	}
 
 	public void SetTarget (Vector3 gameobj)

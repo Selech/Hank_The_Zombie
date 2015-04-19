@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - Bullet
   - Enemy
+  - Moveable
   layers:
   - Default
   - TransparentFX

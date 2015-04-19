@@ -7,6 +7,7 @@ public class SpawnPointScript : MonoBehaviour {
 	public int rate;
 	private int counter;
 	public GameObject startPoint;
+	public bool running;
 
 	// Use this for initialization
 	void Start () {
@@ -15,15 +16,17 @@ public class SpawnPointScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		counter--;
-
-		if(counter == 0){
-			GameObject enemy = Instantiate(enemyPrefab);
-			enemy.transform.position = this.transform.position;
-			enemy.GetComponent<Enemy>().SetStartPoint(startPoint.transform.position);
-
-
-			counter = rate;
+		if (running) {
+			counter--;
+			
+			if(counter == 0){
+				GameObject enemy = Instantiate(enemyPrefab);
+				enemy.transform.position = this.transform.position;
+				enemy.GetComponent<Enemy>().SetStartPoint(startPoint.transform.position);
+				
+				
+				counter = rate;
+			}
 		}
 	}
 }

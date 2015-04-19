@@ -41,7 +41,7 @@ public class Controller3DPort : MonoBehaviour
 			0f,
 			ShootingJoystick.GetAxis("Vertical"));
 
-        CommonMovementMethod(movement);
+		CommonMovementMethod(movement, rotation);
 		CommonRotationMethod (rotation);
     }
 
@@ -61,22 +61,28 @@ public class Controller3DPort : MonoBehaviour
 		//        movement.y = 0f;
 		//        movement.Normalize();
 		
-		FaceDirection(rotation);
-		print (rotation);
+		//
+
 		if (rotation != new Vector3 (0, 0, 0)) {
-			_playerTransform.gameObject.GetComponent<PlayerScript> ().Shoot();
+			_playerTransform.gameObject.GetComponent<PlayerScript> ().Shoot ();
+			FaceDirection(rotation);
+		} else {
+			_playerTransform.gameObject.GetComponent<PlayerScript> ().NotShoot ();
 		}
 		//_playerTransform.gameObject.GetComponent<PlayerScript> ().SetTarget (_playerTransform.position + (movement));
 		//_characterController.Move(movement * movementSpeed * Time.deltaTime);
 	}
 
-    private void CommonMovementMethod(Vector3 movement)
+    private void CommonMovementMethod(Vector3 movement, Vector3 rotation)
     {
 //        movement = _mainCameraTransform.TransformDirection(movement);
 //        movement.y = 0f;
 //        movement.Normalize();
 
-        FaceDirection(movement);
+		if (rotation == new Vector3 (0, 0, 0)) {
+			//FaceDirection (movement);
+		}
+
 		_playerTransform.gameObject.GetComponent<PlayerScript> ().SetTarget (_playerTransform.position + (movement));
 		//_characterController.Move(movement * movementSpeed * Time.deltaTime);
     }
