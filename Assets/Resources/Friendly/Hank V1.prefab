@@ -263,11 +263,13 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 453812}
-  - 95: {fileID: 9553778}
+  - 224: {fileID: 22479916}
   - 54: {fileID: 5453778}
   - 65: {fileID: 6553778}
   - 114: {fileID: 11453778}
+  - 222: {fileID: 22248828}
+  - 95: {fileID: 9553778}
+  - 114: {fileID: 11473838}
   m_Layer: 0
   m_Name: Hank V1
   m_TagString: Untagged
@@ -479,7 +481,7 @@ Transform:
   m_LocalPosition: {x: .0581180826, y: -.0386034362, z: -.580585957}
   m_LocalScale: {x: -.320937365, y: -.155272603, z: -.0853713825}
   m_Children: []
-  m_Father: {fileID: 453812}
+  m_Father: {fileID: 22479916}
   m_RootOrder: 1
 --- !u!4 &453810
 Transform:
@@ -492,21 +494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453806}
-  m_Father: {fileID: 453812}
-  m_RootOrder: 0
---- !u!4 &453812
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153812}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.430000007, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 453810}
-  - {fileID: 453808}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 22479916}
   m_RootOrder: 0
 --- !u!54 &5453778
 Rigidbody:
@@ -566,6 +554,27 @@ MonoBehaviour:
   won: {fileID: 0}
   animator: {fileID: 9553778}
   ActionUI: {fileID: 0}
+--- !u!114 &11473838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3f01ead50111d49c9af4c6a913e8bc0d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!137 &13753778
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -616,6 +625,31 @@ SkinnedMeshRenderer:
     m_Center: {x: -.0898176283, y: .000737428665, z: .08770632}
     m_Extent: {x: .405743897, y: .199767411, z: .167680353}
   m_DirtyAABB: 0
+--- !u!222 &22248828
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153812}
+--- !u!224 &22479916
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 453810}
+  - {fileID: 453808}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: -.430000007}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

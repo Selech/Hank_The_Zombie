@@ -24,39 +24,13 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 	void Start () 
 	{
-		preLoadIcons();
+		ShowObjects();
 		AddOnOKClick();
-	}
-
-	void Update ()
-	{
-		checkForIconDrawing();
 	}
 
 	void OnEnable()
 	{
 		CurrentFilePath = FilePath;
-	}
-
-	void preLoadIcons()
-	{
-		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
-		foreach (var name in InsertableObjects) 
-		{
-			//GameObject Instance = Instantiate(SampleButton);
-			//Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
-		}
-	}
-
-	void checkForIconDrawing()
-	{
-		if (CooldownBeforeDrawingIcons==0)
-			ShowObjects();
-		if (CooldownBeforeDrawingIcons>=0)
-		{
-			CooldownBeforeDrawingIcons--;
-			print (CooldownBeforeDrawingIcons);
-		}
 	}
 
 	void AddOnOKClick()
@@ -70,23 +44,22 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 	void ShowObjects()
 	{
-//		foreach (var name in InsertableObjects) 
-//		{
-//			GameObject Instance = Instantiate(SampleButton);
-//			Texture2D tex = AssetPreview.GetAssetPreview(name.gameObject);
-//			Sprite ImageName = Sprite.Create(tex, new Rect(0,0,tex.width,tex.height), new Vector2(0.5f, 0.5f));
-//
-//			Instance.GetComponentInChildren<Image>().sprite = ImageName;
-//			Instance.transform.SetParent(this.transform);
-//			GameObject obj = name.gameObject;
-//
-//			Instance.GetComponent<Button>().onClick.AddListener(() => { onSelected(obj); });
-//		}
+		// muhaha
+		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
+		foreach (var obj in InsertableObjects) 
+		{
+			print ("gameobj: "+obj.name);
+			GameObject listItemGameObject = Instantiate(SampleButton);
+			listItemGameObject.GetComponentInChildren<Image>().sprite = obj.GetComponent<Image>().sprite;
+			GameObject tempObj = obj;
+			listItemGameObject.GetComponentInChildren<Button>().onClick.AddListener(() => { OnSelected(tempObj); });
+			listItemGameObject.transform.SetParent(this.transform);
+		}
 	}
-
-	public void onSelected(GameObject gameobject)
+	public void OnSelected(GameObject gmObj)
 	{
-		LevelDesigner.ObjectToBeInserted = gameobject;
+		print ("clicked: "+gmObj.name);
+		LevelDesigner.ObjectToBeInserted = gmObj;
 		OKButton.GetComponent<Button>().interactable = true;
 	}
 }

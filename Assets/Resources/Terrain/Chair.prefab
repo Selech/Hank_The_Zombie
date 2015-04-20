@@ -25,9 +25,11 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 452356}
-  - 65: {fileID: 6554214}
+  - 224: {fileID: 22486840}
   - 114: {fileID: 11475626}
+  - 222: {fileID: 22214584}
+  - 65: {fileID: 6554214}
+  - 114: {fileID: 11416098}
   m_Layer: 0
   m_Name: Chair
   m_TagString: Clickable
@@ -45,20 +47,7 @@ Transform:
   m_LocalPosition: {x: 0, y: .219999999, z: 0}
   m_LocalScale: {x: .25, y: .249999985, z: .286847353}
   m_Children: []
-  m_Father: {fileID: 452356}
-  m_RootOrder: 0
---- !u!4 &452356
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 445168}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 22486840}
   m_RootOrder: 0
 --- !u!23 &2380804
 MeshRenderer:
@@ -120,6 +109,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11416098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b19ee988baf134f619bf3678932b743f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11475626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +141,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8f4d5dc4dc3455ca1e4a1c56b17641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &22214584
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175070}
+--- !u!224 &22486840
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 445168}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
