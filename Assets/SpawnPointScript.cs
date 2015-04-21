@@ -21,8 +21,8 @@ public class SpawnPointScript : MonoBehaviour {
 			
 			if(counter == 0){
 				GameObject enemy = Instantiate(enemyPrefab);
-				enemy.transform.position = this.transform.position;
-				enemy.GetComponent<Enemy>().SetStartPoint(startPoint.transform.position);
+				enemy.transform.position = new Vector3(Random.Range(0f,20f),Random.Range(0f,20f), 4f);
+				//enemy.GetComponent<Enemy>().SetStartPoint(startPoint.transform.position);
 				
 				
 				counter = rate;

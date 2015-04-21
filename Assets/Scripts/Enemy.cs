@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.GetComponent<Animation> ().Play ("EnemySpawn");
 		seen = false;
 		this.GameController = GameObject.Find ("Controller").GetComponent<MouseControls>();
 		//startPoint = transform.position;
@@ -58,7 +59,7 @@ public class Enemy : MonoBehaviour {
 				print (colorRate);
 				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
 
-				if(this.GetComponent<Rigidbody>().IsSleeping()){
+				if(colorRate == 0.1f){
 					this.GetComponent<Rigidbody>().isKinematic = true;
 					this.GetComponent<BoxCollider>().enabled = false;
 				}
