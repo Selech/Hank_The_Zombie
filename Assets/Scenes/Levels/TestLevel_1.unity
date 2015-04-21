@@ -3636,6 +3636,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 687333336}
   InventoryUI: {fileID: 1497086122}
+  touchArea: {fileID: 0}
+  shootArea: {fileID: 0}
 --- !u!4 &630558091
 Transform:
   m_ObjectHideFlags: 0
@@ -3686,6 +3688,7 @@ MonoBehaviour:
   winScreen: {fileID: 977621728}
   overview: {fileID: 0}
   gameplay: {fileID: 0}
+  door: {fileID: 0}
 --- !u!114 &630558095
 MonoBehaviour:
   m_ObjectHideFlags: 0

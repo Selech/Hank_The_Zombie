@@ -45,7 +45,9 @@ GameObject:
   - 65: {fileID: 6519024}
   - 23: {fileID: 2344476}
   - 114: {fileID: 11436734}
-  - 54: {fileID: 5491522}
+  - 54: {fileID: 5447452}
+  - 143: {fileID: 14370292}
+  - 114: {fileID: 11450438}
   m_Layer: 0
   m_Name: CubeHank
   m_TagString: Player
@@ -84,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .395000011, z: 0}
+  m_LocalPosition: {x: 0, y: .400000006, z: -3}
   m_LocalScale: {x: .319999993, y: .689999998, z: .310000002}
   m_Children:
   - {fileID: 469990}
@@ -153,7 +155,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136000}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5491522
+--- !u!54 &5447452
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -176,7 +178,7 @@ BoxCollider:
   m_GameObject: {fileID: 136000}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -203,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c7a28789265411ab5ca0b894c37cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownAmount: 0
+  cooldownAmount: 5
   direction: {fileID: 138640}
   gun: {fileID: 136000}
   bulletPrefab: {fileID: 192888, guid: e8616950fe37b401fadfd704391fe1c1, type: 2}
@@ -211,6 +213,38 @@ MonoBehaviour:
   ActionUI: {fileID: 0}
   EquippedThrowable: {fileID: 0}
   shoot: 0
+  powerActive: 0
+--- !u!114 &11450438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5596c642074ab4fa4bc9ec020cf61281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+  MovementJoystick: {fileID: 0}
+  ShootingJoystick: {fileID: 0}
+--- !u!143 &14370292
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163236}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

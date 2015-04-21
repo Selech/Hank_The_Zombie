@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour {
 	private Vector3 startPoint;
 	public GameObject AmmoCratePrefab;
 
+	private Material enemyColor;
+	private float colorRate = 5;
+
 	// Use this for initialization
 	void Start () {
 		seen = false;
@@ -39,6 +42,25 @@ public class Enemy : MonoBehaviour {
 				if (!(Vector3.Distance (startPoint, transform.position) < 1f)) {
 					transform.position = Vector3.MoveTowards (transform.position, startPoint, moveSpeed);
 					transform.LookAt (startPoint);
+				}
+			}
+		} else {
+			if(colorRate > 0.1f){
+				//print (colorRate);
+				enemyColor = this.GetComponent<MeshRenderer>().material;
+				//print (enemyColor.color.a);
+				if(colorRate <= 1.0f){
+					colorRate = Mathf.MoveTowards(colorRate, 0.1f, 0.01f);
+				}
+				else{
+					colorRate = Mathf.MoveTowards(colorRate, 1.0f, 0.5f);
+				}
+				print (colorRate);
+				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
+
+				if(this.GetComponent<Rigidbody>().IsSleeping()){
+					this.GetComponent<Rigidbody>().isKinematic = true;
+					this.GetComponent<BoxCollider>().enabled = false;
 				}
 			}
 		}
@@ -73,9 +95,10 @@ public class Enemy : MonoBehaviour {
 				ammocrate.transform.position = this.transform.position;
 			}
 			hit = true;
-			hat.transform.SetParent(null);
-			hat.GetComponent<Rigidbody>().isKinematic = false;
-			hat.GetComponent<Rigidbody>().AddForce(new Vector3(0,100f,0));
+
+//			hat.transform.SetParent(null);
+//			hat.GetComponent<Rigidbody>().isKinematic = false;
+//			hat.GetComponent<Rigidbody>().AddForce(new Vector3(0,100f,0));
 		}
 
 		

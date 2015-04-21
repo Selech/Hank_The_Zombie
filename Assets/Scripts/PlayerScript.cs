@@ -38,6 +38,7 @@ public class PlayerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		PcControls ();
 		//transform.position = new Vector3 (this.transform.position.x, 1f, this.transform.position.z);
 
 		cooldown--;
@@ -73,6 +74,26 @@ public class PlayerScript : MonoBehaviour
 
 			}
 		}
+	}
+
+	private void PcControls(){
+		Vector3 tempVector = new Vector3 ();
+		if (Input.GetKey (KeyCode.W)) {
+			tempVector += new Vector3(0,0,1f);
+		}
+		if (Input.GetKey (KeyCode.S)) {
+			tempVector += new Vector3(0,0,-1f);
+		}
+		if (Input.GetKey (KeyCode.A)) {
+			tempVector += new Vector3(-1f,0,0);
+		}
+		if (Input.GetKey (KeyCode.D)) {
+			tempVector += new Vector3(1f,0,0);
+		}
+
+
+		if(tempVector != new Vector3())
+			SetTarget (this.transform.position + tempVector);
 	}
 
 	public void Shoot(){
