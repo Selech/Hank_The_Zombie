@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
 	private int boostersMax = 2;
 	public int cooldownAmount;
 	private int cooldown;
-	private float movespeed = 0.02f;
+	private float movespeed = 0.022f;
 	public GameObject direction;
 	public GameObject gun;
 	public GameObject bulletPrefab;
@@ -20,6 +20,14 @@ public class PlayerScript : MonoBehaviour
 	public GameObject EquippedThrowable;
 	private bool Sliding;
 	public bool shoot;
+	public int ammoAmount;
+	public int ammoCapacity;
+	public Slider ammoSlider;
+
+	public int pushCooldown;
+	public int pushCooldownAmount;
+	public Slider pushSlider;
+
 
 	public bool powerActive = false;
 
@@ -27,7 +35,11 @@ public class PlayerScript : MonoBehaviour
 	void Start ()
 	{
 		cooldown = cooldownAmount;
+		pushCooldown = pushCooldownAmount;
+
 		target = this.transform.position;
+
+		UpdateSliders ();
 	}
 
 	public void EquipThrowable (GameObject throwable)
@@ -40,40 +52,46 @@ public class PlayerScript : MonoBehaviour
 	{
 		PcControls ();
 		//transform.position = new Vector3 (this.transform.position.x, 1f, this.transform.position.z);
-
+		pushCooldown++;
 		cooldown--;
 
-		if (Sliding) {
-			targetVector -= (transform.position - targetVector) / 100;
-			transform.position = Vector3.MoveTowards (transform.position, targetVector, movespeed);
-			transform.LookAt (targetVector);
-			
 
-		} else {
-			if ((Input.GetKey (KeyCode.Space) || shoot) && cooldown <= 0) {
+
+		if ((Input.GetKey (KeyCode.Space) || shoot) && cooldown <= 0) {
+			if(ammoAmount > 0){
+				ammoAmount--;
+
 				GameObject bullet = (GameObject) Instantiate(bulletPrefab);
 				bullet.transform.position = direction.transform.position;
 				bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
 				cooldown = cooldownAmount;
-			}
-
-			if (target != new Vector3 (-1, -1, -1)) {
-				//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-				
-				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
-				transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed); //speed 0.015
-
-				if (!Input.GetKey (KeyCode.Space) && !shoot) {
-					transform.LookAt (targetposition);
-				}
-				
-				if (transform.position == targetposition) {
-					target = new Vector3 (-1, -1, -1);
-				}
-			} else {
 
 			}
 		}
+
+		if (target != new Vector3 (-1, -1, -1)) {
+			//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+			
+			Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
+
+			if(shoot){
+				transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed*0.4f); //speed 0.015
+			}
+			else{
+				transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed); //speed 0.015
+			}
+
+			if (!Input.GetKey (KeyCode.Space) && !shoot) {
+				transform.LookAt (targetposition);
+			}
+			
+			if (transform.position == targetposition) {
+				target = new Vector3 (-1, -1, -1);
+			}
+		} else {
+
+		}
+		UpdateSliders ();
 	}
 
 	private void PcControls(){
@@ -98,11 +116,16 @@ public class PlayerScript : MonoBehaviour
 
 	public void Shoot(){
 		shoot = true;
-		if(cooldown <= 0){
-			GameObject bullet = (GameObject) Instantiate(bulletPrefab);
-			bullet.transform.position = direction.transform.position;
-			bullet.GetComponent<BulletScript>().direction = (direction.transform.position - gun.transform.position).normalized;
-			cooldown = cooldownAmount;
+
+		if (cooldown <= 0) {
+			if (ammoAmount > 0) {
+				ammoAmount--;
+
+				GameObject bullet = (GameObject)Instantiate (bulletPrefab);
+				bullet.transform.position = direction.transform.position;
+				bullet.GetComponent<BulletScript> ().direction = (direction.transform.position - gun.transform.position).normalized;
+				cooldown = cooldownAmount;
+			}
 		}
 	}
 
@@ -112,14 +135,15 @@ public class PlayerScript : MonoBehaviour
 
 	public void SetTarget (Vector3 gameobj)
 	{
-		if (EquippedThrowable != null) {
-			EquippedThrowable.GetComponent<IThrowable> ().SetTarget (gameobj);
-			EquippedThrowable = null;
-		} else {
-			if (!Sliding) {
-				target = gameobj;
-			}
-		}
+		target = gameobj;
+//
+//		if (EquippedThrowable != null) {
+//			EquippedThrowable.GetComponent<IThrowable> ().SetTarget (gameobj);
+//			EquippedThrowable = null;
+//		} else {
+//			if (!Sliding) {
+//			}
+//		}
 	}
 
 	public void BoostStamina(){
@@ -132,34 +156,26 @@ public class PlayerScript : MonoBehaviour
 	}
 
 	public void GiveAmmo(){
-	
+		ammoAmount += 10;
 	}
 
-	public void SelectedObject (GameObject selectObject)
-	{
-		selectedObject = selectObject;
-		target = new Vector3 (-1, -1, -1);
-		ActionUI.gameObject.SetActive (true);
+	private void UpdateSliders(){
+		ammoSlider.value = (float)ammoAmount / (float)ammoCapacity;
+		pushSlider.value = (float)pushCooldown / (float)pushCooldownAmount;
 	}
 
-	public void PickUpObject ()
-	{
-		selectedObject.transform.SetParent (this.transform);
-	}
 
-	public void EnableSliding ()
-	{
-		Sliding = true;
-		targetVector = new Vector3 (target.x, transform.position.y, target.z);
-	}
-
-	void OnCollisionEnter (Collision other)
-	{
-
-		if (other.gameObject.tag != "Clickable" && Sliding) {
-			Sliding = false;
-
-			target = new Vector3 (-1, -1, -1);
+	public void ActivatePush(){
+		if(pushCooldown >= pushCooldownAmount){
+			pushCooldown = 0;
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			
+			foreach(GameObject en in enemies){
+				if(Vector3.Distance(en.transform.position, this.transform.position) < 2f){
+					en.gameObject.GetComponent<Rigidbody>().AddForce((en.gameObject.transform.position - transform.position)*200);			
+				}
+			}
 		}
 	}
+
 }	

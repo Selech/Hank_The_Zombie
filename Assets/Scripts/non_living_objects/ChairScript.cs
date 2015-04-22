@@ -17,7 +17,7 @@ public class ChairScript : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		if(other.gameObject.tag == "Player")
 		{
-			other.gameObject.GetComponent<PlayerScript>().SelectedObject(this.gameObject);
+			//other.gameObject.GetComponent<PlayerScript>().SelectedObject(this.gameObject);
 		}
 	}
 }

@@ -14,7 +14,7 @@ public class BananaPeelScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		other.gameObject.GetComponent<PlayerScript> ().EnableSliding ();
+		//other.gameObject.GetComponent<PlayerScript> ().EnableSliding ();
 	}
 
 }

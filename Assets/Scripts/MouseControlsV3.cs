@@ -13,13 +13,13 @@ public class MouseControlsV3 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) {
-			if (Input.GetMouseButton (0)) { // if left button pressed...
+			if (Input.GetMouseButtonDown (0)) { // if left button pressed...
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit;
 				//print ();
 				if (Physics.Raycast (ray, out hit)) {
-					if (hit.collider.gameObject.tag == "Clickable") {
-						player.GetComponent<PlayerScript> ().SetTarget (hit.point);
+					if (hit.collider.gameObject.tag == "Player") {
+						hit.collider.gameObject.GetComponent<PlayerScript>().ActivatePush();
 					}
 				}
 			}

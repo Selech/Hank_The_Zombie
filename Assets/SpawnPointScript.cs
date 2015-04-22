@@ -8,10 +8,13 @@ public class SpawnPointScript : MonoBehaviour {
 	private int counter;
 	public GameObject startPoint;
 	public bool running;
+	private MouseControls gameController;
 
 	// Use this for initialization
 	void Start () {
 		counter = rate;
+
+		gameController = GameObject.Find ("Controller").GetComponent<MouseControls> ();
 	}
 	
 	// Update is called once per frame
@@ -21,7 +24,23 @@ public class SpawnPointScript : MonoBehaviour {
 			
 			if(counter == 0){
 				GameObject enemy = Instantiate(enemyPrefab);
-				enemy.transform.position = new Vector3(Random.Range(0f,20f),Random.Range(0f,20f), 4f);
+
+				float randomX; 
+				float randomZ; 
+
+				if(gameController.player.transform.position.x < 10){
+					randomX = gameController.player.transform.position.x + Random.Range(3f,12f);
+				}else{
+					randomX = gameController.player.transform.position.x - Random.Range(3f,12f);
+				}
+
+				if(gameController.player.transform.position.z < 10){
+					randomZ = gameController.player.transform.position.z + Random.Range(3f,12f);
+				}else{
+					randomZ = gameController.player.transform.position.z - Random.Range(3f,12f);
+				}
+
+				enemy.transform.position = new Vector3(randomX, 10f, randomZ);
 				//enemy.GetComponent<Enemy>().SetStartPoint(startPoint.transform.position);
 				
 				

@@ -49,7 +49,6 @@ GameObject:
   - 23: {fileID: 2327412}
   - 114: {fileID: 11463076}
   - 54: {fileID: 5491336}
-  - 111: {fileID: 11150936}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -431,21 +430,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!111 &11150936
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125436}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 7685e6944587a4e1696b56b2ddeeb9a1, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 7685e6944587a4e1696b56b2ddeeb9a1, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &11463076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -458,6 +442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hat: {fileID: 198292}
+  leftArm: {fileID: 175020}
+  rightArm: {fileID: 103336}
   AmmoCratePrefab: {fileID: 183210, guid: 9914cd0c83cb54573b05fd5a87be46b7, type: 2}
 --- !u!1001 &100100000
 Prefab:

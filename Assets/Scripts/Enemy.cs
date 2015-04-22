@@ -5,9 +5,12 @@ public class Enemy : MonoBehaviour {
 
 	private MouseControls GameController;
 	private bool seen;
-	private float moveSpeed = 0.008f;
+	private float moveSpeed = 0.02f;
+	private float moveSpeedAway = -0.02f;
 	private bool hit = false;
 	public GameObject hat;
+	public GameObject leftArm;
+	public GameObject rightArm;
 	private Vector3 startPoint;
 	public GameObject AmmoCratePrefab;
 
@@ -16,19 +19,19 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.GetComponent<Animation> ().Play ("EnemySpawn");
 		seen = false;
 		this.GameController = GameObject.Find ("Controller").GetComponent<MouseControls>();
-		//startPoint = transform.position;
+		startPoint = transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//Enemy er i live, og bevæger sig
 		if (this.GameController.player != null && !hit) {
 			Vector3 TargetPlayer = new Vector3 (this.GameController.player.transform.position.x, transform.position.y, this.GameController.player.transform.position.z);
 
 			if (this.GameController.player.GetComponent<PlayerScript> ().powerActive == true) {
-				moveSpeed = -0.008f;
+				moveSpeed = moveSpeedAway;
 			}
 
 			if (Vector3.Distance (TargetPlayer, transform.position) < 3.5f || seen) {
@@ -39,13 +42,11 @@ public class Enemy : MonoBehaviour {
 					transform.position = Vector3.MoveTowards (transform.position, TargetPlayer, moveSpeed);
 					transform.LookAt (TargetPlayer);
 				}
-			} else {
-				if (!(Vector3.Distance (startPoint, transform.position) < 1f)) {
-					transform.position = Vector3.MoveTowards (transform.position, startPoint, moveSpeed);
-					transform.LookAt (startPoint);
-				}
-			}
-		} else {
+			} 
+		} 
+
+		//Enemy er blevet skudt, eller player er død.
+		else {
 			if(colorRate > 0.1f){
 				//print (colorRate);
 				enemyColor = this.GetComponent<MeshRenderer>().material;
@@ -58,6 +59,8 @@ public class Enemy : MonoBehaviour {
 				}
 				print (colorRate);
 				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
+				leftArm.GetComponent<MeshRenderer>().material = enemyColor;
+				rightArm.GetComponent<MeshRenderer>().material = enemyColor;
 
 				if(colorRate == 0.1f){
 					this.GetComponent<Rigidbody>().isKinematic = true;
@@ -76,9 +79,8 @@ public class Enemy : MonoBehaviour {
 			if(this.GameController.player.GetComponent<PlayerScript>().powerActive == true){
 				if(Random.Range(0,3) == 0){
 					GameObject ammocrate = Instantiate(AmmoCratePrefab);
-					ammocrate.transform.position = this.transform.position;
+					ammocrate.transform.position = new Vector3(this.transform.position.x, 0.1f, this.transform.position.z);
 				}
-
 				Destroy (this.gameObject);
 			}
 			else{
