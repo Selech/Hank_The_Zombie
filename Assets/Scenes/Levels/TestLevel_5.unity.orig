@@ -8220,8 +8220,100 @@ Transform:
 --- !u!4 &212331874 stripped
 Transform:
   m_PrefabParentObject: {fileID: 423084, guid: a3c2d8410f1af4668a2e03af9654611e, type: 2}
+<<<<<<< HEAD
   m_PrefabInternal: {fileID: 1223204299}
 --- !u!1001 &213730227
+=======
+  m_PrefabInternal: {fileID: 571464631}
+--- !u!1 &630558089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 630558091}
+  - 114: {fileID: 630558090}
+  - 114: {fileID: 630558094}
+  - 114: {fileID: 630558096}
+  - 114: {fileID: 630558092}
+  m_Layer: 0
+  m_Name: Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &630558090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630558089}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fbbe0ec0737470886197fb019bebbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1937482684}
+  InventoryUI: {fileID: 0}
+  touchArea: {fileID: 0}
+  shootArea: {fileID: 0}
+--- !u!4 &630558091
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630558089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+--- !u!114 &630558092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630558089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89005c67ea92e4ebfa683377be35d833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1937482684}
+--- !u!114 &630558094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630558089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7997bb5c51554a769d0941bc5c760ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winScreen: {fileID: 977621728}
+  overview: {fileID: 0}
+  gameplay: {fileID: 491360950}
+  door: {fileID: 1463921321}
+--- !u!114 &630558096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630558089}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef9620accbd343639c686be40a502ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 10
+  timeField: {fileID: 0}
+  started: 0
+--- !u!1001 &634815748
+>>>>>>> TutorialLevel
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -23112,6 +23204,7 @@ MonoBehaviour:
   overview: {fileID: 0}
   gameplay: {fileID: 491360950}
   door: {fileID: 1463921321}
+  ammo: {fileID: 0}
 --- !u!114 &630558096
 MonoBehaviour:
   m_ObjectHideFlags: 0

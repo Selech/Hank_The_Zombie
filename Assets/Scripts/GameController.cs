@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour {
 	public Camera overview;
 	public Camera gameplay;
 	public GameObject door;
-	public Slider ammo;
 
 	// Use this for initialization
 	void Start () {
@@ -32,5 +31,9 @@ public class GameController : MonoBehaviour {
 
 	public void GameEnd() {
 		winScreen.SetActive(true);		
+	}
+
+	public void LoadLevel(string levelName){
+		Application.LoadLevel (levelName);
 	}
 }
