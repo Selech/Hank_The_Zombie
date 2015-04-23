@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+	public Material zombieSkin;
+
 	private int boosters;
 	private int boostersMax = 2;
 	public int cooldownAmount;
@@ -15,7 +17,6 @@ public class PlayerScript : MonoBehaviour
 	private Vector3 target;
 	private Vector3 targetVector;
 	public Canvas won;
-	public RectTransform ActionUI;
 	private GameObject selectedObject;
 	public GameObject EquippedThrowable;
 	private bool Sliding;
@@ -52,10 +53,13 @@ public class PlayerScript : MonoBehaviour
 	{
 		PcControls ();
 		//transform.position = new Vector3 (this.transform.position.x, 1f, this.transform.position.z);
-		pushCooldown++;
-		cooldown--;
-
-
+		if (pushCooldown < pushCooldownAmount) {
+			pushCooldown++;
+		}
+		if(cooldown > 0){
+			cooldown--;
+		}
+			
 
 		if ((Input.GetKey (KeyCode.Space) || shoot) && cooldown <= 0) {
 			if(ammoAmount > 0){
@@ -136,14 +140,6 @@ public class PlayerScript : MonoBehaviour
 	public void SetTarget (Vector3 gameobj)
 	{
 		target = gameobj;
-//
-//		if (EquippedThrowable != null) {
-//			EquippedThrowable.GetComponent<IThrowable> ().SetTarget (gameobj);
-//			EquippedThrowable = null;
-//		} else {
-//			if (!Sliding) {
-//			}
-//		}
 	}
 
 	public void BoostStamina(){
@@ -164,19 +160,40 @@ public class PlayerScript : MonoBehaviour
 
 	private void UpdateSliders(){
 		ammoSlider.value = (float)ammoAmount / (float)ammoCapacity;
-		pushSlider.value = (float)pushCooldown / (float)pushCooldownAmount;
+		pushSlider.value = (float)pushCooldown / (float) pushCooldownAmount;
 	}
 
 
 	public void ActivatePush(){
-		if(pushCooldown >= pushCooldownAmount){
-			pushCooldown = 0;
-			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			
-			foreach(GameObject en in enemies){
-				if(Vector3.Distance(en.transform.position, this.transform.position) < 2f){
-					en.gameObject.GetComponent<Rigidbody>().AddForce((en.gameObject.transform.position - transform.position)*200);			
-				}
+		float power = (float)pushCooldown / (float) pushCooldownAmount;
+		print (power);
+
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
+
+		foreach(GameObject en in enemies){
+			if(Vector3.Distance(en.transform.position, this.transform.position) < 2f){
+				en.gameObject.GetComponent<Rigidbody>().AddForce((en.gameObject.transform.position - transform.position) * (5f * power),ForceMode.Impulse);			
+			}
+		}
+
+		foreach(GameObject zom in zombies){
+			if(Vector3.Distance(zom.transform.position, this.transform.position) < 2f){
+				zom.gameObject.GetComponent<Rigidbody>().AddForce((zom.gameObject.transform.position - transform.position) * (3f * power),ForceMode.Impulse);
+				zom.gameObject.GetComponent<ZombieScript>().hit = true;
+
+			}
+		}
+
+		pushCooldown = 0;
+	}
+
+	public void BecomeInfected(){
+		MeshRenderer[] meshes = GetComponentsInChildren<MeshRenderer> ();
+
+		foreach(MeshRenderer mesh in meshes){
+			if(mesh.gameObject.name == "Head" || mesh.gameObject.name == "LeftArm" || mesh.gameObject.name == "RightArm"){
+				mesh.material  = zombieSkin;
 			}
 		}
 	}

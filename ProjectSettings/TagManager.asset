@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Clickable
   - Attackable
-  - Trap
+  - Zombie
   - Bullet
   - Enemy
   - Moveable

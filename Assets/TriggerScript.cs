@@ -3,10 +3,10 @@ using System.Collections;
 
 public class TriggerScript : MonoBehaviour {
 
-	public GameObject canvas;
+	public GameObject activate;
 
 	void OnTriggerEnter(){
-		canvas.SetActive (true);
+		activate.SetActive (true);
 		Destroy (this.gameObject);
 	}
 

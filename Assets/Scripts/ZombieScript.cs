@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class ZombieScript : MonoBehaviour {
 
 	public Material trans;
 	private GameController GameController;
 	private bool seen;
-	private float moveSpeed = 0.02f;
-	private float moveSpeedAway = -0.02f;
-	private bool hit = false;
-	public GameObject hat;
+	private float moveSpeed = 0.01f;
+	public bool hit = false;
 	public GameObject leftArm;
 	public GameObject rightArm;
 	private Vector3 startPoint;
-	public GameObject AmmoCratePrefab;
 
 	private Material enemyColor;
 	private float colorRate = 5;
@@ -31,10 +28,6 @@ public class Enemy : MonoBehaviour {
 		if (this.GameController.player != null && !hit) {
 			Vector3 TargetPlayer = new Vector3 (this.GameController.player.transform.position.x, transform.position.y, this.GameController.player.transform.position.z);
 
-			if (this.GameController.player.GetComponent<PlayerScript> ().powerActive == true) {
-				moveSpeed = moveSpeedAway;
-			}
-
 			if (Vector3.Distance (TargetPlayer, transform.position) < 3.5f || seen) {
 
 				seen = true;
@@ -49,17 +42,19 @@ public class Enemy : MonoBehaviour {
 		//Enemy er blevet skudt, eller player er død.
 		else {
 			if(colorRate > 0.1f){
+				this.GetComponent<MeshRenderer>().material = trans;
+
+
 				//print (colorRate);
 				enemyColor = this.GetComponent<MeshRenderer>().material;
 				//print (enemyColor.color.a);
-
 				if(colorRate <= 1.0f){
 					colorRate = Mathf.MoveTowards(colorRate, 0.1f, 0.01f);
 				}
 				else{
 					colorRate = Mathf.MoveTowards(colorRate, 1.0f, 0.5f);
 				}
-
+				print (colorRate);
 				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
 				leftArm.GetComponent<MeshRenderer>().material = enemyColor;
 				rightArm.GetComponent<MeshRenderer>().material = enemyColor;
@@ -78,37 +73,18 @@ public class Enemy : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Player" && !hit) {
-			if(this.GameController.player.GetComponent<PlayerScript>().powerActive == true){
-				if(Random.Range(0,3) == 0){
-					GameObject ammocrate = Instantiate(AmmoCratePrefab);
-					ammocrate.transform.position = new Vector3(this.transform.position.x, 0.1f, this.transform.position.z);
-				}
-				Destroy (this.gameObject);
-			}
-			else{
-				other.gameObject.GetComponent<PlayerScript>().enabled = false;
-				other.gameObject.GetComponent<Rigidbody>().AddForce((other.gameObject.transform.position - transform.position)*500);
-				this.GameController.player = null;
-			}
+			//other.gameObject.GetComponent<PlayerScript> ().enabled = false;
+			other.gameObject.GetComponent<Rigidbody> ().AddForce ((other.gameObject.transform.position - transform.position));
+			//this.GameController.player = null;
+
+
+			this.GameController.Infected();
 		}
 
 		if (other.gameObject.tag == "Bullet" && !hit) {
 			Destroy(other.gameObject);
+			//hit = true;
 
-			if(Random.Range(0,3) == 0){
-				GameObject ammocrate = Instantiate(AmmoCratePrefab);
-				ammocrate.transform.position = this.transform.position;
-			}
-			hit = true;
-			this.GetComponent<MeshRenderer>().material = trans;
-//			hat.transform.SetParent(null);
-//			hat.GetComponent<Rigidbody>().isKinematic = false;
-//			hat.GetComponent<Rigidbody>().AddForce(new Vector3(0,100f,0));
-		}
-
-		
-		if (other.gameObject.tag == "Enemy") {
-			startPoint = this.transform.position;
 		}
 	}
 

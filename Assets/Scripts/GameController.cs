@@ -44,4 +44,10 @@ public class GameController : MonoBehaviour {
 	public void LoadLevel(string levelName){
 		Application.LoadLevel (levelName);
 	}
+
+	//Used in tutorial 3!
+	public void Infected(){
+		this.GetComponent<ActivatorScript> ().ActivateGameobjectsOnce ();
+		player.GetComponent<PlayerScript> ().BecomeInfected ();
+	}
 }

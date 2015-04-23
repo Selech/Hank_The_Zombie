@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9f5650a04044e158d836c4fbeb060c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trans: {fileID: 2100000, guid: 6fc225483e9364c038da8a398a8ac24f, type: 2}
   hat: {fileID: 198292}
   leftArm: {fileID: 175020}
   rightArm: {fileID: 103336}
