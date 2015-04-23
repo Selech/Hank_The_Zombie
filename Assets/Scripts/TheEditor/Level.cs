@@ -8,7 +8,6 @@ using System.ComponentModel;
 using System.Reflection;
 using System.IO;
 
-
 [XmlRoot("LevelData")]
 public class Level {
 
@@ -75,13 +74,16 @@ public class Level {
 	[XmlArrayItem("Tile")]
 	public List<Tile> Tiles = new List<Tile>();
 
-	public void Save(string path)
+	public void Save(string directory, string fileName)
 	{
-		var serializer = new XmlSerializer(typeof(Level));
-		using(var stream = new FileStream(path, FileMode.Create))
-		{
-			serializer.Serialize(stream, this);
-		}
+		// Check for directory and make it if doesn't exist
+		Directory.CreateDirectory(directory);
+
+		// Write file
+		System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(this.GetType());
+		System.IO.StreamWriter file = new System.IO.StreamWriter(System.IO.Path.Combine(directory, fileName)); //"Save.xml"));
+		ser.Serialize(file, this);
+		file.Close();
 	}
 	
 	public static Level Load(string path)

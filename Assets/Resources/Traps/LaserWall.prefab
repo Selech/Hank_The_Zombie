@@ -10,6 +10,7 @@ GameObject:
   - 224: {fileID: 22492440}
   - 222: {fileID: 22239668}
   - 114: {fileID: 11499922}
+  - 65: {fileID: 6513056}
   m_Layer: 0
   m_Name: LaserWall
   m_TagString: Clickable
@@ -28,7 +29,7 @@ GameObject:
   - 95: {fileID: 9536812}
   m_Layer: 0
   m_Name: LaserWall
-  m_TagString: Clickable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +171,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181718}
   m_Mesh: {fileID: 4300002, guid: 9c2e80282231e441c9fb13c5161769c7, type: 3}
+--- !u!65 &6513056
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6584792
 BoxCollider:
   m_ObjectHideFlags: 1

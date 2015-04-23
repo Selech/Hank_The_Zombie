@@ -156,6 +156,7 @@ public class LevelDesigner : MonoBehaviour
 	 **/
 	public static string GetValueOfTileGridIndex(Vector3 vec)
 	{
+		print ("Victoorrrr: "+vec.ToString());
 		return tileGrid[((int)vec.x + xToMid), (int)(vec.z + zToMid)];
 	}
 
@@ -210,8 +211,8 @@ public class LevelDesigner : MonoBehaviour
 	{
 		PrepareForXMLSave();
 //		print ("Saving into: "+(Directory.Exists(LevelsDirectory + currentLevel.name + ".xml")));
-		string filePath = LevelsDirectory + currentLevel.name + ".xml";
-		currentLevel.Save(filePath);
+		string fileName = currentLevel.name + ".xml";
+		currentLevel.Save(LevelDesigner.LevelsDirectory, fileName);
 	}
 
 	public static bool checkForOverWrite(string levelName)

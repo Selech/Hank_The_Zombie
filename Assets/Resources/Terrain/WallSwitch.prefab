@@ -10,6 +10,7 @@ GameObject:
   - 224: {fileID: 22438784}
   - 222: {fileID: 22277182}
   - 114: {fileID: 11438142}
+  - 65: {fileID: 6539510}
   m_Layer: 0
   m_Name: WallSwitch
   m_TagString: Untagged
@@ -28,7 +29,6 @@ GameObject:
   - 33: {fileID: 3370896}
   - 23: {fileID: 2338214}
   - 95: {fileID: 9542524}
-  - 65: {fileID: 6556294}
   - 114: {fileID: 11485786}
   m_Layer: 0
   m_Name: WallButtonModel
@@ -81,12 +81,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194960}
   m_Mesh: {fileID: 4300000, guid: 88c57e2907a9246e08eae67523c8bf8b, type: 3}
---- !u!65 &6556294
+--- !u!65 &6539510
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194960}
+  m_GameObject: {fileID: 193988}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

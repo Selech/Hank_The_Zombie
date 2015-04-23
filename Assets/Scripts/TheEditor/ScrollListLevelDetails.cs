@@ -53,7 +53,6 @@ public class ScrollListLevelDetails : MonoBehaviour {
 
 	void OnEnable()
 	{
-		print("script was enabled");
 		showExistingValues();
 	}
 
@@ -77,15 +76,9 @@ public class ScrollListLevelDetails : MonoBehaviour {
 
 	void showExistingValues()
 	{
-		Debug.Log("inputName: "+inputName.text);
-		Debug.Log("inputAuthor: "+inputAuthor.text);
-		Debug.Log("inputDescription: "+inputDescription.text);
-		
 		inputName.text				= LevelDesigner.currentLevel.name;
 		inputAuthor.text			= LevelDesigner.currentLevel.author;
 		inputDescription.text		= LevelDesigner.currentLevel.description;
-		Debug.Log("LevelDesigner.currentLevel.winCondition: "+LevelDesigner.currentLevel.winCondition);
-		Debug.Log("LevelDesigner.currentLevel.loseConditio: "+LevelDesigner.currentLevel.loseCondition);
 	}
 
 	void createCheckboxGroup(Button[] btns, int winOrLoseCondition)
@@ -124,7 +117,7 @@ public class ScrollListLevelDetails : MonoBehaviour {
 	{
 		debugText.text  = LevelDesigner.LevelsDirectory + "\n" + debugText.text;
 
-		if(RecursiveFileProcessor.IsFileExisting(inputName.text+".xml", LevelDesigner.LevelsDirectory)) //LevelDesigner.checkForOverWrite(inputName.text)
+		if(RecursiveFileProcessor.IsFileExisting(inputName.text+".xml", LevelDesigner.LevelsDirectory)) 
 		{
 			msgAlreadyExistingSaveGameMenu.SetActive(true);	
 		}

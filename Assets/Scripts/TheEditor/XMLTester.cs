@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using UnityEngine.UI;
 
 public class XMLTester : MonoBehaviour {
+
+	public Text txt;
 
 	// Use this for initialization
 	void Start () {
@@ -48,7 +51,12 @@ public class XMLTester : MonoBehaviour {
 		lvl.Tiles.Add(new Tile(1, 3, "Tile"));
 
 		// Save XML to file
-		lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
+
+		txt.text = Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml") + "\n" + txt.text;
+		lvl.Save(LevelDesigner.LevelsDirectory, lvl.name+".xml");
+			
+		//lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
+		//lvl.Save(lvl.name+".xml");
 	}
 	
 	void createLevel2()
@@ -88,6 +96,7 @@ public class XMLTester : MonoBehaviour {
 		lvl.Tiles.Add(new Tile(2,3, "Terrain/Wall"));
 		
 		// Save XML to file
-		lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
+		lvl.Save(LevelDesigner.LevelsDirectory, lvl.name+".xml");
+		//lvl.Save(lvl.name+".xml");
 	}
 }

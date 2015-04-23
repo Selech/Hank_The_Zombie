@@ -14,6 +14,7 @@ public class EditorMouse : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		print ("mode: "+mode);
 		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) 
 		{
 			if (Input.GetMouseButton (0)) 
@@ -24,7 +25,10 @@ public class EditorMouse : MonoBehaviour
 				
 				if (Physics.Raycast (ray, out hit)) 
 				{
-					if (hit.collider.gameObject.tag == "Clickable") 
+					string tag = hit.collider.gameObject.tag;
+					print ("tag: "+tag);
+					print ("allowClick: "+allowClick);
+					if (tag == "Clickable" || tag == "Removable") 
 					{
 						switch(mode)
 						{
@@ -49,7 +53,10 @@ public class EditorMouse : MonoBehaviour
 									string nameOfRegistered	= hit.collider.gameObject.name.Replace("(Clone)", "");
 									string pathOfPrefab = LevelDesigner.GetValueOfTileGridIndex(vec);
 									string nameofPrefab = pathOfPrefab.Substring((pathOfPrefab.IndexOf("/")+1));
-
+									
+									print ("Name of Registered: "+nameOfRegistered);
+									print ("nameofPrefab: "+nameofPrefab);
+									
 									if(nameOfRegistered != "EmptyTile")
 									{
 										// The object we click must be of the registered on the tile
@@ -71,6 +78,7 @@ public class EditorMouse : MonoBehaviour
 											}
 										
 											// Remove Tile + Place Empty Tile
+											print ("Destroying:  "+hit.collider.gameObject.name);
 											Destroy (hitObj);
 											
 											// Register Placed Tile
@@ -103,8 +111,16 @@ public class EditorMouse : MonoBehaviour
 										LevelDesigner.RegisterOnTile(PositionInsertObject, ScrollListInsertObjects.CurrentFilePath+"/"+nameOfObjectToInsert);
 									}
 								}
-								
 								break;
+
+						case "" :
+							if (allowClick)
+							{
+								allowClick = false;
+								GameObject hitObj = hit.collider.gameObject;
+								hitObj.transform.Rotate(new Vector3(0,90,0));
+							}
+							break;
 						}
 					}
 				}

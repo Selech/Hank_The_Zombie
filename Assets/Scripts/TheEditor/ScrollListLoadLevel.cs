@@ -33,18 +33,33 @@ public class ScrollListLoadLevel : MonoBehaviour {
 
 	void showLevels()
 	{
-		// WinConditionEnum john = WinConditionEnum.Equipment;
-		// Debug.Log(john.ToName());
-
-		List<string> fileNames = RecursiveFileProcessor.ProcessDirectory(Path.Combine(Application.persistentDataPath, "levels/"));
+		List<string> fileNames = RecursiveFileProcessor.ProcessDirectory(Path.Combine(Application.persistentDataPath, LevelDesigner.LevelsDirectory));
 
 		foreach (var name in fileNames) 
 		{
-			if(name != ".DS_Store")
+			if(name != LevelDesigner.LevelsDirectory + ".DS_Store")
 			{
 				GameObject instance = Instantiate(sampleButton);
 				String fileName = Path.GetFileNameWithoutExtension(name);
 				instance.GetComponentInChildren<Text>().text = fileName;
+				
+				//get the screen's width
+				float sWidth = Screen.width;
+				float sHeight = Screen.height;
+				
+				//calculate the rescale ratio
+				float guiRatioX;
+				float magicScaleNum = 1.41f;
+				bool itsFreaky = true;
+				
+				#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER)
+				itsFreaky = false; 
+				#endif
+				
+				guiRatioX = (sWidth / 800.0f) / magicScaleNum;
+				Vector3 GUIsF = new Vector3(guiRatioX, guiRatioX, 0);
+				instance.transform.localScale = GUIsF;
+				
 				instance.transform.SetParent(this.transform);
 
 				instance.GetComponentInChildren<Button>().onClick.AddListener(() => { onSelected(fileName); });

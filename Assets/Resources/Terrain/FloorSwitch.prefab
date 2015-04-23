@@ -10,9 +10,10 @@ GameObject:
   - 224: {fileID: 22416794}
   - 222: {fileID: 22262566}
   - 114: {fileID: 11498678}
+  - 65: {fileID: 6516554}
   m_Layer: 0
   m_Name: FloorSwitch
-  m_TagString: Untagged
+  m_TagString: Removable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,6 @@ GameObject:
   - 4: {fileID: 421686}
   - 33: {fileID: 3399084}
   - 23: {fileID: 2360752}
-  - 65: {fileID: 6546712}
   - 114: {fileID: 11455100}
   m_Layer: 0
   m_Name: FloorButtonModel
@@ -79,12 +79,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180760}
   m_Mesh: {fileID: 4300000, guid: bfa16d6c7f0e2451dafbb2c7de4f2571, type: 3}
---- !u!65 &6546712
+--- !u!65 &6516554
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180760}
+  m_GameObject: {fileID: 117574}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
