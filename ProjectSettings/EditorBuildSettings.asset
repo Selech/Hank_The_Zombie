@@ -8,10 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/TestLevel_5.unity
   - enabled: 1
-    path: Assets/Scenes/LevelSelection.unity
+    path: Assets/Scenes/Levels/TutorialLevel1.unity
   - enabled: 1
-    path: Assets/Scenes/Levels/TestLevel_1.unity
-  - enabled: 1
-    path: Assets/Scenes/Levels/TestLevel_2.unity
-  - enabled: 1
-    path: Assets/Scenes/Levels/TestLevel_3.unity
+    path: Assets/Scenes/Levels/TutorialLevel2.unity

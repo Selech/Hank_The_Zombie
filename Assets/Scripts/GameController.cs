@@ -5,6 +5,10 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public GameObject winScreen;
+	public GameObject loseScreen;
+
+	public GameObject player;
+
 	public Camera overview;
 	public Camera gameplay;
 	public GameObject door;
@@ -19,6 +23,10 @@ public class GameController : MonoBehaviour {
 		if (Statics.BatteriesLeft == 0) {
 			//winScreen.SetActive(true);
 			door.SetActive(false);
+		}
+
+		if (!loseScreen.activeSelf && !player) {
+			loseScreen.SetActive(true);
 		}
 	}
 

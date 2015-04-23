@@ -63,8 +63,8 @@ public class Controller3DPort : MonoBehaviour
 		//
 
 		if (rotation != new Vector3 (0, 0, 0)) {
-			_playerTransform.gameObject.GetComponent<PlayerScript> ().Shoot ();
 			FaceDirection(rotation);
+			_playerTransform.gameObject.GetComponent<PlayerScript> ().Shoot ();
 		} else {
 			_playerTransform.gameObject.GetComponent<PlayerScript> ().NotShoot ();
 		}
@@ -100,7 +100,7 @@ public class Controller3DPort : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         do
         {
-            _playerTransform.rotation = Quaternion.Lerp(_playerTransform.rotation, lookRotation, Time.deltaTime * ROTATE_SPEED);
+			_playerTransform.rotation = Quaternion.Lerp(_playerTransform.rotation, lookRotation, 500f);//Time.deltaTime * ROTATE_SPEED);
             yield return null;
         }
         while ((direction - _playerTransform.forward).sqrMagnitude > 0.2f);

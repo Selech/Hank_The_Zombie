@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	private MouseControls GameController;
+	private GameController GameController;
 	private bool seen;
 	private float moveSpeed = 0.02f;
 	private float moveSpeedAway = -0.02f;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		seen = false;
-		this.GameController = GameObject.Find ("Controller").GetComponent<MouseControls>();
+		this.GameController = GameObject.Find ("Controller").GetComponent<GameController>();
 		startPoint = transform.position;
 	}
 	
