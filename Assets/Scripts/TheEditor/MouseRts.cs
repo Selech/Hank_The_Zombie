@@ -62,6 +62,28 @@ public class MouseRts : MonoBehaviour
 				Zooming = false;
 			}
 		}
+
+		#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER
+			CheckForMovingInEditor(); 
+		#endif
+	}
+
+	void CheckForMovingInEditor()
+	{
+		var translation = Vector3.zero;
+		
+		// Move camera with arrow keys
+		translation += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		
+		// Move camera with mouse
+		if (Input.GetMouseButton(1)) // MMB
+		{
+			translation += new Vector3 (-(Input.GetAxis("Mouse X") * DragSpeed*20 * Time.deltaTime), 0,
+										-(Input.GetAxis("Mouse Y") * DragSpeed*20 * Time.deltaTime));
+		}
+		
+		// Finally move camera parallel to world axis
+		GetComponent<Camera>().transform.position += translation;
 	}
 
 	void CalcDeltaTouch()
