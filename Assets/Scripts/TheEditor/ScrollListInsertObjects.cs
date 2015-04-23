@@ -49,7 +49,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
 		foreach (var obj in InsertableObjects) 
 		{
-			print ("gameobj: "+obj.name);
+//			print ("gameobj: "+obj.name);
 			GameObject listItemGameObject = Instantiate(SampleButton);
 			listItemGameObject.GetComponentInChildren<Image>().sprite = obj.GetComponent<Image>().sprite;
 			GameObject tempObj = obj;
@@ -61,36 +61,35 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 			//calculate the rescale ratio
 			float guiRatioX;
-			float magicScaleNumberDesktop = 1.45f;
-			float magicScaleNumberMobile = 1.6f;
+			float magicScaleNum = 1.45f;
 			bool itsFreaky = true;
 
 			#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER)
 			itsFreaky = false; 
 			#endif
-			
-			print ("itsFreaky: "+itsFreaky);
-			txt.text = "itsFreaky: "+itsFreaky+ "\n" +txt.text;
+//			
+//			print ("itsFreaky: "+itsFreaky);
+//			txt.text = "itsFreaky: "+itsFreaky+ "\n" +txt.text;
 
-			guiRatioX = (sWidth / 800.0f) / ((itsFreaky) ? magicScaleNumberMobile : magicScaleNumberDesktop);
-
-			print ("sWidth / 800.0f): "+(sWidth / 800.0f));
-			print ("sWidth: "+sWidth);
-			print ("guiRatioX: "+guiRatioX);
-
-			txt.text = "sHeight: "+sHeight+ "\n" +txt.text;
-			txt.text = "sWidth: "+sWidth+ "\n" +txt.text;
-			txt.text = "guiRatioX: "+guiRatioX+ "\n" +txt.text;
+			guiRatioX = (sWidth / 800.0f) / magicScaleNum;
+//
+//			print ("sWidth / 800.0f): "+(sWidth / 800.0f));
+//			print ("sWidth: "+sWidth);
+//			print ("guiRatioX: "+guiRatioX);
+//
+//			txt.text = "sHeight: "+sHeight+ "\n" +txt.text;
+//			txt.text = "sWidth: "+sWidth+ "\n" +txt.text;
+//			txt.text = "guiRatioX: "+guiRatioX+ "\n" +txt.text;
 
 			//create a rescale Vector3 with the above ratio
-			print ("før: "+btn.transform.localScale.ToString());
-			txt.text = ("før: "+btn.transform.localScale.ToString())+ "\n" +txt.text;
+//			print ("før: "+btn.transform.localScale.ToString());
+//			txt.text = ("før: "+btn.transform.localScale.ToString())+ "\n" +txt.text;
 
 			Vector3 GUIsF = new Vector3(guiRatioX, guiRatioX, 0);
 
 			btn.transform.localScale = GUIsF;
-			print ("efter: "+btn.transform.localScale.ToString());
-			txt.text = ("efter: "+btn.transform.localScale.ToString())+ "\n" +txt.text;
+//			print ("efter: "+btn.transform.localScale.ToString());
+//			txt.text = ("efter: "+btn.transform.localScale.ToString())+ "\n" +txt.text;
 			
 			btn.onClick.AddListener(() => { OnSelected(tempObj); });
 
