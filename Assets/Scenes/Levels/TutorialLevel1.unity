@@ -927,7 +927,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 70866241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.49240971, y: -2.5, z: 0}
+  m_LocalPosition: {x: -10.4924097, y: -3.5, z: 0}
   m_LocalScale: {x: 1.79999995, y: 1.79999995, z: 1}
   m_Children:
   - {fileID: 1633489427}
@@ -948,10 +948,10 @@ MonoBehaviour:
   _anchor: 9
   _axisNameX: Horizontal
   _axisNameY: Vertical
-  _touchZoneSize: {x: 6, y: 6}
-  _margins: {x: 3, y: 3}
+  _touchZoneSize: {x: 10, y: 10}
+  _margins: {x: 2, y: 2}
   _dragRadius: 1.5
-  _snapsToFinger: 1
+  _snapsToFinger: 0
   _isHiddenIfNotTweaking: 0
 --- !u!1001 &77849683
 Prefab:
@@ -5388,6 +5388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 977621728}
+  loseScreen: {fileID: 0}
+  player: {fileID: 0}
   overview: {fileID: 0}
   gameplay: {fileID: 491360950}
   door: {fileID: 0}
@@ -10901,7 +10903,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363749168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.49240971, y: -2.5, z: 0}
+  m_LocalPosition: {x: 10.4924097, y: -3.5, z: 0}
   m_LocalScale: {x: 1.79999995, y: 1.79999995, z: 1}
   m_Children:
   - {fileID: 499104568}
@@ -10922,10 +10924,10 @@ MonoBehaviour:
   _anchor: 10
   _axisNameX: Horizontal
   _axisNameY: Vertical
-  _touchZoneSize: {x: 6, y: 6}
-  _margins: {x: 3, y: 3}
+  _touchZoneSize: {x: 10, y: 10}
+  _margins: {x: 2, y: 2}
   _dragRadius: 1.5
-  _snapsToFinger: 1
+  _snapsToFinger: 0
   _isHiddenIfNotTweaking: 0
 --- !u!1001 &1364740737
 Prefab:
