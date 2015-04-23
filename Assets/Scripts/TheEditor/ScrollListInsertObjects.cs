@@ -62,7 +62,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 			//calculate the rescale ratio
 			float guiRatioX;
 			float magicScaleNumberDesktop = 1.45f;
-			float magicScaleNumberMobile = 3.5f;
+			float magicScaleNumberMobile = 1.6f;
 			bool itsFreaky = true;
 
 			#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER)
