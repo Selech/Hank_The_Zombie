@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GameStart() {
-		this.GetComponent<TimeController> ().enabled = true;
+		//this.GetComponent<TimeController> ().enabled = true;
 
 //		overview.enabled = !overview.enabled;
 //		gameplay.enabled = !gameplay.enabled;
