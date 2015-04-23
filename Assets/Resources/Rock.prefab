@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 407002}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c277d6afc10394986b7cadfc048ba618, type: 2}
+  - {fileID: 2100000, guid: e4b58117c3e3c49b68e29232edd8b99f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

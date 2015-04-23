@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2323084}
   - 111: {fileID: 11192354}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Desert
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c277d6afc10394986b7cadfc048ba618, type: 2}
+  - {fileID: 2100000, guid: 34c077519c7014bf3b2dabcd1d3d799a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
