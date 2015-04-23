@@ -8183,7 +8183,6 @@ MonoBehaviour:
   overview: {fileID: 0}
   gameplay: {fileID: 491360950}
   door: {fileID: 1463921321}
-  ammo: {fileID: 0}
 --- !u!114 &630558096
 MonoBehaviour:
   m_ObjectHideFlags: 0

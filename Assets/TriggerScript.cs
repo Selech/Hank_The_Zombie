@@ -7,6 +7,7 @@ public class TriggerScript : MonoBehaviour {
 
 	void OnTriggerEnter(){
 		canvas.SetActive (true);
+		Destroy (this.gameObject);
 	}
 
 }

@@ -155,8 +155,11 @@ public class PlayerScript : MonoBehaviour
 		}
 	}
 
-	public void GiveAmmo(){
-		ammoAmount += 10;
+	public void GiveAmmo(int ammo){
+		ammoAmount += ammo;
+		if (ammoAmount > ammoCapacity) {
+			ammoAmount = ammoCapacity;
+		}
 	}
 
 	private void UpdateSliders(){

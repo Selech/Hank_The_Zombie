@@ -19,7 +19,7 @@ public class MouseControlsV3 : MonoBehaviour {
 				//print ();
 				if (Physics.Raycast (ray, out hit)) {
 					if (hit.collider.gameObject.tag == "Player") {
-						hit.collider.gameObject.GetComponent<PlayerScript>().ActivatePush();
+						player.GetComponent<PlayerScript>().ActivatePush();
 					}
 				}
 			}
