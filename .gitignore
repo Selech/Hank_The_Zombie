@@ -1,39 +1,37 @@
-#	Store this file at the root of your local repository.
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+Assets/AssetStoreTools*
 
-.DS_Store
 
-Library/AssetImportState
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
 
-Library/AssetServerCacheV3
-
-Library/FailedAssetImports.txt
-
-Library/ScriptAssemblies
-
-Library/ScriptMapper
-
-Library/assetDatabase3
-
-Library/cache
-
-Library/ShaderCache
-
-Library/expandedItems
-
-Library/metadata
-
-Library/previews
-
-Library/guidmapper
-
-Temp
-
+ExportedObj/
+*.svd
+*.userprefs
 *.csproj
-
 *.pidb
-
+*.suo
 *.sln
+*.user
+*.unityproj
+*.booproj
 
-build
 
-############
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
