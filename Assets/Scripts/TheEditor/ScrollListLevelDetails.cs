@@ -9,6 +9,7 @@ using System.IO;
 
 public class ScrollListLevelDetails : MonoBehaviour {
 
+	public Text debugText;
 	public Button btnSave;
 	public Text inputName;
 	public Text inputAuthor;
@@ -121,6 +122,8 @@ public class ScrollListLevelDetails : MonoBehaviour {
 
 	public void saveLevel()
 	{
+		debugText.text  = LevelDesigner.LevelsDirectory + "\n" + debugText.text;
+
 		if(RecursiveFileProcessor.IsFileExisting(inputName.text+".xml", LevelDesigner.LevelsDirectory)) //LevelDesigner.checkForOverWrite(inputName.text)
 		{
 			msgAlreadyExistingSaveGameMenu.SetActive(true);	
