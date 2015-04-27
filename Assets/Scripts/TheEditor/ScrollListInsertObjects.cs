@@ -56,7 +56,6 @@ public class ScrollListInsertObjects : MonoBehaviour
 
 			//get the screen's width
 			float sWidth = Screen.width;
-			float sHeight = Screen.height;
 
 			//calculate the rescale ratio
 			float guiRatioX;

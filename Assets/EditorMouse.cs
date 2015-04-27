@@ -14,7 +14,6 @@ public class EditorMouse : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		print ("mode: "+mode);
 		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ()) 
 		{
 			if (Input.GetMouseButton (0)) 
@@ -25,102 +24,26 @@ public class EditorMouse : MonoBehaviour
 				
 				if (Physics.Raycast (ray, out hit)) 
 				{
-					string tag = hit.collider.gameObject.tag;
-					print ("tag: "+tag);
-					print ("allowClick: "+allowClick);
-					if (tag == "Clickable" || tag == "Removable") 
+					// Object clicked
+					GameObject hitObj = hit.collider.gameObject;
+
+					// Tag of clicked Object
+					string tag = hitObj.tag;
+
+					// Position of clicked object
+					Vector3 position = hitObj.transform.position;
+
+					// Cell of clicked object
+					Cell cell = LevelDesigner.getCell(position);
+
+					if (allowClick) //  && (tag == "Clickable" || tag == "Removable")
 					{
 						switch(mode)
 						{
-							case "InsertTile" :
-								if (hit.collider.gameObject.name == "EmptyTile(Clone)")
-								{
-									Vector3 position = hit.collider.gameObject.transform.position;
-									Destroy (hit.collider.gameObject);
-									GameObject tile = (GameObject) LoadAssetFromString("Tile");
-									tile.transform.position = position;
-								
-									// Register Placed Tile
-									LevelDesigner.RegisterOnTile(position, "Tile");
-								}
-								break;
-
-							case "DeleteTile" :
-								if (allowClick)
-								{
-									GameObject hitObj 	= hit.collider.gameObject;
-									Vector3 vec = hitObj.transform.position;
-									string nameOfRegistered	= hit.collider.gameObject.name.Replace("(Clone)", "");
-									string pathOfPrefab = LevelDesigner.GetValueOfTileGridIndex(vec);
-									string nameofPrefab = pathOfPrefab.Substring((pathOfPrefab.IndexOf("/")+1));
-									
-									print ("Name of Registered: "+nameOfRegistered);
-									print ("nameofPrefab: "+nameofPrefab);
-									
-									if(nameOfRegistered != "EmptyTile")
-									{
-										// The object we click must be of the registered on the tile
-										if (nameOfRegistered == nameofPrefab)
-										{
-											// Place Empty Tile if removed obj was a "Tile"
-											if(nameOfRegistered == "Tile")
-											{
-												GameObject obj = (GameObject) LoadAssetFromString("EmptyTile");
-												obj.transform.position = vec;
-												
-												// Register Placed Tile
-												LevelDesigner.RegisterOnTile(vec, "EmptyTile");
-											}
-											else
-											{
-												// If not a "Tile" only allow 1 object deletion at the time
-												allowClick = false;
-											}
-										
-											// Remove Tile + Place Empty Tile
-											print ("Destroying:  "+hit.collider.gameObject.name);
-											Destroy (hitObj);
-											
-											// Register Placed Tile
-											LevelDesigner.RegisterOnTile(vec, "Tile");
-										}
-									}
-								}
-								break;
-
-							case "InsertObject" :
-								if (allowClick)
-								{
-									// Allow insertion of only 1 object at the time
-									allowClick = false;
-
-									string clickedObjectName = hit.collider.gameObject.name.Replace("(Clone)", "");
-									Vector3 PositionInsertObject = hit.collider.gameObject.transform.position;
-									
-									print ("LevelDesigner.IsTileOccupied(PositionInsertObject): "+LevelDesigner.IsTileClear(PositionInsertObject));
-
-									if(LevelDesigner.IsTileClear(PositionInsertObject))
-									{
-										print ("Name of object: "+clickedObjectName);
-										GameObject ObjectInsert = Instantiate(LevelDesigner.ObjectToBeInserted);
-										ObjectInsert.transform.position = PositionInsertObject;
-										ObjectInsert.tag = "Clickable";
-										
-										// Register Placed object
-										string nameOfObjectToInsert = LevelDesigner.ObjectToBeInserted.name.Replace("(Clone)", "");
-										LevelDesigner.RegisterOnTile(PositionInsertObject, ScrollListInsertObjects.CurrentFilePath+"/"+nameOfObjectToInsert);
-									}
-								}
-								break;
-
-						case "" :
-							if (allowClick)
-							{
-								allowClick = false;
-								GameObject hitObj = hit.collider.gameObject;
-								hitObj.transform.Rotate(new Vector3(0,90,0));
-							}
-							break;
+							case "InsertTile" : 	InsertTile(hitObj, position, cell);		break;
+							case "Delete" : 		Delete(position, cell); 				break;
+							case "InsertObject" : 	InsertObject(hitObj, position, cell); 	break;
+							case "" : 				RotateObject(hitObj); 					break;
 						}
 					}
 				}
@@ -132,6 +55,64 @@ public class EditorMouse : MonoBehaviour
 				allowClick = true;
 			}
 		}
+	}
+
+	private void InsertTile(GameObject hitObj, Vector3 position, Cell cell)
+	{
+		if (cell == null)
+		{
+			// Remove Empty Tile
+			Destroy (hitObj);
+			
+			// Register a new cell along with a new Tile
+			LevelDesigner.RegisterTile(position, LevelDesigner.TileResource.Tile);
+		}
+	}
+
+	private void Delete(Vector3 position, Cell cell)
+	{
+		// Only start deleting if cell is not null
+		if(cell != null)
+		{
+			// Delete order: "Object" -> "Wall" -> "Tile"
+			if (cell.obj != null)
+			{
+				allowClick = false;
+				Destroy (cell.obj);
+				cell.obj = null;
+			}
+			else if (cell.wall != null)
+			{
+				allowClick = false;
+				Destroy (cell.wall);
+				cell.wall = null;
+			}
+			else if (cell.tile != null)
+			{
+				// Reset Cell
+				LevelDesigner.RemoveCell(position);
+			}
+		}
+	}
+
+	private void InsertObject(GameObject hitObj, Vector3 position, Cell cell)
+	{
+		// Allow insertion of only 1 object at the time
+		allowClick = false;
+
+		// Insert object at position and register in a new cell
+		LevelDesigner.RegisterObjectUsingGameObject(position, LevelDesigner.ObjectToBeInserted);
+	}
+
+	private void RotateObject(GameObject hitObj)
+	{
+		print ("ROTATE BIATCH!");
+
+		// Allow one single rotation at the time
+		allowClick = false;
+
+		// Rotate object by 90 degrees
+		hitObj.transform.Rotate(new Vector3(0,90,0));
 	}
 
 	GameObject LoadAssetFromString(string assetName)

@@ -8,7 +8,6 @@ public class CollectableScript : MonoBehaviour {
 	void Start () {
 		Statics.BottlesLeft++;
 		GameObject.Find("Score").GetComponent<Text>().text = "Bottles left: " + Statics.BottlesLeft;
-
 	}
 	
 	// Update is called once per frame

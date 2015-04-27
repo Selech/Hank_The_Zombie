@@ -21,6 +21,7 @@ public class MouseRts : MonoBehaviour
 	private const int ZoomMax = 140;
 	private bool Zooming;
 	private int ZoomCur = 50;
+	private bool onDesktop = false;
 	
 	private const int PanSpeed = 7;
 	private const int PanAngleMin = 50;
@@ -33,6 +34,8 @@ public class MouseRts : MonoBehaviour
 	public Text txt;
 
 	private Transform cameraTransform;
+
+	public string cam;
 
 	// Set Orientation
 	void Start()
@@ -64,11 +67,12 @@ public class MouseRts : MonoBehaviour
 		}
 
 		#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER
-			CheckForMovingInEditor(); 
+			CheckForMovingOnDesktop(); 
+			CheckForZoomOnDesktop();
 		#endif
 	}
 
-	void CheckForMovingInEditor()
+	void CheckForMovingOnDesktop()
 	{
 		var translation = Vector3.zero;
 		
@@ -127,7 +131,7 @@ public class MouseRts : MonoBehaviour
 				// Hold button and drag camera around
 				if (indexPointer==0)
 				{
-					if(Mathf.Abs(xDiff)<50 && Mathf.Abs(yDiff)<50)
+					if (Mathf.Abs(xDiff) < 50 && Mathf.Abs(yDiff) < 50)
 					{
 						translation -= new Vector3(-(xDiff * DragSpeed * Time.deltaTime), 0,
 						                           -(yDiff * DragSpeed * Time.deltaTime));
@@ -139,28 +143,83 @@ public class MouseRts : MonoBehaviour
 			GetComponent<Camera>().transform.position += translation;
 		}
 	}
-	
+
+	void CheckForZoomOnDesktop()
+	{
+		if(Input.GetAxis("Mouse ScrollWheel") != 0)
+		{
+			if(Input.GetAxis("Mouse ScrollWheel") < 0)
+			{
+				// Zooming in
+				if (ZoomCur>ZoomMin) 
+				{
+					ZoomCur -= ZoomSpeed;
+					if(cam == "orthographic")
+					{
+						Camera.main.orthographicSize -= 0.2f;
+					}
+					else
+					{
+						transform.position += cameraTransform .forward * (Time.deltaTime * ZoomSpeed);//deltaMagnitudeDiff);
+						Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, 2*Time.deltaTime);
+					}
+				}
+			}
+			else
+			{
+				// Zooming out
+				if(ZoomCur<ZoomMax)
+				{
+					ZoomCur += ZoomSpeed;
+					if(cam == "orthographic")
+					{
+						Camera.main.orthographicSize += 0.2f;
+					}
+					else
+					{
+						transform.position -= cameraTransform .forward * (Time.deltaTime * ZoomSpeed);//deltaMagnitudeDiff);
+						Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, 2*Time.deltaTime);
+					}
+				}
+			}
+		}
+	}
+
 	void CheckForZoom()
 	{
 		string pinchZoomingOut = "";
-
+		
 		if (Mathf.Abs(deltaMagnitudeDiff)>3)
 		{
 			Zooming = true;
 			pinchZoomingOut = (deltaMagnitudeDiff > 0) ? "zoomOut" : "zoomIn";
-
+			
 			// Zooming in
 			if ((Input.GetKey("t") || Zooming) && ZoomCur>ZoomMin && pinchZoomingOut=="zoomIn") {
 				ZoomCur -= ZoomSpeed;
-				transform.position += cameraTransform .forward * (Time.deltaTime * ZoomSpeed);//deltaMagnitudeDiff);
-				Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, 2*Time.deltaTime);
+				if(cam == "orthographic")
+				{
+					Camera.main.orthographicSize -= 0.2f;
+				}
+				else
+				{
+					transform.position += cameraTransform .forward * (Time.deltaTime * ZoomSpeed);//deltaMagnitudeDiff);
+					Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, 2*Time.deltaTime);
+				}
 			}
 			// Zooming out
 			else if((Input.GetKey("g") || Zooming) && ZoomCur<ZoomMax && pinchZoomingOut=="zoomOut")
 			{
 				ZoomCur += ZoomSpeed;
-				transform.position -= cameraTransform .forward * (Time.deltaTime * ZoomSpeed);//deltaMagnitudeDiff);
-				Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, 2*Time.deltaTime);
+				if(cam == "orthographic")
+				{
+					Camera.main.orthographicSize += 0.2f;
+				}
+				else
+				{
+					transform.position -= cameraTransform .forward * (Time.deltaTime * ZoomSpeed);//deltaMagnitudeDiff);
+					Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, 2*Time.deltaTime);
+				}
 			}
 		}
 		else if (Zooming && Mathf.Abs(deltaMagnitudeDiff)<0.5)

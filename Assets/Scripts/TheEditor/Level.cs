@@ -70,9 +70,9 @@ public class Level {
 		[Description("Killed")] Killed, 
 		[Description("Caught")] Caught}
 
-	[XmlArray("Tiles")]
-	[XmlArrayItem("Tile")]
-	public List<Tile> Tiles = new List<Tile>();
+	[XmlArray("Cells")]
+	[XmlArrayItem("Cell")]
+	public List<Cell> Cells = new List<Cell>();
 
 	public void Save(string directory, string fileName)
 	{

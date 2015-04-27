@@ -1,11 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.IO;
 using UnityEngine.UI;
 
 public class XMLTester : MonoBehaviour {
-
-	public Text txt;
 
 	// Use this for initialization
 	void Start () {
@@ -36,27 +34,20 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetWinCondition(Level.WinConditionEnum.Escape);
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Caught);
 		
-		lvl.Tiles.Add(new Tile(1, 2, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(1, 1, "Tile"));
-		lvl.Tiles.Add(new Tile(1, 1, "Terrain/Chair"));
-		lvl.Tiles.Add(new Tile(0, 0, "Tile"));
-		lvl.Tiles.Add(new Tile(0, 2, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(0, 1, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(0, 0, "Traps/BearTrap"));
-		lvl.Tiles.Add(new Tile(2, 0, "Traps/LaserWall"));
-		lvl.Tiles.Add(new Tile(4, 0, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(2, 0, "Tile"));
-		lvl.Tiles.Add(new Tile(2, 2, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(3, 1, "Tile"));
-		lvl.Tiles.Add(new Tile(1, 3, "Tile"));
+		lvl.Cells.Add(new Cell(1, 0, 2, null, new ObjectAtCell("Wall", 0)));
+		lvl.Cells.Add(new Cell(1, 0, 1, new ObjectAtCell("Chair", 90), null, new ObjectAtCell("Tile", 0)));
+		lvl.Cells.Add(new Cell(0, 0, 0, new ObjectAtCell("BearTrap",0), null, new ObjectAtCell("Tile",0)));
+		lvl.Cells.Add(new Cell(0, 0, 2, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(0, 0, 1, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(2, 0, 1, new ObjectAtCell("LaserWall",0)));
+		lvl.Cells.Add(new Cell(4, 0, 0, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(2, 0, 0, null, null, new ObjectAtCell("Tile",0)));
+		lvl.Cells.Add(new Cell(2, 0, 2, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(3, 0, 1, null, null, new ObjectAtCell("Tile",0)));
+		lvl.Cells.Add(new Cell(1, 0, 3, null, null, new ObjectAtCell("Tile",0)));
 
 		// Save XML to file
-
-		txt.text = Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml") + "\n" + txt.text;
 		lvl.Save(LevelDesigner.LevelsDirectory, lvl.name+".xml");
-			
-		//lvl.Save(Path.Combine (Application.persistentDataPath, "levels/"+lvl.name+".xml"));
-		//lvl.Save(lvl.name+".xml");
 	}
 	
 	void createLevel2()
@@ -81,22 +72,22 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetWinCondition(Level.WinConditionEnum.Infect);
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Killed);
 		
-		lvl.Tiles.Add(new Tile(1,2, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(2,2, "Traps/BearTrap"));
-		lvl.Tiles.Add(new Tile(1,1, "Terrain/Chair"));
-		lvl.Tiles.Add(new Tile(1,0, "Tile"));
-		lvl.Tiles.Add(new Tile(2,0, "Traps/LaserWall"));
-		lvl.Tiles.Add(new Tile(3,0, "Traps/BearTrap"));
-		lvl.Tiles.Add(new Tile(4,0, "Tile"));
-		lvl.Tiles.Add(new Tile(5,0, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(5,1, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(5,2, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(4,3, "Terrain/Wall"));
-		lvl.Tiles.Add(new Tile(2,1, "Tile"));
-		lvl.Tiles.Add(new Tile(2,3, "Terrain/Wall"));
+		lvl.Cells.Add(new Cell(1, 0, 2, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(2, 0, 2, new ObjectAtCell("BearTrap",0)));
+		lvl.Cells.Add(new Cell(1, 0, 1, new ObjectAtCell("Chair", 180)));
+		lvl.Cells.Add(new Cell(2, 0, 2, new ObjectAtCell("BearTrap",270)));
+		lvl.Cells.Add(new Cell(1, 0, 0, null, null, new ObjectAtCell("Tile",0)));
+		lvl.Cells.Add(new Cell(2, 0, 0, new ObjectAtCell("LaserWall",0)));
+		lvl.Cells.Add(new Cell(3, 0, 0, new ObjectAtCell("BearTrap",0)));
+		lvl.Cells.Add(new Cell(4, 0, 0, null, null, new ObjectAtCell("Tile",0)));
+		lvl.Cells.Add(new Cell(5, 0, 0, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(5, 0, 1, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(5, 0, 2, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(4, 0, 3, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(2, 0, 1, null, null, new ObjectAtCell("Tile",0)));
+		lvl.Cells.Add(new Cell(2, 0, 3, null, new ObjectAtCell("Wall",0)));
 		
 		// Save XML to file
 		lvl.Save(LevelDesigner.LevelsDirectory, lvl.name+".xml");
-		//lvl.Save(lvl.name+".xml");
 	}
 }

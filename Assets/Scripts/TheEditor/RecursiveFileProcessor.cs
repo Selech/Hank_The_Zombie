@@ -45,6 +45,26 @@ public class RecursiveFileProcessor
 		return false;
 	}
 
+	
+	/**
+	 * Return the path of the first encountered file of the specified name pattern within the specified directory and its sub-directories.
+	 **/
+	public static string RetrievePathOfFile(string fileNameWithExtension, string targetDirectory)
+	{
+		List<string> list = ProcessDirectory(targetDirectory);
+		int length = list.Count;
+		for(int i=0; i<length; i++)
+		{
+			if(list[i] == targetDirectory+fileNameWithExtension)
+			{
+				LevelDesigner.print("dir + ext: "+(targetDirectory+fileNameWithExtension));
+				return targetDirectory;
+			}
+		}
+		
+		return null;
+	}
+
 	public static int countFilesInDirectory(string dir)
 	{
 		return Directory.GetFiles(dir).Length;
