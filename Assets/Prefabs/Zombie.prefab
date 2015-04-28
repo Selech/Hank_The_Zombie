@@ -303,7 +303,7 @@ MonoBehaviour:
   hit: 0
   leftArm: {fileID: 136842}
   rightArm: {fileID: 198612}
-  head: {fileID: 0}
+  head: {fileID: 139306}
 --- !u!135 &13534892
 SphereCollider:
   m_ObjectHideFlags: 1
