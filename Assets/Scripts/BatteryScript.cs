@@ -4,6 +4,8 @@ using System.Collections;
 
 public class BatteryScript : MonoBehaviour {
 
+	public AudioClip powerdown;
+
 	// Use this for initialization
 	void Start () {
 		Statics.BatteriesLeft++;
@@ -16,8 +18,9 @@ public class BatteryScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other){
-		print (other.gameObject.tag);
 		if (other.gameObject.tag == "Player") {
+			AudioSource.PlayClipAtPoint (powerdown, GameObject.Find("Main Camera").GetComponent<Transform>().position);
+
 			Statics.BatteriesLeft--;
 			GameObject.Find("Score").GetComponent<Text>().text = "Batteries left: " + Statics.BatteriesLeft;
 

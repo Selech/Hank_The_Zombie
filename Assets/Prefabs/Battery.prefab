@@ -413,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f908cce37f7427ba94713be394c3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerdown: {fileID: 8300000, guid: f7bb2bcd1f1c04a1c94320d7b2196618, type: 3}
 --- !u!136 &13600856
 CapsuleCollider:
   m_ObjectHideFlags: 1
