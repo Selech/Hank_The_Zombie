@@ -556,8 +556,6 @@ MonoBehaviour:
   direction: {fileID: 125370}
   gun: {fileID: 120296}
   bulletPrefab: {fileID: 192888, guid: e8616950fe37b401fadfd704391fe1c1, type: 2}
-  won: {fileID: 0}
-  EquippedThrowable: {fileID: 0}
   shoot: 0
   ammoAmount: 10
   ammoCapacity: 50
@@ -565,6 +563,10 @@ MonoBehaviour:
   pushCooldown: 0
   pushCooldownAmount: 100
   pushSlider: {fileID: 0}
+  step: {fileID: 0}
+  push: {fileID: 8300000, guid: 7c33f5ddb26c4457291055220109bc8b, type: 3}
+  pushParticle: {fileID: 19847914, guid: 147956bdd56064117a7d2133fde1adb4, type: 2}
+  gunParticle: {fileID: 0}
   powerActive: 0
 --- !u!114 &11496624
 MonoBehaviour:
