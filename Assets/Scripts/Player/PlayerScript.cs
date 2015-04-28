@@ -171,10 +171,9 @@ public class PlayerScript : MonoBehaviour
 		tempPush.emissionRate = 1000 * power;
 		tempPush.Play ();
 
-		print (power);
-
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
+		GameObject[] destr = GameObject.FindGameObjectsWithTag("Destructable");
 
 		foreach(GameObject en in enemies){
 			if(Vector3.Distance(en.transform.position, this.transform.position) < 2f){
@@ -183,10 +182,18 @@ public class PlayerScript : MonoBehaviour
 		}
 
 		foreach(GameObject zom in zombies){
-			if(Vector3.Distance(zom.transform.position, this.transform.position) < 2f){
+			if(Vector3.Distance(zom.transform.position, transform.position) < 3f){
+				zom.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 				zom.gameObject.GetComponent<Rigidbody>().AddForce((zom.gameObject.transform.position - transform.position) * (3f * power),ForceMode.Impulse);
 				zom.gameObject.GetComponent<ZombieScript>().hit = true;
+			}
+		}
 
+		foreach(GameObject des in destr){
+			if(Vector3.Distance(des.transform.position, transform.position) < 1.5f){
+				des.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+				des.gameObject.GetComponent<Rigidbody>().AddForce((des.gameObject.transform.position - transform.position) * (10f),ForceMode.Impulse);
+				des.gameObject.GetComponent<RemoveTimer>().StartTimer(100);
 			}
 		}
 

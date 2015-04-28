@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Enemy
   - Moveable
+  - Destructable
   layers:
   - Default
   - TransparentFX
