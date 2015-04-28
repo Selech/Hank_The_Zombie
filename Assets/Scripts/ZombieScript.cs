@@ -10,6 +10,7 @@ public class ZombieScript : MonoBehaviour {
 	public bool hit = false;
 	public GameObject leftArm;
 	public GameObject rightArm;
+	public GameObject head;
 	private Vector3 startPoint;
 
 	private Material enemyColor;
@@ -58,10 +59,11 @@ public class ZombieScript : MonoBehaviour {
 				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
 				leftArm.GetComponent<MeshRenderer>().material = enemyColor;
 				rightArm.GetComponent<MeshRenderer>().material = enemyColor;
+				head.GetComponent<MeshRenderer>().material = enemyColor;
 
 				if(colorRate == 0.1f){
 					this.GetComponent<Rigidbody>().isKinematic = true;
-					this.GetComponent<BoxCollider>().enabled = false;
+					this.GetComponent<Collider>().enabled = false;
 				}
 			}
 		}

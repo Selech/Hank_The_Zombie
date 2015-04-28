@@ -442,10 +442,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trans: {fileID: 2100000, guid: 6fc225483e9364c038da8a398a8ac24f, type: 2}
+  moveSpeed: .0199999996
   hat: {fileID: 198292}
   leftArm: {fileID: 175020}
   rightArm: {fileID: 103336}
   AmmoCratePrefab: {fileID: 183210, guid: 9914cd0c83cb54573b05fd5a87be46b7, type: 2}
+  enemyDeath: {fileID: 8300000, guid: cb195502b8e7244aaa0640117ae65bcd, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

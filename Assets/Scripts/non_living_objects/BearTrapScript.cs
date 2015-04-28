@@ -20,11 +20,12 @@ public class BearTrapScript : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			anim.SetTrigger(triggerHash);
-
+			other.gameObject.GetComponent<PlayerScript>().enabled = false;
 			//gameObject.GetComponent<Animator> ().SetBool ("Hit",true);
 			//other.gameObject.GetComponent<PlayerScript>().SetTarget(other.gameObject);
-			other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0,4,0),ForceMode.VelocityChange);
-
+			Vector3 force = other.transform.position - this.transform.position;
+			other.gameObject.GetComponent<Rigidbody>().AddForce(force*2 + new Vector3(0,3,0),ForceMode.VelocityChange);
+			other.gameObject.GetComponent<Rigidbody>().AddRelativeTorque(Vector3.right * 5);
 
 		}
 	}

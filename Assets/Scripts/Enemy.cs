@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour {
 	public Material trans;
 	private GameController GameController;
 	private bool seen;
-	private float moveSpeed = 0.02f;
+	public float moveSpeed = 0.02f;
 	private float moveSpeedAway = -0.02f;
 	private bool hit = false;
 	public GameObject hat;
@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour {
 
 	private Material enemyColor;
 	private float colorRate = 5;
+
+	public AudioClip enemyDeath;
 
 	// Use this for initialization
 	void Start () {
@@ -93,13 +95,18 @@ public class Enemy : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Bullet" && !hit) {
+			AudioSource.PlayClipAtPoint (enemyDeath, GameObject.Find("Main Camera").GetComponent<Transform>().position);
+
 			Destroy(other.gameObject);
 
 			if(Random.Range(0,3) == 0){
 				GameObject ammocrate = Instantiate(AmmoCratePrefab);
-				ammocrate.transform.position = this.transform.position;
+				ammocrate.transform.position = new Vector3(this.transform.position.x, 0.1f, this.transform.position.z);
 			}
+
 			hit = true;
+			//this.GetComponent<BoxCollider>().enabled = false;
+
 			this.GetComponent<MeshRenderer>().material = trans;
 //			hat.transform.SetParent(null);
 //			hat.GetComponent<Rigidbody>().isKinematic = false;
