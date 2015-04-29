@@ -6,6 +6,7 @@ public class BulletScript : MonoBehaviour {
 	public Vector3 direction;
 	private int lifetime = 200;
 	public AudioClip bullet;
+	public AudioClip pickup;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,8 @@ public class BulletScript : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other ){
 		if (other.gameObject.tag == "Player") {
+			AudioSource.PlayClipAtPoint (pickup, GameObject.Find("Main Camera").GetComponent<Transform>().position);
+
 			other.gameObject.GetComponent<PlayerScript>().GiveAmmo(1);
 			Destroy(this.gameObject);
 		}

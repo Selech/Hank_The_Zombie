@@ -3686,6 +3686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 977621728}
+  loseScreen: {fileID: 0}
+  player: {fileID: 0}
   overview: {fileID: 0}
   gameplay: {fileID: 0}
   door: {fileID: 0}
