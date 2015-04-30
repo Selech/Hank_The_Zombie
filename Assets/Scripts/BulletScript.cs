@@ -4,7 +4,7 @@ using System.Collections;
 public class BulletScript : MonoBehaviour {
 
 	public Vector3 direction;
-	private int lifetime = 200;
+	private int lifetime = 500;
 	public AudioClip bullet;
 	public AudioClip pickup;
 
@@ -12,7 +12,7 @@ public class BulletScript : MonoBehaviour {
 	void Start () {
 		AudioSource.PlayClipAtPoint (bullet, GameObject.Find("Main Camera").GetComponent<Transform>().position);
 
-		this.GetComponent<Rigidbody>().AddForce(direction*500);
+		this.GetComponent<Rigidbody>().AddForce(direction*6,ForceMode.Impulse);
 	}
 	
 	// Update is called once per frame
@@ -31,5 +31,7 @@ public class BulletScript : MonoBehaviour {
 			other.gameObject.GetComponent<PlayerScript>().GiveAmmo(1);
 			Destroy(this.gameObject);
 		}
+
+		print (other.gameObject.tag);
 	}
 }

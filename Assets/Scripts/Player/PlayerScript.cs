@@ -183,7 +183,6 @@ public class PlayerScript : MonoBehaviour
 
 		foreach(GameObject zom in zombies){
 			if(Vector3.Distance(zom.transform.position, transform.position) < 3f){
-				zom.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 				zom.gameObject.GetComponent<Rigidbody>().AddForce((zom.gameObject.transform.position - transform.position) * (3f * power),ForceMode.Impulse);
 				zom.gameObject.GetComponent<ZombieScript>().hit = true;
 			}

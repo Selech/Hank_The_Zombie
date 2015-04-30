@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Moveable
   - Destructable
+  - Boss
   layers:
   - Default
   - TransparentFX
