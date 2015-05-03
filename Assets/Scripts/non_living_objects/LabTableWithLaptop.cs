@@ -29,10 +29,8 @@ public class LabTableWithLaptop : MonoBehaviour, IAttackable
 
 	void OnCollisionEnter (Collision other)
 	{
-
-		if (other.gameObject.tag == "Player") {
+		if (other.gameObject.tag == "Bullet") {
 			Attack ();
-			other.gameObject.GetComponent<PlayerScript> ().SetTarget (other.gameObject.transform.position);
 
 		}
 	}
