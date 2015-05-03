@@ -8,12 +8,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22438784}
+  - 65: {fileID: 6539510}
   - 222: {fileID: 22277182}
   - 114: {fileID: 11438142}
-  - 65: {fileID: 6539510}
   m_Layer: 0
   m_Name: WallSwitch
-  m_TagString: Untagged
+  m_TagString: Removable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
