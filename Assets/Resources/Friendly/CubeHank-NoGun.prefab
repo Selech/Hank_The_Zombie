@@ -7,8 +7,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 479480}
-  - 33: {fileID: 3338930}
+  - 224: {fileID: 22401962}
   - 23: {fileID: 2327766}
   - 114: {fileID: 11465330}
   - 136: {fileID: 13686780}
@@ -16,6 +15,9 @@ GameObject:
   - 54: {fileID: 5403952}
   - 143: {fileID: 14348756}
   - 114: {fileID: 11496624}
+  - 222: {fileID: 22288498}
+  - 33: {fileID: 3338930}
+  - 114: {fileID: 11476660}
   m_Layer: 0
   m_Name: CubeHank-NoGun
   m_TagString: Player
@@ -172,7 +174,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.42400014, z: 0}
   m_LocalScale: {x: .93750006, y: 1.20000005, z: 1}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 4
 --- !u!4 &435012
 Transform:
@@ -184,7 +186,7 @@ Transform:
   m_LocalPosition: {x: .25999999, y: .529999971, z: 1.44000006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 7
 --- !u!4 &451172
 Transform:
@@ -196,7 +198,7 @@ Transform:
   m_LocalPosition: {x: .268749803, y: .487999916, z: 1.79999995}
   m_LocalScale: {x: 1, y: 2.75999975, z: 1.0333333}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 3
 --- !u!4 &452958
 Transform:
@@ -208,7 +210,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.59808004, z: -.0174999963}
   m_LocalScale: {x: .84375006, y: .879999995, z: .908333302}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 0
 --- !u!4 &466354
 Transform:
@@ -220,7 +222,7 @@ Transform:
   m_LocalPosition: {x: -.205999985, y: .300000072, z: .600000203}
   m_LocalScale: {x: .160019487, y: .109999999, z: .700085223}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 6
 --- !u!4 &475624
 Transform:
@@ -232,28 +234,8 @@ Transform:
   m_LocalPosition: {x: .120999999, y: .5, z: .823000014}
   m_LocalScale: {x: 1.0333333, y: .441599995, z: .300000042}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 2
---- !u!4 &479480
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0299999993, y: .280000001, z: -1.85000002}
-  m_LocalScale: {x: .319999993, y: .25, z: .300000012}
-  m_Children:
-  - {fileID: 452958}
-  - {fileID: 480216}
-  - {fileID: 475624}
-  - {fileID: 451172}
-  - {fileID: 426766}
-  - {fileID: 499648}
-  - {fileID: 466354}
-  - {fileID: 435012}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!4 &480216
 Transform:
   m_ObjectHideFlags: 1
@@ -264,7 +246,7 @@ Transform:
   m_LocalPosition: {x: .349999994, y: .300000012, z: .600000024}
   m_LocalScale: {x: .159999996, y: .109999999, z: .699999988}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 1
 --- !u!4 &499648
 Transform:
@@ -276,7 +258,7 @@ Transform:
   m_LocalPosition: {x: -.349999994, y: .300000012, z: .600000024}
   m_LocalScale: {x: .159999996, y: .109999999, z: .699999988}
   m_Children: []
-  m_Father: {fileID: 479480}
+  m_Father: {fileID: 22401962}
   m_RootOrder: 5
 --- !u!23 &2305240
 MeshRenderer:
@@ -598,6 +580,27 @@ MonoBehaviour:
   pushParticle: {fileID: 19847914, guid: 147956bdd56064117a7d2133fde1adb4, type: 2}
   gunParticle: {fileID: 19855744}
   powerActive: 0
+--- !u!114 &11476660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4e0612463396e46bc92d7eaf8e0b08cc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11496624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1743,6 +1746,37 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+--- !u!222 &22288498
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100258}
+--- !u!224 &22401962
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.85000002}
+  m_LocalScale: {x: .319999993, y: .25, z: .300000012}
+  m_Children:
+  - {fileID: 452958}
+  - {fileID: 480216}
+  - {fileID: 475624}
+  - {fileID: 451172}
+  - {fileID: 426766}
+  - {fileID: 499648}
+  - {fileID: 466354}
+  - {fileID: 435012}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -.0299999993, y: .280000001}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

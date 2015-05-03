@@ -49,6 +49,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
 		foreach (var obj in InsertableObjects) 
 		{
+			print ("name: "+obj.name);
 			GameObject listItemGameObject = Instantiate(SampleButton);
 			listItemGameObject.GetComponentInChildren<Image>().sprite = obj.GetComponent<Image>().sprite;
 			GameObject tempObj = obj;

@@ -43,12 +43,14 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 455426}
-  - 33: {fileID: 3313536}
+  - 224: {fileID: 22450378}
   - 65: {fileID: 6518256}
   - 23: {fileID: 2327412}
   - 114: {fileID: 11463076}
   - 54: {fileID: 5491336}
+  - 222: {fileID: 22223996}
+  - 33: {fileID: 3313536}
+  - 114: {fileID: 11460474}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -118,7 +120,7 @@ Transform:
   m_LocalPosition: {x: .589999974, y: .182999998, z: .486999989}
   m_LocalScale: {x: .172034696, y: .0466193371, z: .740529776}
   m_Children: []
-  m_Father: {fileID: 455426}
+  m_Father: {fileID: 22450378}
   m_RootOrder: 0
 --- !u!4 &450056
 Transform:
@@ -132,7 +134,7 @@ Transform:
   m_Children:
   - {fileID: 472942}
   - {fileID: 450684}
-  m_Father: {fileID: 455426}
+  m_Father: {fileID: 22450378}
   m_RootOrder: 2
 --- !u!4 &450684
 Transform:
@@ -146,21 +148,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 450056}
   m_RootOrder: 1
---- !u!4 &455426
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125436}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: .5, z: 0}
-  m_LocalScale: {x: .319999993, y: .689999998, z: .310000002}
-  m_Children:
-  - {fileID: 412004}
-  - {fileID: 486610}
-  - {fileID: 450056}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!4 &472942
 Transform:
   m_ObjectHideFlags: 1
@@ -183,7 +170,7 @@ Transform:
   m_LocalPosition: {x: -.588, y: .182999998, z: .486999989}
   m_LocalScale: {x: .172034681, y: .0466193371, z: .740529776}
   m_Children: []
-  m_Father: {fileID: 455426}
+  m_Father: {fileID: 22450378}
   m_RootOrder: 1
 --- !u!23 &2327412
 MeshRenderer:
@@ -430,6 +417,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11460474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3e3d1525e94644b598795cf29d95c361, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11463076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,6 +456,32 @@ MonoBehaviour:
   rightArm: {fileID: 103336}
   AmmoCratePrefab: {fileID: 183210, guid: 9914cd0c83cb54573b05fd5a87be46b7, type: 2}
   enemyDeath: {fileID: 8300000, guid: cb195502b8e7244aaa0640117ae65bcd, type: 3}
+--- !u!222 &22223996
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125436}
+--- !u!224 &22450378
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125436}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .319999993, y: .689999998, z: .310000002}
+  m_Children:
+  - {fileID: 412004}
+  - {fileID: 486610}
+  - {fileID: 450056}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: .5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
