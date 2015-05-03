@@ -14,7 +14,7 @@ public class BossScript : MonoBehaviour {
 	public GameObject body;
 	public GameObject shield;
 
-	private Vector3 startPoint;
+//	private Vector3 startPoint;
 	public GameObject AmmoCratePrefab;
 
 	private Material enemyColor;
@@ -26,7 +26,7 @@ public class BossScript : MonoBehaviour {
 	void Start () {
 		seen = false;
 		this.GameController = GameObject.Find ("Controller").GetComponent<GameController>();
-		startPoint = transform.position;
+//		startPoint = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -78,9 +78,9 @@ public class BossScript : MonoBehaviour {
 		}
 	}
 
-	public void SetStartPoint(Vector3 startPoint){
-		this.startPoint = startPoint;
-	}
+//	public void SetStartPoint(Vector3 startPoint){
+//		this.startPoint = startPoint;
+//	}
 
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Player" && !hit) {
@@ -98,9 +98,9 @@ public class BossScript : MonoBehaviour {
 			}
 		}
 		
-		if (other.gameObject.tag == "Enemy") {
-			startPoint = this.transform.position;
-		}
+//		if (other.gameObject.tag == "Enemy") {
+//			startPoint = this.transform.position;
+//		}
 	}
 
 	public void Death(){

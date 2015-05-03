@@ -5,12 +5,13 @@ public class WallSwitchScript : MonoBehaviour
 {
 
 	public GameObject switchObject;
-	private float nonActiveZ;
+//	private float nonActiveZ;
 	public float activeZ;
 	public int isSet = 0;
+
 	void Start ()
 	{
-		nonActiveZ = this.transform.localScale.z;
+//		nonActiveZ = this.transform.localScale.z;
 	}
 
 	void OnCollisionExit ()

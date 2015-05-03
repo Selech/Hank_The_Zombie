@@ -28,7 +28,7 @@ public class EditorMouse : MonoBehaviour
 					GameObject hitObj = hit.collider.gameObject;
 
 					// Tag of clicked Object
-					string tag = hitObj.tag;
+//					string tag = hitObj.tag;
 
 					// Position of clicked object
 					Vector3 position = hitObj.transform.position;

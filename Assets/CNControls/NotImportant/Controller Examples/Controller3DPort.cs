@@ -11,7 +11,7 @@ public class Controller3DPort : MonoBehaviour
     public CNAbstractController MovementJoystick;
 	public CNAbstractController ShootingJoystick;
 
-    private Transform _transformCache;
+//    private Transform _transformCache;
     private Transform _playerTransform;
 
     void Start()
@@ -22,7 +22,7 @@ public class Controller3DPort : MonoBehaviour
         // MovementJoystick.JoystickMovedEvent += MoveWithEvent;
 
 //		ShootingJoystick.JoystickMovedEvent += MoveWithEvent;
-        _transformCache = GetComponent<Transform>();
+//        _transformCache = GetComponent<Transform>();
 		_playerTransform = GetComponent<Transform>();
 	}
 

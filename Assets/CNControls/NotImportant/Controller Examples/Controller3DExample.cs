@@ -13,7 +13,7 @@ public class Controller3DExample : MonoBehaviour
 
     private CharacterController _characterController;
     private Transform _mainCameraTransform;
-    private Transform _transformCache;
+//    private Transform _transformCache;
     private Transform _playerTransform;
 
     void Start()
@@ -25,7 +25,7 @@ public class Controller3DExample : MonoBehaviour
 
         _characterController = GetComponent<CharacterController>();
         _mainCameraTransform = Camera.main.GetComponent<Transform>();
-        _transformCache = GetComponent<Transform>();
+//        _transformCache = GetComponent<Transform>();
         _playerTransform = GameObject.Find("CubeHank").GetComponentInChildren<Transform>();
     }
 

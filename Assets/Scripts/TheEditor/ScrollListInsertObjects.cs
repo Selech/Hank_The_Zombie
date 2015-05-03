@@ -20,7 +20,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 	public string FilePath;
 	public static string CurrentFilePath;
 	public static GameObject[] InsertableObjects;
-	private int CooldownBeforeDrawingIcons = 1;
+//	private int CooldownBeforeDrawingIcons = 1;
 	public Text txt;
 
 	void Start () 

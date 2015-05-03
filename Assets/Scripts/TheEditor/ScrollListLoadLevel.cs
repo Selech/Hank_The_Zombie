@@ -45,16 +45,16 @@ public class ScrollListLoadLevel : MonoBehaviour {
 				
 				//get the screen's width
 				float sWidth = Screen.width;
-				float sHeight = Screen.height;
+//				float sHeight = Screen.height;
 				
 				//calculate the rescale ratio
 				float guiRatioX;
 				float magicScaleNum = 1.41f;
-				bool itsFreaky = true;
-				
-				#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER)
-				itsFreaky = false; 
-				#endif
+//				bool itsFreaky = true;
+//				
+//				#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER)
+//				itsFreaky = false; 
+//				#endif
 				
 				guiRatioX = (sWidth / 800.0f) / magicScaleNum;
 				Vector3 GUIsF = new Vector3(guiRatioX, guiRatioX, 0);
