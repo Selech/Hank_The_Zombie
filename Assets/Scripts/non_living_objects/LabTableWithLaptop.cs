@@ -1,41 +1,36 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-public class LabTableWithLaptop : MonoBehaviour, IAttackable {
+public class LabTableWithLaptop : MonoBehaviour, IAttackable
+{
 
 	private int HP = 10;
 	public Slider HPBar;
 	
-	public void Attack(){
-		
+	public void Attack ()
+	{
+		HP--;
+		HPBar.value = HP;
+
 	}
 
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+	{
+		HPBar.maxValue = HP;
+		HPBar.value = HPBar.maxValue;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
 	}
 
-	public void Clicked(){
-
-		HP--;
-		HPBar.value = HP;
-		
-	}
-
-
-
-	void OnCollisionEnter(Collision other){
-		if(other.gameObject.tag == "Player")
-		{
-			HP--;
-			HPBar.value = HP;
-
-			other.gameObject.GetComponent<PlayerScript>().SetTarget(other.gameObject.transform.position);
+	void OnCollisionEnter (Collision other)
+	{
+		if (other.gameObject.tag == "Bullet") {
+			Attack ();
 
 		}
 	}

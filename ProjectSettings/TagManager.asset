@@ -6,8 +6,12 @@ TagManager:
   tags:
   - Clickable
   - Attackable
-  - Trap
-  - Removable
+  - Zombie
+  - Bullet
+  - Enemy
+  - Moveable
+  - Destructable
+  - Boss
   layers:
   - Default
   - TransparentFX

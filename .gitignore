@@ -7,9 +7,11 @@ UnityGenerated/
 Library/
 Assets/AssetStoreTools*
 
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
+
 ExportedObj/
 *.svd
 *.userprefs
@@ -20,6 +22,7 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+
 
 # ============ #
 # OS generated #
@@ -32,9 +35,3 @@ ExportedObj/
 
 ehthumbs.db
 Thumbs.db
-
-*.csproj
-
-*.sln
-
-Library/assetDatabase3
