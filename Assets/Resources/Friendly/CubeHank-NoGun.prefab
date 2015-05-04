@@ -10,7 +10,6 @@ GameObject:
   - 224: {fileID: 22401962}
   - 23: {fileID: 2327766}
   - 114: {fileID: 11465330}
-  - 136: {fileID: 13686780}
   - 65: {fileID: 6542992}
   - 54: {fileID: 5403952}
   - 143: {fileID: 14348756}
@@ -626,19 +625,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: .50000006
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13686780
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100258}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: .49999994
-  m_Height: 2
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &14348756
 CharacterController:

@@ -8,13 +8,13 @@ public class SpawnPointScript : MonoBehaviour {
 	private int counter;
 	public GameObject startPoint;
 	public bool running;
-	private MouseControlsV3 gameController;
+	private GameController gameController;
 
 	// Use this for initialization
 	void Start () {
 		counter = rate;
 
-		gameController = GameObject.Find ("Controller").GetComponent<MouseControlsV3> ();
+		gameController = GameObject.Find ("Controller").GetComponent<GameController> ();
 	}
 	
 	// Update is called once per frame
