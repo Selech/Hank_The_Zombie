@@ -26,8 +26,14 @@ public class GameController : MonoBehaviour {
 		}
 
 		if (loseScreen != null) {
-			if(!loseScreen.activeSelf && !player && !winScreen.activeSelf){
-				loseScreen.SetActive(true);
+			if(winScreen != null){
+				if(!loseScreen.activeSelf && !player && !winScreen.activeSelf){
+					loseScreen.SetActive(true);
+				}
+			}else{
+				if(!loseScreen.activeSelf && !player){
+					loseScreen.SetActive(true);
+				}
 			}
 		}
 	}

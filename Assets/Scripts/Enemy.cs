@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour {
 
 	public Material trans;
 	private GameController GameController;
+	private SurvivalController SurvivalController;
 	private bool seen;
 	public float moveSpeed = 0.02f;
 	private float moveSpeedAway = -0.02f;
