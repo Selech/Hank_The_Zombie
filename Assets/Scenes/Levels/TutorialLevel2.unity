@@ -4502,7 +4502,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1036805857}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -11006,6 +11006,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 9.22365952
       objectReference: {fileID: 0}
+    - target: {fileID: 193266, guid: e07288bff1561459f863c0d2abcf26fd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e07288bff1561459f863c0d2abcf26fd, type: 2}
   m_IsPrefabParent: 0
@@ -11021,6 +11025,10 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1036805854}
   m_Script: {fileID: 11500000, guid: ed91a055bc3f60a46a64e83aee3676ba, type: 3}
+--- !u!1 &1036805857 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 193266, guid: e07288bff1561459f863c0d2abcf26fd, type: 2}
+  m_PrefabInternal: {fileID: 1036805854}
 --- !u!1001 &1037401512
 Prefab:
   m_ObjectHideFlags: 0
