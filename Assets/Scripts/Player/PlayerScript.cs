@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
 	public GameObject direction;
 	public GameObject gun;
 	public GameObject bulletPrefab;
+	public GameObject crosshair;
 	private Vector3 target;
 	private Vector3 targetVector;
 	public bool shoot;
@@ -109,7 +110,7 @@ public class PlayerScript : MonoBehaviour
 
 	public void Shoot(){
 		shoot = true;
-
+		crosshair.SetActive (true);
 		if(cooldown > 0){
 			cooldown--;
 		}
@@ -130,6 +131,8 @@ public class PlayerScript : MonoBehaviour
 	}
 
 	public void NotShoot(){
+		crosshair.SetActive (false);
+
 		shoot = false;
 		cooldown = cooldownAmount;
 	}
