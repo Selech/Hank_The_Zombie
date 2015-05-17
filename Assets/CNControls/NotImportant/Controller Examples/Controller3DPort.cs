@@ -13,27 +13,33 @@ public class Controller3DPort : MonoBehaviour
 
     private Transform _playerTransform;
 
-    void Start()
-    {
+	public void Initialize()
+	{
+		// Find and assign CNJoystickMovement
+		MovementJoystick = GameObject.Find ("CNJoystickMovement").GetComponent<CNJoystick>();
+		ShootingJoystick = GameObject.Find ("CNJoystickShoot").GetComponent<CNJoystick>();
+
 		_playerTransform = GetComponent<Transform>();
 	}
-
     
     // Update is called once per frame
     void Update()
     {
-        var movement = new Vector3(
-            MovementJoystick.GetAxis("Horizontal"),
-            0f,
-            MovementJoystick.GetAxis("Vertical"));
+		if (LevelDesigner.isNotTesting == false) 
+		{
+			var movement = new Vector3 (
+	            MovementJoystick.GetAxis ("Horizontal"),
+	            0f,
+	            MovementJoystick.GetAxis ("Vertical"));
 
-		var rotation = new Vector3(
-			ShootingJoystick.GetAxis("Horizontal"),
-			0f,
-			ShootingJoystick.GetAxis("Vertical"));
+			var rotation = new Vector3 (
+				ShootingJoystick.GetAxis ("Horizontal"),
+				0f,
+				ShootingJoystick.GetAxis ("Vertical"));
 
-		CommonMovementMethod(movement, rotation);
-		CommonRotationMethod (rotation);
+			CommonMovementMethod (movement, rotation);
+			CommonRotationMethod (rotation);
+		}
     }
 
 	private void CommonRotationMethod(Vector3 rotation)
@@ -60,7 +66,6 @@ public class Controller3DPort : MonoBehaviour
 
     IEnumerator RotateCoroutine(Vector3 direction)
     {
-		print ("Rotating");
         if (direction == Vector3.zero) yield break;
 
         Quaternion lookRotation = Quaternion.LookRotation(direction);

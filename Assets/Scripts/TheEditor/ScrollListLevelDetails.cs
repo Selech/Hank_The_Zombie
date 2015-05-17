@@ -47,7 +47,7 @@ public class ScrollListLevelDetails : MonoBehaviour {
 	void Start () 
 	{
 		// Setup Buttons for Win & Lose conditions
-		setupWinLoseConditions();
+		//setupWinLoseConditions();
 		btnSave.GetComponentInChildren<Button>().onClick.AddListener(() => { saveLevel(); });
 	}
 
@@ -115,42 +115,45 @@ public class ScrollListLevelDetails : MonoBehaviour {
 
 	public void saveLevel()
 	{
-		debugText.text  = LevelDesigner.LevelsDirectory + "\n" + debugText.text;
+		//debugText.text  = LevelDesigner.LevelsDirectory + "\n" + debugText.text;
 
-		if(RecursiveFileProcessor.IsFileExisting(inputName.text+".xml", LevelDesigner.LevelsDirectory)) 
+		// Don't save if file already exists + the level isn't already loaded.
+		if (LevelDesigner.currentLevel.name != inputName.text) 
 		{
-			msgAlreadyExistingSaveGameMenu.SetActive(true);	
+			if(RecursiveFileProcessor.IsFileExisting(inputName.text+".xml", LevelDesigner.LevelsDirectory)) 
+			{
+				msgAlreadyExistingSaveGameMenu.SetActive(true);	
+				return;
+			}
 		}
-		else
+
+		Level lvl = LevelDesigner.currentLevel;
+		lvl.name = inputName.text;
+		lvl.author = inputAuthor.text;
+		lvl.description = inputDescription.text;
+		
+		if(selectedWinCondition != "")
 		{
-			Level lvl = LevelDesigner.currentLevel;
-			lvl.name = inputName.text;
-			lvl.author = inputAuthor.text;
-			lvl.description = inputDescription.text;
-			
-			if(selectedWinCondition != "")
-			{
-				int winEnumValue = EnumHelper.GetCorrespondingEnumPositionFromDescriptionSearhWord<Level.WinConditionEnum>(selectedWinCondition);
-				lvl.SetWinCondition((Level.WinConditionEnum) winEnumValue);
-			}
-			
-			if(selectedLoseCondition != "")
-			{
-				int loseEnumValue = EnumHelper.GetCorrespondingEnumPositionFromDescriptionSearhWord<Level.LoseConditionEnum>(selectedLoseCondition);
-				lvl.SetLoseCondition((Level.LoseConditionEnum) loseEnumValue);
-			}
-			
-			// Update name of level textfield in editor
-			txtFieldNameOfLevel.text = lvl.name;
-			
-			LevelDesigner.SaveLevel();
-
-			// Hide this Menu
-			menu.SetActive(false);
-
-			// Show Confirmation Menu
-			msgSavedGameMenu.SetActive(true);
-			msgSavedGameText.text = "The level has been save as:\n' "+lvl.name+" '";
+			int winEnumValue = EnumHelper.GetCorrespondingEnumPositionFromDescriptionSearhWord<Level.WinConditionEnum>(selectedWinCondition);
+			lvl.SetWinCondition((Level.WinConditionEnum) winEnumValue);
 		}
+		
+		if(selectedLoseCondition != "")
+		{
+			int loseEnumValue = EnumHelper.GetCorrespondingEnumPositionFromDescriptionSearhWord<Level.LoseConditionEnum>(selectedLoseCondition);
+			lvl.SetLoseCondition((Level.LoseConditionEnum) loseEnumValue);
+		}
+		
+		// Update name of level textfield in editor
+		txtFieldNameOfLevel.text = lvl.name;
+		
+		LevelDesigner.SaveLevel();
+
+		// Hide this Menu
+		menu.SetActive(false);
+
+		// Show Confirmation Menu
+		msgSavedGameMenu.SetActive(true);
+		msgSavedGameText.text = "The level has been save as:\n' "+lvl.name+" '";
 	}
 }

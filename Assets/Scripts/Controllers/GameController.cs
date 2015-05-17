@@ -7,31 +7,50 @@ public class GameController : MonoBehaviour {
 	public GameObject winScreen;
 	public GameObject loseScreen;
 
-	public GameObject player;
-
-	public Camera overview;
+	//public Camera overview;
 	public Camera gameplay;
+
+	public GameObject player;
 	public GameObject door;
 
-	// Use this for initialization
-	void Start () {
+	public void Initialize()
+	{
+		// Find and assign player
+		player = GameObject.Find ("CubeHank(Clone)");
+		if (player == null)
+			player = GameObject.Find ("CubeHank-NoGun(Clone)");
+
+		player.GetComponent<PlayerScript> ().Initialize ();
+		player.GetComponent<Controller3DPort> ().Initialize ();
+
+		// Find and assign Exit
+		door = GameObject.Find ("EndDoor(Clone)");
+
 		gameplay.enabled = true;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		if (Statics.BatteriesLeft == 0 && door != null) {
+	void Update () 
+	{
+		if (Statics.BatteriesLeft == 0 && door != null) 
+		{
 			//winScreen.SetActive(true);
 			door.SetActive(false);
 		}
 
-		if (loseScreen != null) {
-			if(winScreen != null){
-				if(!loseScreen.activeSelf && !player && !winScreen.activeSelf){
+		if (loseScreen != null) 
+		{
+			if(winScreen != null)
+			{
+				if(!loseScreen.activeSelf && !player && !winScreen.activeSelf)
+				{
 					loseScreen.SetActive(true);
 				}
-			}else{
-				if(!loseScreen.activeSelf && !player){
+			}
+			else
+			{
+				if(!loseScreen.activeSelf && !player)
+				{
 					loseScreen.SetActive(true);
 				}
 			}
@@ -45,7 +64,8 @@ public class GameController : MonoBehaviour {
 //		gameplay.enabled = !gameplay.enabled;
 	}
 
-	public void GameEnd() {
+	public void GameEnd() 
+	{
 		winScreen.SetActive(true);		
 	}
 
@@ -55,7 +75,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	//Used in tutorial 3!
-	public void Infected(){
+	public void Infected()
+	{
 		this.GetComponent<ActivatorScript> ().ActivateGameobjectsOnce ();
 		player.GetComponent<PlayerScript> ().BecomeInfected ();
 	}

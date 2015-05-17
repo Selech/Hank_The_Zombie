@@ -49,7 +49,7 @@ public class ScrollListInsertObjects : MonoBehaviour
 		InsertableObjects = Resources.LoadAll<GameObject>(FilePath);
 		foreach (var obj in InsertableObjects) 
 		{
-			print ("name: "+obj.name);
+			//print ("name: "+obj.name);
 			GameObject listItemGameObject = Instantiate(SampleButton);
 			listItemGameObject.GetComponentInChildren<Image>().sprite = obj.GetComponent<Image>().sprite;
 			GameObject tempObj = obj;
@@ -61,11 +61,6 @@ public class ScrollListInsertObjects : MonoBehaviour
 			//calculate the rescale ratio
 			float guiRatioX;
 			float magicScaleNum = 1.45f;
-			bool itsFreaky = true;
-
-			#if (UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER)
-			itsFreaky = false; 
-			#endif
 
 			guiRatioX = (sWidth / 800.0f) / magicScaleNum;
 			Vector3 GUIsF = new Vector3(guiRatioX, guiRatioX, 0);

@@ -14,7 +14,7 @@ public class AmmoCrateScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Player") {
-			AudioSource.PlayClipAtPoint (pickup, GameObject.Find("Main Camera").GetComponent<Transform>().position);
+			//AudioSource.PlayClipAtPoint (pickup, GameObject.Find("Main Camera").GetComponent<Transform>().position);
 
 			other.gameObject.GetComponent<PlayerScript>().GiveAmmo(ammoAmount);
 			Destroy (this.gameObject);

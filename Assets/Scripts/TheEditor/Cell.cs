@@ -57,9 +57,9 @@ public class Cell
 	public Cell(float xPos,
 	            float yPos,
 	            float zPos,
-	            ObjectAtCell objData = null,  
-	            ObjectAtCell wallData = null, 
-	            ObjectAtCell tileData = null)
+	            ObjectAtCell objData,  
+	            ObjectAtCell wallData, 
+	            ObjectAtCell tileData)
 	{
 		this.xPos = xPos;
 		this.yPos = yPos;

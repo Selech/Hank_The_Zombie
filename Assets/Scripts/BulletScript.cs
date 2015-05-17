@@ -10,7 +10,7 @@ public class BulletScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		AudioSource.PlayClipAtPoint (bullet, GameObject.Find("Main Camera").GetComponent<Transform>().position);
+		//AudioSource.PlayClipAtPoint (bullet, GameObject.Find("Main Camera").GetComponent<Transform>().position);
 
 		this.GetComponent<Rigidbody>().AddForce(direction*6,ForceMode.Impulse);
 	}
@@ -24,14 +24,14 @@ public class BulletScript : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision other ){
-		if (other.gameObject.tag == "Player") {
-			AudioSource.PlayClipAtPoint (pickup, GameObject.Find("Main Camera").GetComponent<Transform>().position);
+	void OnCollisionEnter(Collision other )
+	{
+		if (other.gameObject.tag == "Player") 
+		{
+			//AudioSource.PlayClipAtPoint (pickup, GameObject.Find("Main Camera").GetComponent<Transform>().position);
 
 			other.gameObject.GetComponent<PlayerScript>().GiveAmmo(1);
 			Destroy(this.gameObject);
 		}
-
-		print (other.gameObject.tag);
 	}
 }

@@ -34,15 +34,15 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetWinCondition(Level.WinConditionEnum.Escape);
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Caught);
 		
-		lvl.Cells.Add(new Cell(1, 0, 2, null, new ObjectAtCell("Wall", 0)));
+		lvl.Cells.Add(new Cell(1, 0, 2, null, new ObjectAtCell("Wall", 0), null));
 		lvl.Cells.Add(new Cell(1, 0, 1, new ObjectAtCell("Chair", 90), null, new ObjectAtCell("Tile", 0)));
 		lvl.Cells.Add(new Cell(0, 0, 0, new ObjectAtCell("BearTrap",0), null, new ObjectAtCell("Tile",0)));
-		lvl.Cells.Add(new Cell(0, 0, 2, null, new ObjectAtCell("Wall",0)));
-		lvl.Cells.Add(new Cell(0, 0, 1, null, new ObjectAtCell("Wall",0)));
-		lvl.Cells.Add(new Cell(2, 0, 1, new ObjectAtCell("LaserWall",0)));
-		lvl.Cells.Add(new Cell(4, 0, 0, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(0, 0, 2, null, new ObjectAtCell("Wall",0), null));
+		lvl.Cells.Add(new Cell(0, 0, 1, null, new ObjectAtCell("Wall",0), null));
+		lvl.Cells.Add(new Cell(2, 0, 1, new ObjectAtCell("LaserWall",0), null, null));
+		lvl.Cells.Add(new Cell(4, 0, 0, null, new ObjectAtCell("Wall",0), null));
 		lvl.Cells.Add(new Cell(2, 0, 0, null, null, new ObjectAtCell("Tile",0)));
-		lvl.Cells.Add(new Cell(2, 0, 2, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(2, 0, 2, null, new ObjectAtCell("Wall",0), null));
 		lvl.Cells.Add(new Cell(3, 0, 1, null, null, new ObjectAtCell("Tile",0)));
 		lvl.Cells.Add(new Cell(1, 0, 3, null, null, new ObjectAtCell("Tile",0)));
 
@@ -72,20 +72,20 @@ public class XMLTester : MonoBehaviour {
 		lvl.SetWinCondition(Level.WinConditionEnum.Infect);
 		lvl.SetLoseCondition(Level.LoseConditionEnum.Killed);
 		
-		lvl.Cells.Add(new Cell(1, 0, 2, null, new ObjectAtCell("Wall",0)));
-		lvl.Cells.Add(new Cell(2, 0, 2, new ObjectAtCell("BearTrap",0)));
-		lvl.Cells.Add(new Cell(1, 0, 1, new ObjectAtCell("Chair", 180)));
-		lvl.Cells.Add(new Cell(2, 0, 2, new ObjectAtCell("BearTrap",270)));
+		lvl.Cells.Add(new Cell(1, 0, 2, null, new ObjectAtCell("Wall",0), null));
+		lvl.Cells.Add(new Cell(2, 0, 2, new ObjectAtCell("BearTrap",0), null, null));
+		lvl.Cells.Add(new Cell(1, 0, 1, new ObjectAtCell("Chair", 180), null, null));
+		lvl.Cells.Add(new Cell(2, 0, 2, new ObjectAtCell("BearTrap",270), null, null));
 		lvl.Cells.Add(new Cell(1, 0, 0, null, null, new ObjectAtCell("Tile",0)));
-		lvl.Cells.Add(new Cell(2, 0, 0, new ObjectAtCell("LaserWall",0)));
-		lvl.Cells.Add(new Cell(3, 0, 0, new ObjectAtCell("BearTrap",0)));
+		lvl.Cells.Add(new Cell(2, 0, 0, new ObjectAtCell("LaserWall",0), null, null));
+		lvl.Cells.Add(new Cell(3, 0, 0, new ObjectAtCell("BearTrap",0), null, null));
 		lvl.Cells.Add(new Cell(4, 0, 0, null, null, new ObjectAtCell("Tile",0)));
-		lvl.Cells.Add(new Cell(5, 0, 0, null, new ObjectAtCell("Wall",0)));
-		lvl.Cells.Add(new Cell(5, 0, 1, null, new ObjectAtCell("Wall",0)));
-		lvl.Cells.Add(new Cell(5, 0, 2, null, new ObjectAtCell("Wall",0)));
-		lvl.Cells.Add(new Cell(4, 0, 3, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(5, 0, 0, null, new ObjectAtCell("Wall",0), null));
+		lvl.Cells.Add(new Cell(5, 0, 1, null, new ObjectAtCell("Wall",0), null));
+		lvl.Cells.Add(new Cell(5, 0, 2, null, new ObjectAtCell("Wall",0), null));
+		lvl.Cells.Add(new Cell(4, 0, 3, null, new ObjectAtCell("Wall",0), null));
 		lvl.Cells.Add(new Cell(2, 0, 1, null, null, new ObjectAtCell("Tile",0)));
-		lvl.Cells.Add(new Cell(2, 0, 3, null, new ObjectAtCell("Wall",0)));
+		lvl.Cells.Add(new Cell(2, 0, 3, null, new ObjectAtCell("Wall",0), null));
 		
 		// Save XML to file
 		lvl.Save(LevelDesigner.LevelsDirectory, lvl.name+".xml");

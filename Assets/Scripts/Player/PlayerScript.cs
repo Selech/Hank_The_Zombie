@@ -37,55 +37,72 @@ public class PlayerScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		cooldown = cooldownAmount;
-		pushCooldown = pushCooldownAmount;
+		Initialize ();
+	}
 
-		target = this.transform.position;
+	public void Initialize()
+	{
+		if (LevelDesigner.isNotTesting == false) 
+		{
+			// Find and assign Exit
+			ammoSlider = GameObject.Find ("SliderAmmo").GetComponent<Slider>();
+			
+			// Find and assign Exit
+			pushSlider = GameObject.Find ("SliderPush").GetComponent<Slider>();
 
-		UpdateSliders ();
+			cooldown = cooldownAmount;
+			pushCooldown = pushCooldownAmount;
+			
+			target = this.transform.position;
+			
+			UpdateSliders ();
+		}
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		PcControls ();
-		//transform.position = new Vector3 (this.transform.position.x, 1f, this.transform.position.z);
-		if (pushCooldown < pushCooldownAmount) {
-			pushCooldown++;
-		}
-
-			
-
-		if ((Input.GetKey (KeyCode.Space)) ) {
-			Shoot();
-		}
-
-		if (target != new Vector3 (-1, -1, -1)) {
-
-
-			//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-			
-			Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
-
-			if(shoot){
-				transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed*0.4f); //speed 0.015
-			}
-			else{
-
-				transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed); //speed 0.015
-			}
-
-			if (!Input.GetKey (KeyCode.Space) && !shoot) {
-				transform.LookAt (targetposition);
+		if (LevelDesigner.isNotTesting == false) 
+		{
+			PcControls ();
+			//transform.position = new Vector3 (this.transform.position.x, 1f, this.transform.position.z);
+			if (pushCooldown < pushCooldownAmount) {
+				pushCooldown++;
 			}
 			
-			if (transform.position == targetposition) {
-				target = new Vector3 (-1, -1, -1);
+			
+			
+			if ((Input.GetKey (KeyCode.Space)) ) {
+				Shoot();
 			}
-		} else {
-
+			
+			if (target != new Vector3 (-1, -1, -1)) {
+				
+				
+				//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+				
+				Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
+				
+				if(shoot){
+					transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed*0.4f); //speed 0.015
+				}
+				else{
+					
+					transform.position = Vector3.MoveTowards (transform.position, targetposition, movespeed); //speed 0.015
+				}
+				
+				if (!Input.GetKey (KeyCode.Space) && !shoot) {
+					transform.LookAt (targetposition);
+				}
+				
+				if (transform.position == targetposition) {
+					target = new Vector3 (-1, -1, -1);
+				}
+			} else {
+				
+			}
+			UpdateSliders ();
 		}
-		UpdateSliders ();
 	}
 
 	private void PcControls(){
@@ -142,23 +159,29 @@ public class PlayerScript : MonoBehaviour
 		target = gameobj;
 	}
 
-	public void BoostStamina(){
+	public void BoostStamina()
+	{
 		boosters++;
 
-		if (boosters == boostersMax) {
+		if (boosters == boostersMax) 
+		{
 			movespeed = 0.04f;
 			powerActive = true;
 		}
 	}
 
-	public void GiveAmmo(int ammo){
+	public void GiveAmmo(int ammo)
+	{
 		ammoAmount += ammo;
-		if (ammoAmount > ammoCapacity) {
+		if (ammoAmount > ammoCapacity) 
+		{
 			ammoAmount = ammoCapacity;
 		}
 	}
 
-	private void UpdateSliders(){
+	private void UpdateSliders()
+	{
+		//ammoSlider = GameObject.Find ("");
 		ammoSlider.value = (float)ammoAmount / (float)ammoCapacity;
 		pushSlider.value = (float)pushCooldown / (float) pushCooldownAmount;
 	}

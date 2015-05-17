@@ -29,8 +29,16 @@ public class LevelDesigner : MonoBehaviour
 	public static int xToMid;
 	public static int zToMid;
 	private static Cell[,] cellGrid;
-	public GameObject displayedNameOfLevel;
+	//public GameObject displayedNameOfLevel;
 	public static GameObject ObjectToBeInserted;
+
+	public static bool HankPlaced { get{ return (GameObject.Find("CubeHank(Clone)") != null || GameObject.Find("CubeHank-NoGun(Clone)") != null); } }
+	public static bool ExitPlaced { get{ return (GameObject.Find("EndDoor(Clone)") != null);} }
+	public static bool isNotTesting { get; set; }
+	public static bool isUsingEditor { get; set; }
+
+	public GameObject txtLevelName;
+	public GameObject popupTestComletedSuccesFully;
 
 	public enum TileResource
 	{
@@ -155,7 +163,7 @@ public class LevelDesigner : MonoBehaviour
 				if (cellGrid[x, y] == null)
 				{
 					Vector3 position = new Vector3(x - xToMid, floorDefaultPositionY, y - zToMid);
-					InsertIntoSceneUsingString(position, TileResource.EmptyTile.ToString());
+					InsertIntoSceneUsingString(position, TileResource.EmptyTile.ToString(), 0);
 				}
 			}
 		}
@@ -164,9 +172,9 @@ public class LevelDesigner : MonoBehaviour
 	/**
 	 * Inserts a GameObject at the specified position based on a specified assetname.
 	 **/
-	private static GameObject InsertIntoSceneUsingString(Vector3 position, string assetName, float rotation = 0)
+	private static GameObject InsertIntoSceneUsingString(Vector3 position, string assetName, float rotation)
 	{
-		GameObject gameObject = (GameObject) LoadAssetFromString(assetName);
+		GameObject gameObject = LoadAssetFromString(assetName);
 
 		if (gameObject != null)
 		{
@@ -199,8 +207,8 @@ public class LevelDesigner : MonoBehaviour
 		// If cell is null; register a new cell with the specified Tile
 		if (cell == null)
 		{
-			cell = new Cell(position.x, position.y, position.z);
-			cell.tile = InsertIntoSceneUsingString(position, tile.ToString());
+			cell = new Cell(position.x, position.y, position.z, null, null, null);
+			cell.tile = InsertIntoSceneUsingString(position, tile.ToString(), 0);
 			setCell(position, cell);
 		}
 	}
@@ -216,8 +224,8 @@ public class LevelDesigner : MonoBehaviour
 		// If cell is null; register a new cell with the specified Object
 		if (cell == null)
 		{
-			cell = new Cell(position.x, position.y, position.z);
-			cell.obj = InsertIntoSceneUsingString(position, obj.ToString());
+			cell = new Cell(position.x, position.y, position.z, null, null, null);
+			cell.obj = InsertIntoSceneUsingString(position, obj.ToString(), 0);
 		}
 	}
 
@@ -232,7 +240,7 @@ public class LevelDesigner : MonoBehaviour
 		if (cell != null && cell.obj == null)
 		{
 			// Insert object in the Cell
-			cell.obj = InsertIntoSceneUsingString(position, obj.name);
+			cell.obj = InsertIntoSceneUsingString(position, obj.name, 0);
 			
 			// Save changes to cell
 			setCell(position, cell);
@@ -250,8 +258,8 @@ public class LevelDesigner : MonoBehaviour
 		// If cell is null; register a new cell with the specified Wall
 		if (cell == null)
 		{
-			cell = new Cell(position.x, position.y, position.z);
-			cell.wall = InsertIntoSceneUsingString(position, wall.ToString());
+			cell = new Cell(position.x, position.y, position.z, null, null, null);
+			cell.wall = InsertIntoSceneUsingString(position, wall.ToString(), 0);
 		}
 	}
 
@@ -289,7 +297,8 @@ public class LevelDesigner : MonoBehaviour
 		setCell(position, null);
 
 		// Place Empty Tile
-		InsertIntoSceneUsingString(position, TileResource.EmptyTile.ToString());
+		//position.y += 0.05f; // small adjustment to match floor level
+		InsertIntoSceneUsingString(position, TileResource.EmptyTile.ToString(), 0);
 	}
 
 	/**
@@ -309,6 +318,8 @@ public class LevelDesigner : MonoBehaviour
 	 **/
 	public static Cell getCell(Vector3 position)
 	{
+		print ("z("+position.z+") becomes: "+((int)(position.z + zToMid)));
+		print ("x("+position.x+") becomes: "+((int)(position.x + xToMid)));
 		return cellGrid[((int)position.x + xToMid), (int)(position.z + zToMid)];
 	}
 
@@ -326,7 +337,8 @@ public class LevelDesigner : MonoBehaviour
 		Level lvl = currentLevel = Level.Load(filePath);
 		currentLevel = lvl;
 		InstantiateLevel (lvl);
-		displayedNameOfLevel.GetComponent<Text>().text = lvl.name;
+		txtLevelName.GetComponent<Text>().text = lvl.name;
+		//displayedNameOfLevel.GetComponent<Text>().text = lvl.name;
 	}
 
 	private static GameObject LoadAssetFromString(string assetName)

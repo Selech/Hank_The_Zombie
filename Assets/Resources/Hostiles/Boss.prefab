@@ -45,9 +45,11 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 455426}
-  - 114: {fileID: 11458044}
+  - 224: {fileID: 22438910}
   - 54: {fileID: 5491336}
+  - 222: {fileID: 22266588}
+  - 114: {fileID: 11458044}
+  - 114: {fileID: 11471648}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -98,27 +100,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175020}
   m_LocalRotation: {x: 0, y: -.423652947, z: 0, w: .905824602}
-  m_LocalPosition: {x: .255000085, y: .182999998, z: .66200006}
+  m_LocalPosition: {x: .25999999, y: .680999994, z: .660000026}
   m_LocalScale: {x: .172076643, y: .0466193371, z: .740710735}
   m_Children: []
-  m_Father: {fileID: 455426}
+  m_Father: {fileID: 22438910}
   m_RootOrder: 2
---- !u!4 &455426
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125436}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 4, y: .948000014, z: 3}
-  m_LocalScale: {x: .639999986, y: 1.38, z: .620000005}
-  m_Children:
-  - {fileID: 486134}
-  - {fileID: 458980}
-  - {fileID: 412004}
-  - {fileID: 486610}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!4 &458980
 Transform:
   m_ObjectHideFlags: 1
@@ -126,10 +112,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .07500045, y: -.0739130452, z: .896774173}
+  m_LocalPosition: {x: .0799999982, y: .430999994, z: .899999976}
   m_LocalScale: {x: 1.16000021, y: .768115878, z: .349999994}
   m_Children: []
-  m_Father: {fileID: 455426}
+  m_Father: {fileID: 22438910}
   m_RootOrder: 1
 --- !u!4 &486134
 Transform:
@@ -138,10 +124,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .500999987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 455426}
+  m_Father: {fileID: 22438910}
   m_RootOrder: 0
 --- !u!4 &486610
 Transform:
@@ -150,10 +136,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.587999821, y: .182999998, z: .344999969}
+  m_LocalPosition: {x: -.589999974, y: .680999994, z: .340000004}
   m_LocalScale: {x: .277678758, y: .0466193371, z: 1.19527876}
   m_Children: []
-  m_Father: {fileID: 455426}
+  m_Father: {fileID: 22438910}
   m_RootOrder: 3
 --- !u!23 &2304552
 MeshRenderer:
@@ -387,6 +373,54 @@ MonoBehaviour:
   shield: {fileID: 163476}
   AmmoCratePrefab: {fileID: 183210, guid: 9914cd0c83cb54573b05fd5a87be46b7, type: 2}
   enemyDeath: {fileID: 8300000, guid: 4f6916dedc7ad4eba8f3e1ee4d45ca7d, type: 3}
+--- !u!114 &11471648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 61a6bdc7aa38d4b4898b94c340b4a48e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &22266588
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125436}
+--- !u!224 &22438910
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125436}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: -1.62920685e-07}
+  m_LocalPosition: {x: 0, y: 0, z: -63.4142456}
+  m_LocalScale: {x: .639999986, y: 1.38, z: .620000005}
+  m_Children:
+  - {fileID: 486134}
+  - {fileID: 458980}
+  - {fileID: 412004}
+  - {fileID: 486610}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 476.290466, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

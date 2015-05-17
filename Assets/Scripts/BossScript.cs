@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BossScript : MonoBehaviour {
@@ -23,58 +23,77 @@ public class BossScript : MonoBehaviour {
 	private float colorRate = 5;
 
 	public AudioClip enemyDeath;
+	public bool initialized;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+		if (LevelDesigner.isNotTesting == false) 
+		{
+			initialize ();
+		}
+	}
+
+	public void initialize()
+	{
+		initialized = true;
 		seen = false;
 		this.GameController = GameObject.Find ("Controller").GetComponent<GameController>();
-//		startPoint = transform.position;
+		//startPoint = transform.position;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		//Enemy er i live, og bevæger sig
-		if (this.GameController.player != null && !hit) {
-			Vector3 TargetPlayer = new Vector3 (this.GameController.player.transform.position.x, transform.position.y, this.GameController.player.transform.position.z);
+	void Update () 
+	{
+		if (LevelDesigner.isNotTesting == false) 
+		{
+			if (initialized == false)
+				initialize ();
 
-			if (this.GameController.player.GetComponent<PlayerScript> ().powerActive == true) {
-				moveSpeed = moveSpeedAway;
-			}
-
-			if (Vector3.Distance (TargetPlayer, transform.position) < 3.5f || seen) {
-
-				seen = true;
-
-				if (!hit) {
-					transform.position = Vector3.MoveTowards (transform.position, TargetPlayer, moveSpeed);
-					transform.LookAt (TargetPlayer);
-				}
-			} 
-		} 
-
-		//Enemy er blevet skudt, eller player er død.
-		else {
-			if(colorRate > 0.1f){
-				//print (colorRate);
-				enemyColor = body.GetComponent<MeshRenderer>().material;
-				//print (enemyColor.color.a);
-
-				if(colorRate <= 1.0f){
-					colorRate = Mathf.MoveTowards(colorRate, 0.1f, 0.01f);
-				}
-				else{
-					colorRate = Mathf.MoveTowards(colorRate, 1.0f, 0.5f);
-				}
-
-				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
-				leftArm.GetComponent<MeshRenderer>().material = enemyColor;
-				rightArm.GetComponent<MeshRenderer>().material = enemyColor;
-
-				if(colorRate == 0.1f){
-					this.GetComponent<Rigidbody>().isKinematic = true;
-					body.GetComponent<BoxCollider>().enabled = false;
-
-					shield.GetComponent<BoxCollider>().enabled = false;
+			if (LevelDesigner.isNotTesting == false) {
+				//Enemy er i live, og bevæger sig
+				if (this.GameController.player != null && !hit) {
+					Vector3 TargetPlayer = new Vector3 (this.GameController.player.transform.position.x, transform.position.y, this.GameController.player.transform.position.z);
+					
+					if (this.GameController.player.GetComponent<PlayerScript> ().powerActive == true) {
+						moveSpeed = moveSpeedAway;
+					}
+					
+					if (Vector3.Distance (TargetPlayer, transform.position) < 3.5f || seen) {
+						
+						seen = true;
+						
+						if (!hit) {
+							transform.position = Vector3.MoveTowards (transform.position, TargetPlayer, moveSpeed);
+							transform.LookAt (TargetPlayer);
+						}
+					} 
+				} 
+				
+				//Enemy er blevet skudt, eller player er død.
+				else {
+					if (colorRate > 0.1f) {
+						//print (colorRate);
+						enemyColor = body.GetComponent<MeshRenderer> ().material;
+						//print (enemyColor.color.a);
+						
+						if (colorRate <= 1.0f) {
+							colorRate = Mathf.MoveTowards (colorRate, 0.1f, 0.01f);
+						} else {
+							colorRate = Mathf.MoveTowards (colorRate, 1.0f, 0.5f);
+						}
+						
+						enemyColor.color = new Color (enemyColor.color.r, enemyColor.color.g, enemyColor.color.b, colorRate);
+						leftArm.GetComponent<MeshRenderer> ().material = enemyColor;
+						rightArm.GetComponent<MeshRenderer> ().material = enemyColor;
+						
+						if (colorRate == 0.1f) {
+							this.GetComponent<Rigidbody> ().isKinematic = true;
+							body.GetComponent<BoxCollider> ().enabled = false;
+							
+							shield.GetComponent<BoxCollider> ().enabled = false;
+						}
+					}
 				}
 			}
 		}

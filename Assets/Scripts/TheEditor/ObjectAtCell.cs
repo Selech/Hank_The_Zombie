@@ -16,7 +16,7 @@ public class ObjectAtCell
 	{
 	}
 
-	public ObjectAtCell(string theAssetName, float rotation = 0)
+	public ObjectAtCell(string theAssetName, float rotation)
 	{
 		this.assetName = theAssetName;
 		this.rotation = rotation;

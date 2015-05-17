@@ -21,7 +21,7 @@ public class MouseRts : MonoBehaviour
 	private const int ZoomMax = 140;
 	private bool Zooming;
 	private int ZoomCur = 50;
-	private bool onDesktop = false;
+	//private bool onDesktop = false;
 	
 	private const int PanSpeed = 7;
 	private const int PanAngleMin = 50;
@@ -74,20 +74,23 @@ public class MouseRts : MonoBehaviour
 
 	void CheckForMovingOnDesktop()
 	{
-		var translation = Vector3.zero;
-		
-		// Move camera with arrow keys
-		translation += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-		
-		// Move camera with mouse
-		if (Input.GetMouseButton(1)) // MMB
+		if (Popup.PopupOpen == false) 
 		{
-			translation += new Vector3 (-(Input.GetAxis("Mouse X") * DragSpeed*20 * Time.deltaTime), 0,
-										-(Input.GetAxis("Mouse Y") * DragSpeed*20 * Time.deltaTime));
+			var translation = Vector3.zero;
+			
+			// Move camera with arrow keys
+			translation += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			
+			// Move camera with mouse
+			if (Input.GetMouseButton(1)) // MMB
+			{
+				translation += new Vector3 (-(Input.GetAxis("Mouse X") * DragSpeed*20 * Time.deltaTime), 0,
+				                            -(Input.GetAxis("Mouse Y") * DragSpeed*20 * Time.deltaTime));
+			}
+			
+			// Finally move camera parallel to world axis
+			GetComponent<Camera>().transform.position += translation;
 		}
-		
-		// Finally move camera parallel to world axis
-		GetComponent<Camera>().transform.position += translation;
 	}
 
 	void CalcDeltaTouch()
