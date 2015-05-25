@@ -106,8 +106,6 @@ public class EditorMouse : MonoBehaviour
 
 	private void RotateObject(GameObject hitObj)
 	{
-		print ("ROTATE BIATCH!");
-
 		// Allow one single rotation at the time
 		allowClick = false;
 
