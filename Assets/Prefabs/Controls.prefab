@@ -248,7 +248,7 @@ MonoBehaviour:
   _anchor: 10
   _axisNameX: Horizontal
   _axisNameY: Vertical
-  _touchZoneSize: {x: 10, y: 6}
+  _touchZoneSize: {x: 10, y: 5}
   _margins: {x: 2, y: 2}
   _dragRadius: 1.5
   _snapsToFinger: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   _anchor: 9
   _axisNameX: Horizontal
   _axisNameY: Vertical
-  _touchZoneSize: {x: 10, y: 6}
+  _touchZoneSize: {x: 10, y: 5}
   _margins: {x: 2, y: 2}
   _dragRadius: 1.5
   _snapsToFinger: 0

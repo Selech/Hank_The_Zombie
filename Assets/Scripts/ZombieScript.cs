@@ -6,7 +6,7 @@ public class ZombieScript : MonoBehaviour {
 	public Material trans;
 	private GameController GameController;
 	private bool seen;
-	private float moveSpeed = 0.01f;
+	private float moveSpeed = 0.02f;
 	public bool hit = false;
 	public GameObject leftArm;
 	public GameObject rightArm;

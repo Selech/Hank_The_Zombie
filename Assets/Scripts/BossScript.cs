@@ -69,6 +69,7 @@ public class BossScript : MonoBehaviour {
 				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
 				leftArm.GetComponent<MeshRenderer>().material = enemyColor;
 				rightArm.GetComponent<MeshRenderer>().material = enemyColor;
+				shield.GetComponent<MeshRenderer>().material = enemyColor;
 
 				if(colorRate == 0.1f){
 					this.GetComponent<Rigidbody>().isKinematic = true;
@@ -112,7 +113,7 @@ public class BossScript : MonoBehaviour {
 			GameObject ammocrate = Instantiate(AmmoCratePrefab);
 			ammocrate.transform.position = new Vector3(this.transform.position.x, 0.1f, this.transform.position.z);
 		}
-		
+
 		hit = true;
 		
 		body.GetComponent<MeshRenderer>().material = trans;

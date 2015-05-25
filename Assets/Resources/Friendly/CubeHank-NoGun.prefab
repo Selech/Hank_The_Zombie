@@ -632,10 +632,10 @@ MonoBehaviour:
   crosshair: {fileID: 163884}
   shoot: 0
   ammoAmount: 0
-  ammoCapacity: 50
+  ammoCapacity: 250
   ammoSlider: {fileID: 0}
   pushCooldown: 0
-  pushCooldownAmount: 100
+  pushCooldownAmount: 200
   pushSlider: {fileID: 0}
   step: {fileID: 0}
   push: {fileID: 8300000, guid: 7c33f5ddb26c4457291055220109bc8b, type: 3}

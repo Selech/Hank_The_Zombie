@@ -43,6 +43,8 @@ public class PlayerScript : MonoBehaviour
 		target = this.transform.position;
 
 		UpdateSliders ();
+
+		ammoAmount = PlayerPrefs.GetInt ("Ammo");
 	}
 
 	// Update is called once per frame
@@ -123,6 +125,8 @@ public class PlayerScript : MonoBehaviour
 				bullet.transform.position = direction.transform.position;
 				bullet.GetComponent<BulletScript> ().direction = (direction.transform.position - gun.transform.position).normalized;
 
+				this.GetComponent<Rigidbody>().AddForce((gun.transform.position - direction.transform.position).normalized,ForceMode.Impulse);
+
 				gunParticle.Play();
 
 				cooldown = cooldownAmount;
@@ -179,13 +183,13 @@ public class PlayerScript : MonoBehaviour
 		GameObject[] destr = GameObject.FindGameObjectsWithTag("Destructable");
 
 		foreach(GameObject en in enemies){
-			if(Vector3.Distance(en.transform.position, this.transform.position) < 2f){
+			if(Vector3.Distance(en.transform.position, this.transform.position) < 1.8f){
 				en.gameObject.GetComponent<Rigidbody>().AddForce((en.gameObject.transform.position - transform.position) * (5f * power),ForceMode.Impulse);			
 			}
 		}
 
 		foreach(GameObject zom in zombies){
-			if(Vector3.Distance(zom.transform.position, transform.position) < 3f){
+			if(Vector3.Distance(zom.transform.position, transform.position) < 2f){
 				zom.gameObject.GetComponent<Rigidbody>().AddForce((zom.gameObject.transform.position - transform.position) * (3f * power),ForceMode.Impulse);
 				zom.gameObject.GetComponent<ZombieScript>().hit = true;
 			}

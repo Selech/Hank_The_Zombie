@@ -592,8 +592,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 192888, guid: e8616950fe37b401fadfd704391fe1c1, type: 2}
   crosshair: {fileID: 158978}
   shoot: 0
-  ammoAmount: 30
-  ammoCapacity: 100
+  ammoAmount: 0
+  ammoCapacity: 250
   ammoSlider: {fileID: 0}
   pushCooldown: 0
   pushCooldownAmount: 200

@@ -46,6 +46,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GameEnd() {
+		PlayerPrefs.SetInt ("Ammo",player.GetComponent<PlayerScript>().ammoAmount);
 		winScreen.SetActive(true);		
 	}
 

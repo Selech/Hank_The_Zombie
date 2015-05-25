@@ -23,6 +23,8 @@ public class BatteryScript : MonoBehaviour {
 
 			Statics.BatteriesLeft--;
 			GameObject.Find("Score").GetComponent<Text>().text = "Batteries left: " + Statics.BatteriesLeft;
+			GameObject.Find("BatteryFlash").GetComponent<Text>().text = "Batteries left: " + Statics.BatteriesLeft;
+			GameObject.Find("BatteryFlash").GetComponent<Animation>().Play("Flash");
 
 			Destroy (this.gameObject);
 		}
