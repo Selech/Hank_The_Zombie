@@ -11,7 +11,6 @@ public class ZombieScript : MonoBehaviour {
 	public GameObject leftArm;
 	public GameObject rightArm;
 	public GameObject head;
-	private Vector3 startPoint;
 
 	private Material enemyColor;
 	private float colorRate = 5;
@@ -20,7 +19,6 @@ public class ZombieScript : MonoBehaviour {
 	void Start () {
 		seen = false;
 		this.GameController = GameObject.Find ("Controller").GetComponent<GameController>();
-		startPoint = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -44,18 +42,15 @@ public class ZombieScript : MonoBehaviour {
 		else {
 			if(colorRate > 0.1f){
 				this.GetComponent<MeshRenderer>().material = trans;
-
-
-				//print (colorRate);
 				enemyColor = this.GetComponent<MeshRenderer>().material;
-				//print (enemyColor.color.a);
+
 				if(colorRate <= 1.0f){
 					colorRate = Mathf.MoveTowards(colorRate, 0.1f, 0.01f);
 				}
 				else{
 					colorRate = Mathf.MoveTowards(colorRate, 1.0f, 0.5f);
 				}
-				print (colorRate);
+
 				enemyColor.color = new Color(enemyColor.color.r,enemyColor.color.g,enemyColor.color.b, colorRate);
 				leftArm.GetComponent<MeshRenderer>().material = enemyColor;
 				rightArm.GetComponent<MeshRenderer>().material = enemyColor;
@@ -69,24 +64,14 @@ public class ZombieScript : MonoBehaviour {
 		}
 	}
 
-	public void SetStartPoint(Vector3 startPoint){
-		this.startPoint = startPoint;
-	}
-
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Player" && !hit) {
-			//other.gameObject.GetComponent<PlayerScript> ().enabled = false;
 			other.gameObject.GetComponent<Rigidbody> ().AddForce ((other.gameObject.transform.position - transform.position));
-			//this.GameController.player = null;
-
-
 			this.GameController.Infected();
 		}
 
 		if (other.gameObject.tag == "Bullet" && !hit) {
 			Destroy(other.gameObject);
-			//hit = true;
-
 		}
 	}
 

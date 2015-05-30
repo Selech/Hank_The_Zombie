@@ -6,14 +6,13 @@ public class Enemy : MonoBehaviour {
 	public Material trans;
 	private GameController GameController;
 	private SurvivalController SurvivalController;
-	private bool seen;
+	public bool seen;
 	public float moveSpeed = 0.02f;
 	private float moveSpeedAway = -0.02f;
 	private bool hit = false;
 	public GameObject hat;
 	public GameObject leftArm;
 	public GameObject rightArm;
-	private Vector3 startPoint;
 	public GameObject AmmoCratePrefab;
 
 	private Material enemyColor;
@@ -23,9 +22,7 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		seen = false;
 		this.GameController = GameObject.Find ("Controller").GetComponent<GameController>();
-		startPoint = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -52,9 +49,7 @@ public class Enemy : MonoBehaviour {
 		//Enemy er blevet skudt, eller player er død.
 		else {
 			if(colorRate > 0.1f){
-				//print (colorRate);
 				enemyColor = this.GetComponent<MeshRenderer>().material;
-				//print (enemyColor.color.a);
 
 				if(colorRate <= 1.0f){
 					colorRate = Mathf.MoveTowards(colorRate, 0.1f, 0.01f);
@@ -73,10 +68,6 @@ public class Enemy : MonoBehaviour {
 				}
 			}
 		}
-	}
-
-	public void SetStartPoint(Vector3 startPoint){
-		this.startPoint = startPoint;
 	}
 
 	void OnCollisionEnter(Collision other){
@@ -106,19 +97,9 @@ public class Enemy : MonoBehaviour {
 			}
 
 			hit = true;
-			//this.GetComponent<BoxCollider>().enabled = false;
 
 			this.GetComponent<MeshRenderer>().material = trans;
-//			hat.transform.SetParent(null);
-//			hat.GetComponent<Rigidbody>().isKinematic = false;
-//			hat.GetComponent<Rigidbody>().AddForce(new Vector3(0,100f,0));
-		}
-
-		
-		if (other.gameObject.tag == "Enemy") {
-			startPoint = this.transform.position;
 		}
 	}
-
 }
  

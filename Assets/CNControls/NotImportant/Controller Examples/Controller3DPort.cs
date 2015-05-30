@@ -32,9 +32,14 @@ public class Controller3DPort : MonoBehaviour
 			0f,
 			ShootingJoystick.GetAxis("Vertical"));
 
-		CommonMovementMethod(movement, rotation);
+		CommonMovementMethod(movement);
 		CommonRotationMethod (rotation);
     }
+
+	private void CommonMovementMethod(Vector3 movement)
+	{
+		_playerTransform.gameObject.GetComponent<PlayerScript> ().SetTarget (_playerTransform.position + (movement));
+	}
 
 	private void CommonRotationMethod(Vector3 rotation)
 	{
@@ -47,11 +52,6 @@ public class Controller3DPort : MonoBehaviour
 		}
 	}
 
-    private void CommonMovementMethod(Vector3 movement, Vector3 rotation)
-    {
-		_playerTransform.gameObject.GetComponent<PlayerScript> ().SetTarget (_playerTransform.position + (movement));
-    }
-
     public void FaceDirection(Vector3 direction)
     {
         StopCoroutine("RotateCoroutine");
@@ -60,13 +60,12 @@ public class Controller3DPort : MonoBehaviour
 
     IEnumerator RotateCoroutine(Vector3 direction)
     {
-		print ("Rotating");
         if (direction == Vector3.zero) yield break;
 
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         do
         {
-			_playerTransform.rotation = Quaternion.Lerp(_playerTransform.rotation, lookRotation, 500f);//Time.deltaTime * ROTATE_SPEED);
+			_playerTransform.rotation = Quaternion.Lerp(_playerTransform.rotation, lookRotation, 500f);
             yield return null;
         }
         while ((direction - _playerTransform.forward).sqrMagnitude > 0.2f);

@@ -19,7 +19,6 @@ public class MoveableBoxScript : MonoBehaviour {
 		}
 
 		if (moveableZ) {
-			print (moveableZ);
 			GetComponent<Rigidbody>().constraints -= RigidbodyConstraints.FreezePositionZ;
 		}
 	}

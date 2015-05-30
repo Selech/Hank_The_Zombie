@@ -4,24 +4,26 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
+	// Screens
 	public GameObject winScreen;
 	public GameObject loseScreen;
 
+	// Player
 	public GameObject player;
 
-	public Camera overview;
-	public Camera gameplay;
+	// Door, if placed
 	public GameObject door;
 
 	// Use this for initialization
 	void Start () {
-		gameplay.enabled = true;
+		if (PlayerPrefs.GetInt ("Ammo") == 0 || PlayerPrefs.GetInt ("Ammo") == 0) {
+			PlayerPrefs.SetInt ("Ammo",0);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Statics.BatteriesLeft == 0 && door != null) {
-			//winScreen.SetActive(true);
 			door.SetActive(false);
 		}
 
@@ -39,15 +41,13 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GameStart() {
-		//this.GetComponent<TimeController> ().enabled = true;
-
-//		overview.enabled = !overview.enabled;
-//		gameplay.enabled = !gameplay.enabled;
 	}
 
 	public void GameEnd() {
 		PlayerPrefs.SetInt ("Ammo",player.GetComponent<PlayerScript>().ammoAmount);
+
 		winScreen.SetActive(true);		
+		Destroy (player);
 	}
 
 	public void LoadLevel(string levelName){

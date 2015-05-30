@@ -51,22 +51,15 @@ public class PlayerScript : MonoBehaviour
 	void Update ()
 	{
 		PcControls ();
-		//transform.position = new Vector3 (this.transform.position.x, 1f, this.transform.position.z);
 		if (pushCooldown < pushCooldownAmount) {
 			pushCooldown++;
 		}
-
-			
 
 		if ((Input.GetKey (KeyCode.Space)) ) {
 			Shoot();
 		}
 
 		if (target != new Vector3 (-1, -1, -1)) {
-
-
-			//transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-			
 			Vector3 targetposition = new Vector3 (target.x, transform.position.y, target.z);
 
 			if(shoot){

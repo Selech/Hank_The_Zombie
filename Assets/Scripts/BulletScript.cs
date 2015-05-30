@@ -31,7 +31,5 @@ public class BulletScript : MonoBehaviour {
 			other.gameObject.GetComponent<PlayerScript>().GiveAmmo(1);
 			Destroy(this.gameObject);
 		}
-
-		print (other.gameObject.tag);
 	}
 }
