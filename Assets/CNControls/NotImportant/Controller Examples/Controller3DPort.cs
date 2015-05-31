@@ -5,7 +5,6 @@ using System.Collections;
 public class Controller3DPort : MonoBehaviour
 {
     public const float ROTATE_SPEED = 15f;
-
     public float movementSpeed = 5f;
 
     public CNAbstractController MovementJoystick;
