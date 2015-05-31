@@ -318,8 +318,8 @@ public class LevelDesigner : MonoBehaviour
 	 **/
 	public static Cell getCell(Vector3 position)
 	{
-		print ("z("+position.z+") becomes: "+((int)(position.z + zToMid)));
-		print ("x("+position.x+") becomes: "+((int)(position.x + xToMid)));
+		//print ("z("+position.z+") becomes: "+((int)(position.z + zToMid)));
+		//print ("x("+position.x+") becomes: "+((int)(position.x + xToMid)));
 		return cellGrid[((int)position.x + xToMid), (int)(position.z + zToMid)];
 	}
 

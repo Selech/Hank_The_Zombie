@@ -78,6 +78,7 @@ public class Level {
 	{
 		// Check for directory and make it if doesn't exist
 		Directory.CreateDirectory(directory);
+		//LevelDesigner.print("directory saved in: "+directory);
 
 		// Write file
 		System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(this.GetType());

@@ -7,8 +7,12 @@ public class TileData : MonoBehaviour {
 	//public GameObject type;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		if(LevelDesigner.isNotTesting && EditorMouse.mode == "InsertTile")
+		{
+			GetComponent<AudioSource>().Play();
+		}
 	}
 	
 	// Update is called once per frame

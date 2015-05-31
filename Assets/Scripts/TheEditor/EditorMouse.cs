@@ -39,8 +39,8 @@ public class EditorMouse : MonoBehaviour
 					// Cell of clicked object
 					Cell cell = LevelDesigner.getCell(position);
 
-					print ("position: "+position.ToString());
-					if(cell != null) print ("cell: "+cell.xPos+", "+cell.yPos+", "+cell.zPos);
+					//print ("position: "+position.ToString());
+					//if(cell != null) print ("cell: "+cell.xPos+", "+cell.yPos+", "+cell.zPos);
 
 					if (allowClick) //  && (tag == "Clickable" || tag == "Removable")
 					{

@@ -34,8 +34,11 @@ public class GameController : MonoBehaviour {
 	{
 		if (Statics.BatteriesLeft == 0 && door != null) 
 		{
-			//winScreen.SetActive(true);
-			door.SetActive(false);
+			if(LevelDesigner.isUsingEditor == false)
+			{
+				//winScreen.SetActive(true);
+				door.SetActive(false);
+			}
 		}
 
 		if (loseScreen != null) 

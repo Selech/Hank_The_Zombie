@@ -40,10 +40,9 @@ public class ButtonTestLevel : MonoBehaviour
 			}
 			else
 			{
-				// Start the level test
+				// START TEST
+				EditorMouse.mode = "Testing";
 				LevelDesigner.isNotTesting = false;
-				//cam2D.enabled = false;
-				//cam3D.enabled = false;
 				camTesting.enabled = true;
 				uiPushAndAmmo.SetActive(true);
 				uiControllers.SetActive(true);
