@@ -10,6 +10,7 @@ public class BulletScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log ("Shots fired!");
 		AudioSource.PlayClipAtPoint (bullet, GameObject.Find("Main Camera").GetComponent<Transform>().position);
 		this.GetComponent<Rigidbody>().AddForce(direction*6,ForceMode.Impulse);
 	}

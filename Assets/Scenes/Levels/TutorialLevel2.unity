@@ -6358,10 +6358,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 630558091}
-  - 114: {fileID: 630558090}
   - 114: {fileID: 630558094}
-  - 114: {fileID: 630558096}
-  - 114: {fileID: 630558092}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -6369,21 +6366,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &630558090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 630558089}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13fbbe0ec0737470886197fb019bebbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1937482684}
-  InventoryUI: {fileID: 0}
-  touchArea: {fileID: 0}
-  shootArea: {fileID: 0}
 --- !u!4 &630558091
 Transform:
   m_ObjectHideFlags: 0
@@ -6396,18 +6378,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &630558092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 630558089}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89005c67ea92e4ebfa683377be35d833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1937482684}
 --- !u!114 &630558094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6423,20 +6393,6 @@ MonoBehaviour:
   loseScreen: {fileID: 0}
   player: {fileID: 1937482684}
   door: {fileID: 0}
---- !u!114 &630558096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 630558089}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fef9620accbd343639c686be40a502ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 10
-  timeField: {fileID: 0}
-  started: 0
 --- !u!1001 &630866298
 Prefab:
   m_ObjectHideFlags: 0

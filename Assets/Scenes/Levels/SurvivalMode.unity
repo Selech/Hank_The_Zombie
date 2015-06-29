@@ -52674,6 +52674,14 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: .279999971
       objectReference: {fileID: 0}
+    - target: {fileID: 11415280, guid: b487082ac58c84c59b022cb61cf996ba, type: 2}
+      propertyPath: MovementJoystick
+      value: 
+      objectReference: {fileID: 819553901}
+    - target: {fileID: 11415280, guid: b487082ac58c84c59b022cb61cf996ba, type: 2}
+      propertyPath: ShootingJoystick
+      value: 
+      objectReference: {fileID: 819553902}
     m_RemovedComponents:
     - {fileID: 5491522, guid: b487082ac58c84c59b022cb61cf996ba, type: 2}
     - {fileID: 11450438, guid: b487082ac58c84c59b022cb61cf996ba, type: 2}
@@ -52683,20 +52691,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 163236, guid: b487082ac58c84c59b022cb61cf996ba, type: 2}
   m_PrefabInternal: {fileID: 1937482683}
---- !u!114 &1937482685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1937482684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5596c642074ab4fa4bc9ec020cf61281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
-  MovementJoystick: {fileID: 819553901}
-  ShootingJoystick: {fileID: 819553902}
 --- !u!143 &1937482686
 CharacterController:
   m_ObjectHideFlags: 0
